@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     enum TilePosition {Left, Middle, Right};
 
     private Rigidbody player_rigidbody;
+    private Animator player_animator;
 
     [SerializeField] private Transform left_tiles_point;
     [SerializeField] private Transform mid_tiles_point;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         player_rigidbody = GetComponent<Rigidbody>();
+        player_animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private void MoveRight()
     {
         player_tile_position = GetPlayerTilePosition();
+        player_animator.SetTrigger("move_right");
 
         if (player_tile_position == TilePosition.Left)
         {
@@ -54,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private void MoveLeft()
     {
         player_tile_position = GetPlayerTilePosition();
+        player_animator.SetTrigger("move_left");
 
         if (player_tile_position == TilePosition.Right)
         {
