@@ -14,73 +14,97 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    enum TilePosition {Left, Middle, Right};
-
-    private Rigidbody player_rigidbody;
+    private enum LanePosition {Left, Middle, Right}
     private Animator player_animator;
 
-    [SerializeField] private Transform left_tiles_point;
-    [SerializeField] private Transform mid_tiles_point;
-    [SerializeField] private Transform right_tiles_point;
+    [SerializeField] private float lane_distance;
+    [SerializeField] private float player_speed;
+    [SerializeField] private float horizontal_speed;
+    private LanePosition current_lane_pos;
+    private LanePosition target_lane_pos;
+    private float target_pos_x;
 
-    private TilePosition player_tile_position;
+    private bool changing_lanes;
+
 
     private void Awake()
     {
-        player_rigidbody = GetComponent<Rigidbody>();
         player_animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        current_lane_pos = LanePosition.Middle;
+        changing_lanes = false;
     }
 
     private void Update()
     {
+        // TODO: Stop forward movement on death
+        transform.Translate(Vector3.forward * player_speed);
+
+        // Right
         if (Input.GetKeyDown(KeyCode.D))
-            MoveRight();
-        else if (Input.GetKeyDown(KeyCode.A))
-            MoveLeft();
+        {
+            if (current_lane_pos == LanePosition.Left)
+            {
+                player_animator.SetTrigger("move_right");
+                target_lane_pos = LanePosition.Middle;
+                changing_lanes = true;
+                ChangeLane();
+            }
+            else if (current_lane_pos == LanePosition.Middle)
+            {
+                player_animator.SetTrigger("move_right");
+                target_lane_pos = LanePosition.Right;
+                changing_lanes = true;
+                ChangeLane();
+            }
+        }
+        // Left
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (current_lane_pos == LanePosition.Right)
+            {
+                player_animator.SetTrigger("move_left");
+                target_lane_pos = LanePosition.Middle;
+                changing_lanes = true;
+                ChangeLane();
+            }
+            else if (current_lane_pos == LanePosition.Middle)
+            {
+                player_animator.SetTrigger("move_left");
+                target_lane_pos = LanePosition.Left;
+                changing_lanes = true;
+                ChangeLane();
+            }
+        }
+
+        if (changing_lanes)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target_pos_x, transform.position.y, transform.position.z * player_speed), horizontal_speed);
+            if (transform.position.x == target_pos_x)
+            {
+                changing_lanes = false;
+                current_lane_pos = target_lane_pos;
+            }
+        }
     }
 
-    private void MoveRight()
+    private void ChangeLane()
     {
-        player_tile_position = GetPlayerTilePosition();
-        player_animator.SetTrigger("move_right");
-
-        if (player_tile_position == TilePosition.Left)
+        if (target_lane_pos == LanePosition.Right)
         {
-            transform.position = Vector3.Lerp(transform.position, mid_tiles_point.position, 1f);
+            target_pos_x = lane_distance;
         } 
-        else if (player_tile_position == TilePosition.Middle)
+        else if (target_lane_pos == LanePosition.Left)
         {
-            transform.position = Vector3.Lerp(transform.position, right_tiles_point.position, 1f);
+            target_pos_x = -1 * lane_distance;
+        }
+        else
+        {
+            target_pos_x = 0f;
         }
     }
 
-    private void MoveLeft()
-    {
-        player_tile_position = GetPlayerTilePosition();
-        player_animator.SetTrigger("move_left");
-
-        if (player_tile_position == TilePosition.Right)
-        {
-            transform.position = Vector3.Lerp(transform.position, mid_tiles_point.position, 1f);
-        }
-        else if (player_tile_position == TilePosition.Middle)
-        {
-            transform.position = Vector3.Lerp(transform.position, left_tiles_point.position, 1f);
-        }
-    }
-
-
-    private TilePosition GetPlayerTilePosition()
-    {
-        if (transform.position == left_tiles_point.position)
-        {
-            return TilePosition.Left;        
-        } 
-        else if (transform.position == right_tiles_point.position)
-        {
-            return TilePosition.Right;
-        }
-
-        return TilePosition.Middle;
-    }
 }
