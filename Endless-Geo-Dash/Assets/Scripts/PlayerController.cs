@@ -51,14 +51,14 @@ public class PlayerController : MonoBehaviour
                 player_animator.SetTrigger("move_right");
                 target_lane_pos = LanePosition.Middle;
                 changing_lanes = true;
-                ChangeLane();
+                FindTargetPosX();
             }
             else if (current_lane_pos == LanePosition.Middle)
             {
                 player_animator.SetTrigger("move_right");
                 target_lane_pos = LanePosition.Right;
                 changing_lanes = true;
-                ChangeLane();
+                FindTargetPosX();
             }
         }
         // Left
@@ -69,14 +69,14 @@ public class PlayerController : MonoBehaviour
                 player_animator.SetTrigger("move_left");
                 target_lane_pos = LanePosition.Middle;
                 changing_lanes = true;
-                ChangeLane();
+                FindTargetPosX();
             }
             else if (current_lane_pos == LanePosition.Middle)
             {
                 player_animator.SetTrigger("move_left");
                 target_lane_pos = LanePosition.Left;
                 changing_lanes = true;
-                ChangeLane();
+                FindTargetPosX();
             }
         }
 
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ChangeLane()
+    private void FindTargetPosX()
     {
         if (target_lane_pos == LanePosition.Right)
         {
