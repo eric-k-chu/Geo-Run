@@ -7,58 +7,58 @@ FILE DESCRIPTION:
 This file contains the PlayerController class, which contains methods that allow 
 a user to control the player model.
 */
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Three lane system
     private enum LanePosition {Left, Middle, Right}
+
+    // Player Components
     private Animator player_animator;
+    private CharacterController player_controller;
 
+    // Lane Variables
     [SerializeField] private float lane_distance;
-    [SerializeField] private float player_speed;
-    [SerializeField] private float horizontal_speed;
     private LanePosition current_lane_pos;
-    private LanePosition target_lane_pos;
-    private float target_pos_x;
+    private float target_lane_xpos;
+    private float distance_to_lane;
 
-    private bool changing_lanes;
-
+    // Movement Variables
+    [SerializeField] private float forward_speed;
+    [SerializeField] private float horizontal_speed;
+    [SerializeField] private float jump_force;
+    [SerializeField] private float fall_multiplier;
+    private float vertical_velocity;
+    private float artificial_gravity;
 
     private void Awake()
     {
+        player_controller = GetComponent<CharacterController>();
         player_animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
         current_lane_pos = LanePosition.Middle;
-        changing_lanes = false;
     }
 
     private void Update()
     {
-        // TODO: Stop forward movement on death
-        transform.Translate(Vector3.forward * player_speed);
-
         // Right
         if (Input.GetKeyDown(KeyCode.D))
         {
             if (current_lane_pos == LanePosition.Left)
             {
                 player_animator.SetTrigger("move_right");
-                target_lane_pos = LanePosition.Middle;
-                changing_lanes = true;
-                FindTargetPosX();
+                current_lane_pos = LanePosition.Middle;
+                target_lane_xpos = 0f;
             }
             else if (current_lane_pos == LanePosition.Middle)
             {
                 player_animator.SetTrigger("move_right");
-                target_lane_pos = LanePosition.Right;
-                changing_lanes = true;
-                FindTargetPosX();
+                current_lane_pos = LanePosition.Right;
+                target_lane_xpos = lane_distance;
             }
         }
         // Left
@@ -67,44 +67,39 @@ public class PlayerController : MonoBehaviour
             if (current_lane_pos == LanePosition.Right)
             {
                 player_animator.SetTrigger("move_left");
-                target_lane_pos = LanePosition.Middle;
-                changing_lanes = true;
-                FindTargetPosX();
+                current_lane_pos = LanePosition.Middle;
+                target_lane_xpos = 0f;
+
             }
             else if (current_lane_pos == LanePosition.Middle)
             {
                 player_animator.SetTrigger("move_left");
-                target_lane_pos = LanePosition.Left;
-                changing_lanes = true;
-                FindTargetPosX();
+                current_lane_pos = LanePosition.Left;
+                target_lane_xpos = -lane_distance;
+ 
             }
         }
 
-        if (changing_lanes)
+        // Jump 
+        if (player_controller.isGrounded)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target_pos_x, transform.position.y, transform.position.z * player_speed), horizontal_speed);
-            if (transform.position.x == target_pos_x)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                changing_lanes = false;
-                current_lane_pos = target_lane_pos;
+                vertical_velocity = jump_force;
             }
         }
-    }
-
-    private void FindTargetPosX()
-    {
-        if (target_lane_pos == LanePosition.Right)
-        {
-            target_pos_x = lane_distance;
-        } 
-        else if (target_lane_pos == LanePosition.Left)
-        {
-            target_pos_x = -1 * lane_distance;
-        }
+        // Falling
         else
         {
-            target_pos_x = 0f;
+            artificial_gravity = Mathf.Lerp(fall_multiplier, fall_multiplier * 1.2f, Time.deltaTime);
+            vertical_velocity -= jump_force * artificial_gravity * Time.deltaTime;
         }
-    }
 
+        // This vector applies a constant and consistent forward velocity to the player as well as account for any lane changes
+        Vector3 motion_vector = new Vector3(distance_to_lane - transform.position.x, vertical_velocity * Time.deltaTime, forward_speed);
+
+        // The distance between the lane will update as we approach the target lane
+        distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos, Time.deltaTime * horizontal_speed);
+        player_controller.Move(motion_vector);
+    }
 }
