@@ -45,12 +45,15 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        current_lane_pos = LanePosition.Middle;
         if (character_type != user_settings.character_type)
         {
             gameObject.SetActive(false);
-            Debug.Log("deactivated");
         } 
+        else
+        {
+            ConnectToGameManager();
+            current_lane_pos = LanePosition.Middle;
+        }
     }
 
     private void Update()
@@ -112,4 +115,11 @@ public class PlayerController : MonoBehaviour
         distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos, Time.deltaTime * horizontal_speed);
         player_controller.Move(motion_vector);
     }
+
+    private void ConnectToGameManager()
+    {
+        GameManager.instance.GetPlayerTransform(this.transform);
+    }
+
+
 }
