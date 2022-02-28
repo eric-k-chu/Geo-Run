@@ -11,6 +11,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private UserSettings user_settings;
+
+    [Range(0,1)]
+    [SerializeField] private int character_type;
+
     // Three lane system
     private enum LanePosition {Left, Middle, Right}
 
@@ -41,6 +46,11 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         current_lane_pos = LanePosition.Middle;
+        if (character_type != user_settings.character_type)
+        {
+            gameObject.SetActive(false);
+            Debug.Log("deactivated");
+        } 
     }
 
     private void Update()
