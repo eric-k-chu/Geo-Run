@@ -11,10 +11,6 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [SerializeField] private UserSettings user_settings;
-
-    [SerializeField] private GameObject[] character_models;
-
     [Header("Follow Offset")]
     [SerializeField] private Vector3 follow_offset;
 
@@ -32,14 +28,22 @@ public class PlayerCamera : MonoBehaviour
 
     private CinemachineVirtualCamera cinemachine;
 
+    private Transform player_object;
+
     private void Awake()
     {
         cinemachine = GetComponent<CinemachineVirtualCamera>();
     }
     private void Start()
     {
-        cinemachine.Follow = character_models[user_settings.character_type].transform; 
-        cinemachine.LookAt = character_models[user_settings.character_type].transform;
+        GameManager.instance.OnPlayerSpawn += GetPlayerTransform;
+    }
+
+    private void GetPlayerTransform(Transform player)
+    {
+        player_object = player;
+
+        cinemachine.LookAt = cinemachine.Follow = player_object;
 
         CinemachineTransposer transposer = cinemachine.AddCinemachineComponent<CinemachineTransposer>();
         transposer.m_FollowOffset = follow_offset;
@@ -49,7 +53,5 @@ public class PlayerCamera : MonoBehaviour
         CinemachineComposer composer = cinemachine.AddCinemachineComponent<CinemachineComposer>();
         composer.m_HorizontalDamping = aim_horizontal_damping;
         composer.m_VerticalDamping = aim_vertical_damping;
-
-
     }
 }

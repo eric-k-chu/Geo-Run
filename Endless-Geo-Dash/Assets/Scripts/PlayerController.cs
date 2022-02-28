@@ -11,11 +11,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private UserSettings user_settings;
-
-    [Range(0,1)]
-    [SerializeField] private int character_type;
-
     // Three lane system
     private enum LanePosition {Left, Middle, Right}
 
@@ -45,15 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        if (character_type != user_settings.character_type)
-        {
-            gameObject.SetActive(false);
-        } 
-        else
-        {
-            ConnectToGameManager();
-            current_lane_pos = LanePosition.Middle;
-        }
+        current_lane_pos = LanePosition.Middle;
     }
 
     private void Update()
@@ -115,11 +102,4 @@ public class PlayerController : MonoBehaviour
         distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos, Time.deltaTime * horizontal_speed);
         player_controller.Move(motion_vector);
     }
-
-    private void ConnectToGameManager()
-    {
-        GameManager.instance.GetPlayerTransform(this.transform);
-    }
-
-
 }

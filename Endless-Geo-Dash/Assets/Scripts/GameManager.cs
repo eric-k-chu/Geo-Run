@@ -1,5 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+NAME: GPEJ
+MEMBERS: Eric Chu, Jake Wong
+COURSE: CPSC 254-01
+
+FILE DESCRIPTION:
+This file contains the GameManager class, which keeps track of the user and the current game state
+*/
 using System;
 using UnityEngine;
 
@@ -7,16 +13,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
-    private Transform player_object;
+    [SerializeField] private UserSettings user_settings;
+    [SerializeField] private GameObject[] character_list;
 
-    public event Action<Transform> OnPlayerSpawn;
-    public void GetPlayerTransform(Transform player)
-    {
-        OnPlayerSpawn?.Invoke(player);
-    }
+    private GameObject active_player_object;
 
     private enum GameState { Initial, Running, Pause, Resuming, Lost }
     private GameState current_state;
+
+    public event Action<Transform> OnPlayerSpawn;
+    public void GetPlayerTransform (Transform player)
+    {
+        OnPlayerSpawn?.Invoke(player);
+    }
 
     private void Awake()
     {
@@ -25,8 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.OnPlayerSpawn += ReceivePlayerTransform;
-        current_state = GameState.Initial;
+        TransitionState(GameState.Initial);
     }
 
     private void Update()
@@ -50,17 +58,38 @@ public class GameManager : MonoBehaviour
 
     private void TransitionState (GameState state)
     {
-        current_state = state;
+        TerminateState(state);
+        ActivateState(state);
     }
 
-    // This function receives the player's transform from PlayerController.ConnecToGameManager
-    private void ReceivePlayerTransform(Transform player)
+    private void TerminateState(GameState state)
     {
-        player_object = player;
+
     }
 
-    private void OnDestroy()
+    private void ActivateState(GameState state)
     {
-        GameManager.instance.OnPlayerSpawn -= ReceivePlayerTransform;
+        switch (state)
+        {
+            case GameState.Initial:
+                SpawnPlayer();
+                break;
+            case GameState.Running:
+                break;
+            case GameState.Pause:
+                break;
+            case GameState.Resuming:
+                break;
+            case GameState.Lost:
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void SpawnPlayer()
+    {
+        active_player_object = Instantiate(character_list[user_settings.character_type].gameObject);
+        GameManager.instance.GetPlayerTransform(active_player_object.transform);
     }
 }
