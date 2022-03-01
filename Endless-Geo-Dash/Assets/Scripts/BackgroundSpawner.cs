@@ -20,14 +20,19 @@ public class BackgroundSpawner : MonoBehaviour
     {
         if (is_triggered)
         {
-            Vector3 spawn_position_1 = new Vector3(transform.position.x, transform.position.y, transform.position.z + background_model_length);
-            Vector3 spawn_position_2 = new Vector3(transform.position.x, transform.position.y, transform.position.z + (2 * background_model_length));
+            Vector3 spawn_position_1 = new Vector3(transform.position.x, 
+                transform.position.y, transform.position.z + background_model_length);
+
+            Vector3 spawn_position_2 = new Vector3(transform.position.x, 
+                transform.position.y, transform.position.z + (2 * background_model_length));
+
             Quaternion orientation = Quaternion.Euler(Vector3.zero);
 
             Instantiate(background_model, spawn_position_1, orientation);
             Instantiate(background_model, spawn_position_2, orientation);
 
-            is_triggered = false;   // prevents double triggers
+            // prevents double triggers
+            is_triggered = false;   
         }
     }
 

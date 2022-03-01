@@ -54,4 +54,9 @@ public class PlayerCamera : MonoBehaviour
         composer.m_HorizontalDamping = aim_horizontal_damping;
         composer.m_VerticalDamping = aim_vertical_damping;
     }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.OnPlayerSpawn -= GetPlayerTransform;
+    }
 }

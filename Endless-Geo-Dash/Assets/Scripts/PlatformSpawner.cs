@@ -22,12 +22,15 @@ public class PlatformSpawner : MonoBehaviour
     {
         if (is_triggered)
         {
-            Vector3 spawn_point_1 = new Vector3(transform.position.x, transform.position.y, transform.position.z + lane_length);
+            Vector3 spawn_point_1 = new Vector3(transform.position.x, 
+                transform.position.y, transform.position.z + lane_length);
+
             Quaternion orientation = Quaternion.Euler(Vector3.zero);
             int lane_index = Random.Range(0, 5);
             Instantiate(lanes[lane_index], spawn_point_1, orientation);
 
-            is_triggered = false;   // prevents double triggers
+            // prevents double triggers
+            is_triggered = false; 
         }
     }
 

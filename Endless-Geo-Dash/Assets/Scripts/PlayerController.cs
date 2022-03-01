@@ -95,11 +95,14 @@ public class PlayerController : MonoBehaviour
             vertical_velocity -= jump_force * artificial_gravity * Time.deltaTime;
         }
 
-        // This vector applies a constant and consistent forward velocity to the player as well as account for any lane changes
-        Vector3 motion_vector = new Vector3(distance_to_lane - transform.position.x, vertical_velocity * Time.deltaTime, forward_speed);
+        // Movement vector for move()
+        Vector3 motion_vector = new Vector3(distance_to_lane - transform.position.x, 
+            vertical_velocity * Time.deltaTime, forward_speed);
 
         // The distance between the lane will update as we approach the target lane
-        distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos, Time.deltaTime * horizontal_speed);
+        distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos, 
+            Time.deltaTime * horizontal_speed);
+
         player_controller.Move(motion_vector);
     }
 }
