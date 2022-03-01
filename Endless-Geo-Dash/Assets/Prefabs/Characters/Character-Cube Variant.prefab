@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4b41c4f335e3fba49a24af6e4a849315, type: 3}
       propertyPath: m_Name
-      value: Character-Cube
+      value: Character-Cube Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4b41c4f335e3fba49a24af6e4a849315, type: 3}
       propertyPath: m_Layer
@@ -176,10 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c80a670668a6c541a0ed76dc10f8aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  user_settings: {fileID: 11400000, guid: d1afb8077cc5f1746bb811955ffb24cb, type: 2}
-  character_type: 0
   lane_distance: 8
-  forward_speed: 0.1
+  forward_speed: 0.2
   horizontal_speed: 15
   jump_force: 70
   fall_multiplier: 2.5
