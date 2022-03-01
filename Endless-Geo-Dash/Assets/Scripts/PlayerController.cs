@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Right
+        // User press Right
         if (Input.GetKeyDown(KeyCode.D))
         {
             if (current_lane_pos == LanePosition.Left)
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
                 target_lane_xpos = lane_distance;
             }
         }
-        // Left
+        // User press Left
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (current_lane_pos == LanePosition.Right)
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Jump 
+        // User press Jump 
         if (player_controller.isGrounded)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
                 vertical_velocity = jump_force;
             }
         }
-        // Falling
+        // Calculating Falling Physics
         else
         {
             artificial_gravity = Mathf.Lerp(fall_multiplier, fall_multiplier * 1.2f, Time.deltaTime);
