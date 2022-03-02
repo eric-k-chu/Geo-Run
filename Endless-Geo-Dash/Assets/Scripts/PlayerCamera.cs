@@ -36,7 +36,7 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.instance.OnPlayerSpawn += GetPlayerTransform;
+        GameStateManager.instance.OnPlayerSpawn += GetPlayerTransform;
     }
 
     private void GetPlayerTransform(Transform player)
@@ -57,6 +57,6 @@ public class PlayerCamera : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.instance.OnPlayerSpawn -= GetPlayerTransform;
+        GameStateManager.instance.OnPlayerSpawn -= GetPlayerTransform;
     }
 }

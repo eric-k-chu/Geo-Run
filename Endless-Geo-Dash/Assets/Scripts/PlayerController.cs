@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // User press Right
-        if (Input.GetKeyDown(KeyCode.D) && !GameManager.instance.IsPaused())
+        if (Input.GetKeyDown(KeyCode.D) && !GameStateManager.instance.IsPaused())
         {
             if (current_lane_pos == LanePosition.Left)
             {
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         // User press Left
-        if (Input.GetKeyDown(KeyCode.A) && !GameManager.instance.IsPaused())
+        if (Input.GetKeyDown(KeyCode.A) && !GameStateManager.instance.IsPaused())
         {
             if (current_lane_pos == LanePosition.Right)
             {
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         // User press Jump 
         if (player_controller.isGrounded)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && !GameManager.instance.IsPaused())
+            if (Input.GetKeyDown(KeyCode.Space) && !GameStateManager.instance.IsPaused())
             {
                 vertical_velocity = jump_force;
             }

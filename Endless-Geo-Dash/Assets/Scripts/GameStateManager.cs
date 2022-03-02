@@ -4,14 +4,14 @@ MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
-This file contains the GameManager class, which keeps track of the user and the current game state
+This file contains the GameStateManager class, which keeps track of the user and the current game state
 */
 using System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameStateManager : MonoBehaviour
 {
-    public static GameManager instance { get; private set; }
+    public static GameStateManager instance { get; private set; }
 
     [SerializeField] private UserSettings user_settings;
 
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             case GameState.Running:
                 break;
             case GameState.Pause:
-                GameManager.instance.SetActivePauseMenu(false);
+                GameStateManager.instance.SetActivePauseMenu(false);
                 Time.timeScale = 1f;
                 break;
             case GameState.Lost:
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Pause:
                 Time.timeScale = 0f;
-                GameManager.instance.SetActivePauseMenu(true);
+                GameStateManager.instance.SetActivePauseMenu(true);
                 break;
             case GameState.Lost:
                 break;
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
     private void SpawnPlayer()
     {
         active_player_object = Instantiate(character_list[user_settings.character_type].gameObject);
-        GameManager.instance.GetPlayerTransform(active_player_object.transform);
+        GameStateManager.instance.GetPlayerTransform(active_player_object.transform);
     }
 
     public bool IsPaused()

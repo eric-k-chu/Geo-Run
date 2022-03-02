@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
 {
     private void Start()
     {
-        GameManager.instance.OnPlayerPause += SetActivePauseMenu;
+        GameStateManager.instance.OnPlayerPause += SetActivePauseMenu;
         gameObject.SetActive(false);
     }
 
@@ -31,6 +31,6 @@ public class PauseMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.instance.OnPlayerPause -= SetActivePauseMenu;
+        GameStateManager.instance.OnPlayerPause -= SetActivePauseMenu;
     }
 }
