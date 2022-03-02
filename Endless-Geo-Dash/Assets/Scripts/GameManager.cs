@@ -14,17 +14,26 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
 
     [SerializeField] private UserSettings user_settings;
+
+    // All of the available models the user can choose from
     [SerializeField] private GameObject[] character_list;
 
     private GameObject active_player_object;
 
-    private enum GameState { Initial, Running, Pause, Resuming, Lost }
+    private enum GameState { Initial, Running, Pause, Lost }
     private GameState current_state;
 
+    // Get the player's transform on spawn
     public event Action<Transform> OnPlayerSpawn;
     public void GetPlayerTransform (Transform player)
     {
         OnPlayerSpawn?.Invoke(player);
+    }
+
+    public event Action<bool> OnPlayerPause;
+    public void SetActivePauseMenu(bool value)
+    {
+        OnPlayerPause?.Invoke(value);
     }
 
     private void Awake()
@@ -59,8 +68,6 @@ public class GameManager : MonoBehaviour
                 }
 
                 break;
-            case GameState.Resuming:
-                break;
             case GameState.Lost:
                 break;
             default:
@@ -83,9 +90,8 @@ public class GameManager : MonoBehaviour
             case GameState.Running:
                 break;
             case GameState.Pause:
+                GameManager.instance.SetActivePauseMenu(false);
                 Time.timeScale = 1f;
-                break;
-            case GameState.Resuming:
                 break;
             case GameState.Lost:
                 break;
@@ -97,7 +103,6 @@ public class GameManager : MonoBehaviour
     private void ActivateState(GameState state)
     {
         current_state = state;
-        Debug.Log(current_state);
         switch (current_state)
         {
             case GameState.Initial:
@@ -108,8 +113,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Pause:
                 Time.timeScale = 0f;
-                break;
-            case GameState.Resuming:
+                GameManager.instance.SetActivePauseMenu(true);
                 break;
             case GameState.Lost:
                 break;
