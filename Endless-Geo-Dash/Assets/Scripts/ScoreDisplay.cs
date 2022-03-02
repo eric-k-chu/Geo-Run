@@ -43,4 +43,9 @@ public class ScoreDisplay : MonoBehaviour
     {
         player_object = player;
     }
+
+    private void OnDestroy()
+    {
+        GameStateManager.instance.OnPlayerSpawn -= GetPlayerZPosition;
+    }
 }
