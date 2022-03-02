@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lane_distance: 8
-  forward_speed: 0.2
+  forward_speed: 20
   horizontal_speed: 15
   jump_force: 70
   fall_multiplier: 2.5

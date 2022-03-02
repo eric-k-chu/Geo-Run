@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // User press Right
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && !GameManager.instance.IsPaused())
         {
             if (current_lane_pos == LanePosition.Left)
             {
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         // User press Left
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && !GameManager.instance.IsPaused())
         {
             if (current_lane_pos == LanePosition.Right)
             {
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         // User press Jump 
         if (player_controller.isGrounded)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && !GameManager.instance.IsPaused())
             {
                 vertical_velocity = jump_force;
             }
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
         // Movement vector for move()
         Vector3 motion_vector = new Vector3(distance_to_lane - transform.position.x, 
-            vertical_velocity * Time.deltaTime, forward_speed);
+            vertical_velocity * Time.deltaTime, forward_speed * Time.deltaTime);
 
         // The distance between the lane will update as we approach the target lane
         distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos, 

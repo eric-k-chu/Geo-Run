@@ -44,8 +44,20 @@ public class GameManager : MonoBehaviour
             case GameState.Initial:
                 break;
             case GameState.Running:
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    TransitionState(GameState.Pause);
+                }
+
                 break;
             case GameState.Pause:
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    TransitionState(GameState.Running);
+                }
+
                 break;
             case GameState.Resuming:
                 break;
@@ -58,25 +70,44 @@ public class GameManager : MonoBehaviour
 
     private void TransitionState (GameState state)
     {
-        TerminateState(state);
+        TerminateState(current_state);
         ActivateState(state);
     }
 
     private void TerminateState(GameState state)
     {
-
-    }
-
-    private void ActivateState(GameState state)
-    {
         switch (state)
         {
             case GameState.Initial:
-                SpawnPlayer();
                 break;
             case GameState.Running:
                 break;
             case GameState.Pause:
+                Time.timeScale = 1f;
+                break;
+            case GameState.Resuming:
+                break;
+            case GameState.Lost:
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void ActivateState(GameState state)
+    {
+        current_state = state;
+        Debug.Log(current_state);
+        switch (current_state)
+        {
+            case GameState.Initial:
+                SpawnPlayer();
+                TransitionState(GameState.Running);
+                break;
+            case GameState.Running:
+                break;
+            case GameState.Pause:
+                Time.timeScale = 0f;
                 break;
             case GameState.Resuming:
                 break;
@@ -91,5 +122,14 @@ public class GameManager : MonoBehaviour
     {
         active_player_object = Instantiate(character_list[user_settings.character_type].gameObject);
         GameManager.instance.GetPlayerTransform(active_player_object.transform);
+    }
+
+    public bool IsPaused()
+    {
+        if (current_state == GameState.Pause)
+        {
+            return true;
+        }
+        return false;
     }
 }
