@@ -39,6 +39,9 @@ public class ScoreDisplay : MonoBehaviour
         }
     }
 
+    // BUG: GetPlayerTransform() from GameStateManager may sometimes not invoke the functions that are subsribed to it.
+    //      This will cause a null reference pointer on line 37 of this file, since GetPlayerZPosition was never invoked.
+    //      If that is the case, simply remove the ScoreDisplay script from the affected object and re-add it.
     private void GetPlayerZPosition(Transform player)
     {
         player_object = player;
