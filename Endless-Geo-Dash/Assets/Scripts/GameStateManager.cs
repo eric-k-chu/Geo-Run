@@ -136,4 +136,13 @@ public class GameStateManager : MonoBehaviour
         }
         return false;
     }
+
+    public bool IsLost()
+    {
+        if (current_state == GameState.Lost)
+        {
+            return true;
+        }
+        return false;
+    }
 }
