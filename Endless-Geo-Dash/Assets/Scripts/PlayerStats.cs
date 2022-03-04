@@ -16,6 +16,8 @@ public enum Ailments { Burning, Chilled, Grasped, None }
 
 public class PlayerStats : MonoBehaviour
 {
+    private float health = 100f;
+
     private int fire_crystal_count = 0;
 
     private int water_crystal_count = 0;
@@ -45,6 +47,7 @@ public class PlayerStats : MonoBehaviour
         {
             case Ailments.Burning:
                 burn_multiplier = ailment_curves.burn_multiplier_curve.Evaluate(fire_crystal_count);
+                health -= (burn_multiplier / 100f);
                 break;
             case Ailments.Chilled:
                 chill_multiplier = ailment_curves.chill_multiplier_curve.Evaluate(water_crystal_count);
@@ -150,5 +153,25 @@ public class PlayerStats : MonoBehaviour
             return grasp_multiplier;
         }
         return 0f;
+    }
+
+    public float GetCurrentHealth()
+    {
+        return health;
+    }
+
+    public float GetFireCrystalCount()
+    {
+        return fire_crystal_count;
+    }
+
+    public float GetWaterCrystalCount()
+    {
+        return water_crystal_count;
+    }
+
+    public float GetEarthCrystalCount()
+    {
+        return earth_crystal_count;
     }
 }
