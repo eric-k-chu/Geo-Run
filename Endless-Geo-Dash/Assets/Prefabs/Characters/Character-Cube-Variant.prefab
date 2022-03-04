@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4b41c4f335e3fba49a24af6e4a849315, type: 3}
       propertyPath: m_Name
-      value: Character-Cube Variant
+      value: Character-Cube-Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4b41c4f335e3fba49a24af6e4a849315, type: 3}
       propertyPath: m_Layer
@@ -102,35 +102,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b41c4f335e3fba49a24af6e4a849315, type: 3}
   m_PrefabInstance: {fileID: 812168459660951064}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &459898394
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541574591937561417}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 1
-  m_Constraints: 120
-  m_CollisionDetection: 3
---- !u!65 &459898396
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541574591937561417}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &459898397
 CharacterController:
   m_ObjectHideFlags: 0
@@ -168,6 +139,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7283294419837316334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541574591937561417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281a433176310c444ad573abe7f491f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ailment_curves: {fileID: 11400000, guid: a51ddd2851b2f464d9c3894f56f1a16d, type: 2}
 --- !u!114 &459898393
 MonoBehaviour:
   m_ObjectHideFlags: 0

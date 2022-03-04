@@ -5,7 +5,8 @@ COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
 This file contains the PlayerController class, which contains methods that allow 
-a user to control the player model.
+a user to control the player model and algorithms that manipulate the player's 
+velocity.
 */
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     // Player Components
     private Animator player_animator;
     private CharacterController player_controller;
+    private PlayerStats player_stats;
 
     // Lane Variables
     [SerializeField] private float lane_distance;
@@ -32,10 +34,17 @@ public class PlayerController : MonoBehaviour
     private float vertical_velocity;
     private float artificial_gravity;
 
+    private Ailments ailment_on_player;
+
+    private float burn_multiplier = 1f;
+    private float chill_multiplier = 1f;
+    private float grasp_multiplier = 1f;
+
     private void Awake()
     {
         player_controller = GetComponent<CharacterController>();
         player_animator = GetComponent<Animator>();
+        player_stats = GetComponent<PlayerStats>();
     }
 
     private void Start()
@@ -45,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        GetCurrentAilment();
         // User press Right
         if (Input.GetKeyDown(KeyCode.D) && !GameStateManager.instance.IsPaused())
         {
@@ -97,12 +107,38 @@ public class PlayerController : MonoBehaviour
 
         // Movement vector for move()
         Vector3 motion_vector = new Vector3(distance_to_lane - transform.position.x, 
-            vertical_velocity * Time.deltaTime, forward_speed * Time.deltaTime);
+            vertical_velocity * grasp_multiplier * Time.deltaTime, forward_speed * chill_multiplier * burn_multiplier * Time.deltaTime);
 
         // The distance between the lane will update as we approach the target lane
         distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos, 
-            Time.deltaTime * horizontal_speed);
+            horizontal_speed * chill_multiplier * burn_multiplier * Time.deltaTime);
 
         player_controller.Move(motion_vector);
+    }
+
+    private void GetCurrentAilment()
+    {
+        ailment_on_player = player_stats.GetCurrentAilmentOnPlayer();
+
+        if (ailment_on_player == Ailments.Burning)
+        {
+            chill_multiplier = grasp_multiplier = 1f;
+            burn_multiplier = player_stats.GetCurrentAilmentMultiplier(ailment_on_player);
+        }
+        else if (ailment_on_player == Ailments.Chilled)
+        {
+            burn_multiplier = grasp_multiplier = 1f;
+            chill_multiplier = player_stats.GetCurrentAilmentMultiplier(ailment_on_player);
+        } 
+        else if (ailment_on_player == Ailments.Grasped)
+        {
+            burn_multiplier = chill_multiplier = 1f;
+            grasp_multiplier = player_stats.GetCurrentAilmentMultiplier(ailment_on_player);
+        } 
+        // return ailment multipliers back to normal if no ailment_on_player = none
+        else
+        {
+            burn_multiplier = chill_multiplier = grasp_multiplier = 1f;
+        }
     }
 }

@@ -2494,21 +2494,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire-Crystal
       objectReference: {fileID: 0}
+    - target: {fileID: 28688309550534719, guid: 854868dbe4bcc5846a2adb26647b38a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 28688309550534719, guid: 854868dbe4bcc5846a2adb26647b38a4, type: 3}
+      propertyPath: m_TagString
+      value: Fire
+      objectReference: {fileID: 0}
     - target: {fileID: 805646740018891397, guid: 854868dbe4bcc5846a2adb26647b38a4, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 805646740018891397, guid: 854868dbe4bcc5846a2adb26647b38a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 805646740018891397, guid: 854868dbe4bcc5846a2adb26647b38a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22754681
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 805646740018891397, guid: 854868dbe4bcc5846a2adb26647b38a4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.741409
+      value: 60.8
       objectReference: {fileID: 0}
     - target: {fileID: 805646740018891397, guid: 854868dbe4bcc5846a2adb26647b38a4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2538,6 +2546,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3208238795373872683, guid: 854868dbe4bcc5846a2adb26647b38a4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854868dbe4bcc5846a2adb26647b38a4, type: 3}
 --- !u!1001 &1980202617414767015
@@ -2551,21 +2563,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water-Crystal
       objectReference: {fileID: 0}
+    - target: {fileID: 1709817651103783586, guid: 59748f7255b4ad0428082f0c48227fe7, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709817651103783586, guid: 59748f7255b4ad0428082f0c48227fe7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709817651103783586, guid: 59748f7255b4ad0428082f0c48227fe7, type: 3}
+      propertyPath: m_TagString
+      value: Water
+      objectReference: {fileID: 0}
     - target: {fileID: 2085640193352368152, guid: 59748f7255b4ad0428082f0c48227fe7, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2085640193352368152, guid: 59748f7255b4ad0428082f0c48227fe7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2085640193352368152, guid: 59748f7255b4ad0428082f0c48227fe7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22754657
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2085640193352368152, guid: 59748f7255b4ad0428082f0c48227fe7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.2299795
+      value: 31.6
       objectReference: {fileID: 0}
     - target: {fileID: 2085640193352368152, guid: 59748f7255b4ad0428082f0c48227fe7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2669,21 +2693,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Earth-Crystal
       objectReference: {fileID: 0}
+    - target: {fileID: 5117639227688327826, guid: f767583202f3e2d429011813a48a3476, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117639227688327826, guid: f767583202f3e2d429011813a48a3476, type: 3}
+      propertyPath: m_TagString
+      value: Earth
+      objectReference: {fileID: 0}
     - target: {fileID: 5498421735542210600, guid: f767583202f3e2d429011813a48a3476, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5498421735542210600, guid: f767583202f3e2d429011813a48a3476, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.71
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5498421735542210600, guid: f767583202f3e2d429011813a48a3476, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22754657
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5498421735542210600, guid: f767583202f3e2d429011813a48a3476, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.2299795
+      value: 45.6
       objectReference: {fileID: 0}
     - target: {fileID: 5498421735542210600, guid: f767583202f3e2d429011813a48a3476, type: 3}
       propertyPath: m_LocalRotation.w
