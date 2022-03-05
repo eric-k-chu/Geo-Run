@@ -8,22 +8,36 @@ This file contains the GameOverInterface class, which contains functions that al
 to interact with the GameOver GUI.
 */
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverInterface : MonoBehaviour
 {
     private void Start()
     {
-        GameStateManager.instance.OnGameStateLost += ActivateGameOverMenu;
+        GameStateManager.instance.OnGameStateLost += SetActiveGameOverMenu;
         gameObject.SetActive(false);
     }
 
-    private void ActivateGameOverMenu()
+    private void SetActiveGameOverMenu(bool value)
     {
-        gameObject.SetActive(true);
+        if (value)
+        {
+            gameObject.SetActive(true);
+        } 
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnDestroy()
     {
-        GameStateManager.instance.OnGameStateLost -= ActivateGameOverMenu;
+        GameStateManager.instance.OnGameStateLost -= SetActiveGameOverMenu;
+    }
+
+    public void Retry()
+    {
+        GameStateManager.instance.TerminateLostState();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

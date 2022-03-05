@@ -25,7 +25,6 @@ public class ScoreDisplay : MonoBehaviour
 
     private void Start()
     {
-        GameStateManager.instance.OnPlayerSpawn += GetPlayerZPosition;
         player_score = 0;
     }
 
@@ -36,26 +35,11 @@ public class ScoreDisplay : MonoBehaviour
             player_object = GameObject.FindWithTag("Player").transform;
         }
 
-        if (!GameStateManager.instance.IsPaused())
+        if (!GameStateManager.instance.IsPaused() && !GameStateManager.instance.IsLost())
         {
             // player's score will increase as they keep moving forward (z axis)
             player_score = (int) player_object.position.z;
             ui_text.text = player_score.ToString();
         }
-    }
-
-    // BUG: GetPlayerTransform() from GameStateManager may sometimes not invoke the functions that are subsribed to it
-    //      after restarting the Unity Editor. This will cause a null reference pointer on line 37 of this file,
-    //      since GetPlayerZPosition was never invoked. If that is the case, simply remove the ScoreDisplay script
-    //      from the affected object and re-add it.
-    private void GetPlayerZPosition(Transform player)
-    {
-        player_object = player;
-        Debug.Log("test");
-    }
-
-    private void OnDestroy()
-    {
-        GameStateManager.instance.OnPlayerSpawn -= GetPlayerZPosition;
     }
 }

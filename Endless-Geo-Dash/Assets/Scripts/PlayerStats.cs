@@ -41,45 +41,43 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0)
+        if (!GameStateManager.instance.IsLost())
         {
-            GameStateManager.instance.EndGame();
+            if (health <= 0)
+            {
+                GameStateManager.instance.TransitionToLostState();
+            }
+            HandleAilmentState();
+
+            switch (ailment_on_player)
+            {
+                case Ailments.Burning:
+                    burn_multiplier = ailment_curves.burn_multiplier_curve.Evaluate(fire_crystal_count);
+
+                    if (health > 0)
+                    {
+                        health -= (burn_multiplier / 100f);
+                    }
+                    break;
+                case Ailments.Chilled:
+                    chill_multiplier = ailment_curves.chill_multiplier_curve.Evaluate(water_crystal_count);
+                    break;
+                case Ailments.Grasped:
+                    grasp_multiplier = ailment_curves.grasp_multiplier_curve.Evaluate(earth_crystal_count);
+
+                    if (health < 100f)
+                    {
+                        health += 0.01f;
+                        if (health > 100f)
+                        {
+                            health = 100f;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
-        HandleAilmentState();
-
-        switch (ailment_on_player)
-        {
-            case Ailments.Burning:
-                burn_multiplier = ailment_curves.burn_multiplier_curve.Evaluate(fire_crystal_count);
-
-                if (health > 0)
-                {
-                    health -= (burn_multiplier / 100f);
-                    if (health <= 0)
-                    {
-                        health = 0;
-                        GameStateManager.instance.EndGame();
-                    }
-                }
-                break;
-            case Ailments.Chilled:
-                chill_multiplier = ailment_curves.chill_multiplier_curve.Evaluate(water_crystal_count);
-                break;
-            case Ailments.Grasped:
-                grasp_multiplier = ailment_curves.grasp_multiplier_curve.Evaluate(earth_crystal_count);
-
-                if (health < 100f)
-                {
-                    health += 0.01f;
-                    if (health > 100f)
-                    {
-                        health = 100f;
-                    }
-                }
-                break;
-            default:
-                break;
-        }    
     }
 
     private void OnTriggerEnter(Collider other)

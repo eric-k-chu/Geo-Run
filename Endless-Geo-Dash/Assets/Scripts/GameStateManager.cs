@@ -23,6 +23,7 @@ public class GameStateManager : MonoBehaviour
 
     private enum GameState { Initial, Running, Pause, Lost }
     private GameState current_state;
+    private bool in_grace_period;
 
     // Get the player's transform on spawn
     public event Action<Transform> OnPlayerSpawn;
@@ -37,16 +38,10 @@ public class GameStateManager : MonoBehaviour
         OnPlayerPause?.Invoke(value);
     }
 
-    public event Action OnPlayerDeath;
-    public void EndGame()
+    public event Action<bool> OnGameStateLost;
+    public void SetActiveGameOverMenu(bool value)
     {
-        OnPlayerDeath?.Invoke();
-    }
-
-    public event Action OnGameStateLost;
-    public void ActivateGameOverMenu()
-    {
-        OnGameStateLost?.Invoke();
+        OnGameStateLost?.Invoke(value);
     }
 
     private void Awake()
@@ -56,7 +51,6 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
-        instance.OnPlayerDeath += TransitionToLostState;
         TransitionState(GameState.Initial);
     }
 
@@ -106,14 +100,24 @@ public class GameStateManager : MonoBehaviour
             case GameState.Running:
                 break;
             case GameState.Pause:
-                instance.SetActivePauseMenu(false);
+                GameStateManager.instance.SetActivePauseMenu(false);
                 Time.timeScale = 1f;
+                StartCoroutine(ActivateGracePeriod());
                 break;
             case GameState.Lost:
+                GameStateManager.instance.SetActiveGameOverMenu(false);
+                Time.timeScale = 1f;
                 break;
             default:
                 break;
         }
+    }
+
+    IEnumerator ActivateGracePeriod()
+    {
+        in_grace_period = true;
+        yield return new WaitForSeconds(0.5f);
+        in_grace_period = false;
     }
 
     // Performs the necessary functions on entering a game state given a GameState obj param
@@ -123,6 +127,7 @@ public class GameStateManager : MonoBehaviour
         switch (current_state)
         {
             case GameState.Initial:
+                StartCoroutine(ActivateGracePeriod());
                 Time.timeScale = 1f;
                 SpawnPlayer();
                 TransitionState(GameState.Running);
@@ -131,12 +136,11 @@ public class GameStateManager : MonoBehaviour
                 break;
             case GameState.Pause:
                 Time.timeScale = 0f;
-                instance.SetActivePauseMenu(true);
+                GameStateManager.instance.SetActivePauseMenu(true);
                 break;
-            case GameState.Lost:
-                // TODO: BRING UP PLAYER SCORE
+            case GameState.Lost:         
                 Time.timeScale = 0f;
-                instance.ActivateGameOverMenu();
+                GameStateManager.instance.SetActiveGameOverMenu(true);
                 break;
             default:
                 break;
@@ -180,15 +184,25 @@ public class GameStateManager : MonoBehaviour
         return false;
     }
 
-    // This function will be called when the player dies (called in PlayerStats.c)
-    private void TransitionToLostState()
+    public void TerminateLostState()
     {
-        TransitionState(GameState.Lost);
+        TerminateState(current_state);
     }
 
-    // Unsubscribe from events on the deletion of this game object
-    private void OnDestroy()
+    public bool IsGracePeriod()
     {
-        instance.OnPlayerDeath -= TransitionToLostState;
+        if (in_grace_period)
+        {
+            return true;
+        } 
+        else
+        {
+            return false;
+        }
+    }
+
+    public void TransitionToLostState()
+    {
+        TransitionState(GameState.Lost);
     }
 }

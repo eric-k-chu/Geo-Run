@@ -38,7 +38,7 @@ public class HealthDisplay : MonoBehaviour
             player_stats = player_object.GetComponent<PlayerStats>();
         }
 
-        if (!GameStateManager.instance.IsPaused())
+        if (!GameStateManager.instance.IsPaused() && !GameStateManager.instance.IsLost())
         {
             player_health = (int) player_stats.GetCurrentHealth();
             ui_text.text = player_health.ToString();
