@@ -35,9 +35,29 @@ public class GameOverInterface : MonoBehaviour
         GameStateManager.instance.OnGameStateLost -= SetActiveGameOverMenu;
     }
 
+    // Loads Main Menu Scene
+    public void ToMainMenu()
+    {
+        GameStateManager.instance.TerminateLostState();
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void ToSettings()
+    {
+        // TODO: Bring up settings UI canvas
+    }
+
+    // Restarts the Game
     public void Retry()
     {
         GameStateManager.instance.TerminateLostState();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    // Exits the application
+    public void QuitGame()
+    {
+        GameStateManager.instance.TerminateLostState();
+        Application.Quit();
     }
 }

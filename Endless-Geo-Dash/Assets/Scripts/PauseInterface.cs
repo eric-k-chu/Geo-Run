@@ -8,6 +8,7 @@ This file contains the PauseInterface class, which contains functions that allow
 to interact with the pause GUI.
 */
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseInterface: MonoBehaviour
 {
@@ -32,5 +33,24 @@ public class PauseInterface: MonoBehaviour
     private void OnDestroy()
     {
         GameStateManager.instance.OnPlayerPause -= SetActivePauseMenu;
+    }
+
+    // Loads Main Menu Scene
+    public void ToMainMenu()
+    {
+        GameStateManager.instance.TerminateLostState();
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void ToSettings()
+    {
+        // TODO: Bring up settings UI canvas
+    }
+
+    // Exits the application
+    public void QuitGame()
+    {
+        GameStateManager.instance.TerminateLostState();
+        Application.Quit();
     }
 }
