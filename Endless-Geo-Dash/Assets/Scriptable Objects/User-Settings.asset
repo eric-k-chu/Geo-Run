@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: User-Settings
   m_EditorClassIdentifier: 
   character_type: 1
+  volume: 50

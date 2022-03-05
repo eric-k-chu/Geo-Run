@@ -44,7 +44,7 @@ public class PauseInterface: MonoBehaviour
 
     public void ToSettings()
     {
-        // TODO: Bring up settings UI canvas
+        SettingsInterface.instance.SetActiveSettingsMenu(true);
     }
 
     // Exits the application

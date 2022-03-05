@@ -13,4 +13,7 @@ public class UserSettings : ScriptableObject
 {
     [Range(0,1)]
     public int character_type;
+
+    [Range(0,100)]
+    public float volume;
 }
