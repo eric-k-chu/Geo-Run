@@ -7,6 +7,7 @@ FILE DESCRIPTION:
 This file contains the GameStateManager class, which keeps track of the user and the current game state
 */
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
@@ -36,6 +37,18 @@ public class GameStateManager : MonoBehaviour
         OnPlayerPause?.Invoke(value);
     }
 
+    public event Action OnPlayerDeath;
+    public void EndGame()
+    {
+        OnPlayerDeath?.Invoke();
+    }
+
+    public event Action OnGameStateLost;
+    public void ActivateGameOverMenu()
+    {
+        OnGameStateLost?.Invoke();
+    }
+
     private void Awake()
     {
         instance = this;
@@ -43,6 +56,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
+        instance.OnPlayerDeath += TransitionToLostState;
         TransitionState(GameState.Initial);
     }
 
@@ -75,12 +89,14 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+    // Transition to a new game state given a GameState obj param
     private void TransitionState (GameState state)
     {
         TerminateState(current_state);
         ActivateState(state);
     }
 
+    // Performs the necessary functions on exiting a game state given a GameState obj param
     private void TerminateState(GameState state)
     {
         switch (state)
@@ -90,7 +106,7 @@ public class GameStateManager : MonoBehaviour
             case GameState.Running:
                 break;
             case GameState.Pause:
-                GameStateManager.instance.SetActivePauseMenu(false);
+                instance.SetActivePauseMenu(false);
                 Time.timeScale = 1f;
                 break;
             case GameState.Lost:
@@ -100,12 +116,14 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+    // Performs the necessary functions on entering a game state given a GameState obj param
     private void ActivateState(GameState state)
     {
         current_state = state;
         switch (current_state)
         {
             case GameState.Initial:
+                Time.timeScale = 1f;
                 SpawnPlayer();
                 TransitionState(GameState.Running);
                 break;
@@ -113,21 +131,26 @@ public class GameStateManager : MonoBehaviour
                 break;
             case GameState.Pause:
                 Time.timeScale = 0f;
-                GameStateManager.instance.SetActivePauseMenu(true);
+                instance.SetActivePauseMenu(true);
                 break;
             case GameState.Lost:
+                // TODO: BRING UP PLAYER SCORE
+                Time.timeScale = 0f;
+                instance.ActivateGameOverMenu();
                 break;
             default:
                 break;
         }
     }
 
+    // Spawns the player object at world origin (0,0,0)
     private void SpawnPlayer()
     {
         active_player_object = Instantiate(character_list[user_settings.character_type].gameObject);
         GameStateManager.instance.GetPlayerTransform(active_player_object.transform);
     }
 
+    // Returns true if current game state is Pause, otherwise false
     public bool IsPaused()
     {
         if (current_state == GameState.Pause)
@@ -137,6 +160,7 @@ public class GameStateManager : MonoBehaviour
         return false;
     }
 
+    // Returns true if current game state is Lost, otherwise false
     public bool IsLost()
     {
         if (current_state == GameState.Lost)
@@ -144,5 +168,27 @@ public class GameStateManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    // Returns true if current game state is Running, otherwise false
+    public bool isRunning()
+    {
+        if (current_state == GameState.Running)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // This function will be called when the player dies (called in PlayerStats.c)
+    private void TransitionToLostState()
+    {
+        TransitionState(GameState.Lost);
+    }
+
+    // Unsubscribe from events on the deletion of this game object
+    private void OnDestroy()
+    {
+        instance.OnPlayerDeath -= TransitionToLostState;
     }
 }

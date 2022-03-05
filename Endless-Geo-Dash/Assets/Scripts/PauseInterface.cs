@@ -5,7 +5,7 @@ COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
 This file contains the PauseInterface class, which contains functions that allow the player
-to interact with the Pause interface menu.
+to interact with the pause GUI.
 */
 using UnityEngine;
 

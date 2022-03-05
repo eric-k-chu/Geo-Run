@@ -14,7 +14,7 @@ public class HealthDisplay : MonoBehaviour
 {
     private GameObject player_object;
 
-    private float player_health;
+    private int player_health;
 
     private Text ui_text;
 
@@ -40,7 +40,7 @@ public class HealthDisplay : MonoBehaviour
 
         if (!GameStateManager.instance.IsPaused())
         {
-            player_health = player_stats.GetCurrentHealth();
+            player_health = (int) player_stats.GetCurrentHealth();
             ui_text.text = player_health.ToString();
         }
     }
