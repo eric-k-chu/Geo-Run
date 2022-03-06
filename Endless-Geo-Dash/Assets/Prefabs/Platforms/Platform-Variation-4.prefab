@@ -43,7 +43,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 60, z: 1}
+  m_Size: {x: 24, y: 60, z: 80}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1507241129800395064
 MonoBehaviour:
@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lanes:
-  - {fileID: 7791092685502325003, guid: c4b9593f497f4aa48bfbdf03819b150c, type: 3}
   - {fileID: 6230860732251648474, guid: 14406c3259bed3c4abedaa489606af62, type: 3}
   - {fileID: 3928290300467534277, guid: 9e3efb51936127d4b82f0c3f3463572d, type: 3}
   - {fileID: 6215798179298831352}
   - {fileID: 6678128599218158867, guid: 2dc649b3e8e8a2d4e89bf1060218a893, type: 3}
+  - {fileID: 7791092685502325003, guid: c4b9593f497f4aa48bfbdf03819b150c, type: 3}
   lane_length: 80
 --- !u!1 &6215798179298831352
 GameObject:
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 6986974280044064387}
   - component: {fileID: 6409703126607477877}
   m_Layer: 7
-  m_Name: Purple Test Platform
+  m_Name: Platform-Variation-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,8 +91,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6215798179298831352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 24, y: 1, z: 80}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2302104191978032407}
   m_Father: {fileID: 0}
@@ -105,7 +105,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6215798179298831352}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3414872355658400571, guid: 77f110e893a466f4e8586948526cc7e5, type: 3}
 --- !u!23 &6986974280044064387
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +125,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3efe8a6b3cc54154db42605afa941deb, type: 2}
+  - {fileID: 2100000, guid: 25e5dc9d9f3a482458c0e5e1c5eceed7, type: 2}
+  - {fileID: 2100000, guid: 560e28d350a56844dbbfeb2f4edd113a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,5 +159,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 24, y: 2, z: 80}
   m_Center: {x: 0, y: 0, z: 0}

@@ -82,7 +82,8 @@ public class PlayerStats : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Fire"))
+        Elements obj = other.gameObject.GetComponent<Crystal>().GetElementalType();
+        if (obj == Elements.Fire)
         {
             fire_crystal_count++;
             if (earth_crystal_count > 0)
@@ -90,7 +91,7 @@ public class PlayerStats : MonoBehaviour
                 earth_crystal_count--;
             }
         }
-        else if (other.gameObject.CompareTag("Water"))
+        else if (obj == Elements.Water)
         {
             water_crystal_count++;
             if (fire_crystal_count > 0)
@@ -98,7 +99,7 @@ public class PlayerStats : MonoBehaviour
                 fire_crystal_count--;
             }
         }
-        else if (other.gameObject.CompareTag("Earth"))
+        else if (obj == Elements.Earth)
         {
             earth_crystal_count++;
             if (water_crystal_count > 0)

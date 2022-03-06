@@ -43,7 +43,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 60, z: 1}
+  m_Size: {x: 24, y: 60, z: 80}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1120779378673956284
 MonoBehaviour:
@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lanes:
-  - {fileID: 7791092685502325003, guid: c4b9593f497f4aa48bfbdf03819b150c, type: 3}
   - {fileID: 6230860732251648474, guid: 14406c3259bed3c4abedaa489606af62, type: 3}
   - {fileID: 3928290300467534277, guid: 9e3efb51936127d4b82f0c3f3463572d, type: 3}
   - {fileID: 6215798179298831352, guid: ab15c1da80f1c9f4f96a46f0e76c4afb, type: 3}
   - {fileID: 6678128599218158867}
+  - {fileID: 7791092685502325003, guid: c4b9593f497f4aa48bfbdf03819b150c, type: 3}
   lane_length: 80
 --- !u!1 &6678128599218158867
 GameObject:
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 4420344029077091783}
   - component: {fileID: 9138436991585814936}
   m_Layer: 7
-  m_Name: Green Test Platform
+  m_Name: Platform-Variation-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,8 +92,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6678128599218158867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 24, y: 1, z: 80}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2186407374233663607}
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6678128599218158867}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3414872355658400571, guid: 77f110e893a466f4e8586948526cc7e5, type: 3}
 --- !u!23 &9187028288867927104
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -126,7 +126,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4f0c6bf6166fa2d4aafb83290eb6b894, type: 2}
+  - {fileID: 2100000, guid: 25e5dc9d9f3a482458c0e5e1c5eceed7, type: 2}
+  - {fileID: 2100000, guid: 560e28d350a56844dbbfeb2f4edd113a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,7 +160,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 24, y: 2, z: 80}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9138436991585814936
 MonoBehaviour:
