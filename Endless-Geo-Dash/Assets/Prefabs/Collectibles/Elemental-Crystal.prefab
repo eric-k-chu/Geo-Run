@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8685875541989610477}
   m_Layer: 9
   m_Name: Elemental-Crystal
-  m_TagString: Untagged
+  m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,3 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589e129613ae049409b1b54acfa889b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fire_mat: {fileID: 2100000, guid: 1e34e569d4530224893e3a24cb7d33e6, type: 2}
+  water_mat: {fileID: 2100000, guid: 649466743188de04981bc9b3e5f684df, type: 2}
+  earth_mat: {fileID: 2100000, guid: 11b63ece0eb52044384bc400b3c70ed7, type: 2}

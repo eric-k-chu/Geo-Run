@@ -15,11 +15,15 @@ public class Crystal : MonoBehaviour
 {
     private Elements type;
 
-    private SkinnedMeshRenderer mesh;
+    private Renderer mesh;
+
+    [SerializeField] private Material fire_mat;
+    [SerializeField] private Material water_mat;
+    [SerializeField] private Material earth_mat;
 
     private void Awake()
     {
-        mesh = GetComponent<SkinnedMeshRenderer>();
+        mesh = GetComponent<MeshRenderer>();
     }
 
     private void Start()
@@ -31,7 +35,7 @@ public class Crystal : MonoBehaviour
     // Sets a random element to the crystal
     private void SetRandomElement()
     {
-        int random_element = Random.Range(1, 3);
+        int random_element = Random.Range(1, 4);
         if (random_element == 1)
         {
             type = Elements.Fire;
@@ -40,7 +44,7 @@ public class Crystal : MonoBehaviour
         {
             type = Elements.Water;
         }
-        else
+        else if (random_element == 3)
         {
             type = Elements.Earth;
         }
@@ -51,15 +55,15 @@ public class Crystal : MonoBehaviour
     {
         if (type == Elements.Fire)
         {
-            mesh.materials[0].color = Color.red;
+            mesh.material = fire_mat;
         }
         else if (type == Elements.Water)
         {
-            mesh.materials[0].color = Color.blue;
+            mesh.material = water_mat;
         }
-        else
+        else if (type == Elements.Earth)
         {
-            mesh.materials[0].color = Color.green;
+            mesh.material = earth_mat;
         }
     }
 
