@@ -30,7 +30,7 @@ public class ScoreDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (player_object == null && !GameStateManager.instance.IsLost())
+        if (player_object == null)
         {
             player_object = GameObject.FindWithTag("Player").transform;
         }

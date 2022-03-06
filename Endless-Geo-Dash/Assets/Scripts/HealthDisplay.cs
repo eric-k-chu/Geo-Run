@@ -14,25 +14,27 @@ public class HealthDisplay : MonoBehaviour
 {
     private GameObject player_object;
 
-    private int player_health;
+    private const float k_player_max_health = 100;
+    private float player_health;
 
-    private Text ui_text;
+    private Slider ui_slider;
 
     private PlayerStats player_stats;
 
     private void Awake()
     {
-        ui_text = GetComponent<Text>();
+        ui_slider = GetComponent<Slider>();
     }
 
     private void Start()
     {
+        ui_slider.maxValue = k_player_max_health;
         player_health = 100;
     }
 
     private void Update()
     {
-        if (player_object == null && !GameStateManager.instance.IsLost())
+        if (player_object == null)
         {
             player_object = GameObject.FindWithTag("Player");
             player_stats = player_object.GetComponent<PlayerStats>();
@@ -40,8 +42,8 @@ public class HealthDisplay : MonoBehaviour
 
         if (!GameStateManager.instance.IsPaused() && !GameStateManager.instance.IsLost())
         {
-            player_health = (int) player_stats.GetCurrentHealth();
-            ui_text.text = player_health.ToString();
+            player_health = player_stats.GetCurrentHealth();
+            ui_slider.value = (player_health / k_player_max_health) * 100f;
         }
     }
 }

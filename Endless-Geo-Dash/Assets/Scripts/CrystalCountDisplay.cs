@@ -21,11 +21,11 @@ public class CrystalCountDisplay : MonoBehaviour
 
     private int crystal_count;
 
-    private Text ui_text;
+    private Slider ui_slider;
 
     private void Awake()
     {
-        ui_text = GetComponent<Text>();    
+        ui_slider = GetComponent<Slider>();
     }
 
     private void Start()
@@ -35,7 +35,7 @@ public class CrystalCountDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (player_object == null && !GameStateManager.instance.IsLost())
+        if (player_object == null)
         {
             player_object = GameObject.FindWithTag("Player");
             player_stats = player_object.GetComponent<PlayerStats>();
@@ -44,17 +44,15 @@ public class CrystalCountDisplay : MonoBehaviour
         if (is_fire)
         {
             crystal_count = player_stats.GetFireCrystalCount();
-            ui_text.text = "x " + crystal_count.ToString();
         }
         else if (is_water)
         {
             crystal_count = player_stats.GetWaterCrystalCount();
-            ui_text.text = "x " + crystal_count.ToString();
         }
         else if (is_earth)
         {
             crystal_count = player_stats.GetEarthCrystalCount();
-            ui_text.text = "x " + crystal_count.ToString();
         }
+        ui_slider.value = crystal_count;
     }
 }
