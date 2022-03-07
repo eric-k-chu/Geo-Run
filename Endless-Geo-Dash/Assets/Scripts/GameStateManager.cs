@@ -14,10 +14,7 @@ public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager instance { get; private set; }
 
-    [SerializeField] private UserSettings user_settings;
-
-    // All of the available models the user can choose from
-    [SerializeField] private GameObject[] character_list;
+    [SerializeField] private GameSettings game_settings;
 
     private GameObject active_player_object;
 
@@ -150,7 +147,7 @@ public class GameStateManager : MonoBehaviour
     // Spawns the player object at world origin (0,0,0)
     private void SpawnPlayer()
     {
-        active_player_object = Instantiate(character_list[user_settings.character_type].gameObject);
+        active_player_object = Instantiate(game_settings.GetGameObject());
         GameStateManager.instance.GetPlayerTransform(active_player_object.transform);
     }
 

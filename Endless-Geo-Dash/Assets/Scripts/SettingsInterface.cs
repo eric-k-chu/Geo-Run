@@ -13,8 +13,6 @@ public class SettingsInterface : MonoBehaviour
 {
     public static SettingsInterface instance { get; private set; }
 
-    [SerializeField] private UserSettings user_settings;
-
     private void Awake()
     {
         instance = this;

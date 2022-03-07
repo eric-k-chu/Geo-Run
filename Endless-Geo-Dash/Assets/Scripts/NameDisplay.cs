@@ -12,9 +12,7 @@ using UnityEngine.UI;
 
 public class NameDisplay : MonoBehaviour
 {
-    [SerializeField] private UserSettings user_settings;
-
-    [SerializeField] private string[] character_name_list;
+    [SerializeField] private GameSettings game_settings;
 
     private Text ui_text;
 
@@ -25,7 +23,7 @@ public class NameDisplay : MonoBehaviour
 
     private void Start()
     {
-        ui_text.text = character_name_list[user_settings.character_type];
+        ui_text.text = game_settings.GetName();
     }
 
 }

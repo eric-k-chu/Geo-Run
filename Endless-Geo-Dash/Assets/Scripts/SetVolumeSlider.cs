@@ -14,7 +14,7 @@ using UnityEngine.UI;
 
 public class SetVolumeSlider : MonoBehaviour
 {
-    [SerializeField] private UserSettings user_settings;
+    [SerializeField] private GameSettings game_settings;
 
     [SerializeField] private AudioMixer master_mixer;
 
@@ -27,13 +27,13 @@ public class SetVolumeSlider : MonoBehaviour
 
     private void Start()
     {
-        ui_slider.value = user_settings.volume;
+        ui_slider.value = game_settings.volume;
     }
 
     // Change the volume of the game. Slider will call this function
     public void SetVolume(float value)
     {
-        user_settings.volume = value;
+        game_settings.volume = value;
         /* TODO:
          * Add AudioMixer and set change the settings based on param 'value'
          * 

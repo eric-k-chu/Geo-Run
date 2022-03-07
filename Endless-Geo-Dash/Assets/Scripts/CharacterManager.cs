@@ -11,25 +11,26 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] ui_character_list;
+    [SerializeField] private GameObject[] ui_character_image_list;
 
-    [SerializeField] private UserSettings user_settings;
+    [SerializeField] private GameSettings game_settings;
 
     public void ChangeCharacter(int id)
     {
-        for (int index = 0; index < ui_character_list.Length; index++)
+        for (int index = 0; index < ui_character_image_list.Length; index++)
         {
+            CharacterHighlight character_button = ui_character_image_list[index].GetComponent<CharacterHighlight>();
             if (id != index)
             {
-                if (ui_character_list[index].activeSelf)
+                if (ui_character_image_list[index].activeSelf)
                 {
-                    ui_character_list[index].GetComponent<CharacterHighlight>().HighlightIMG(false);
+                    character_button.HighlightIMG(false);
                 }
             }
             else
             {
-                ui_character_list[index].GetComponent<CharacterHighlight>().HighlightIMG(true);
-                user_settings.character_type = id;
+                character_button.HighlightIMG(true);
+                game_settings.character_type = id;
             }
         }
     }

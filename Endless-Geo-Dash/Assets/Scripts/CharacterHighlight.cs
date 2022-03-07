@@ -15,7 +15,7 @@ public class CharacterHighlight : MonoBehaviour
 {
     [SerializeField] private int character_type;
 
-    [SerializeField] private UserSettings user_settings;
+    [SerializeField] private GameSettings game_settings;
 
     [SerializeField] private Color selected_color;
 
@@ -30,7 +30,7 @@ public class CharacterHighlight : MonoBehaviour
 
     private void Start()
     {
-        if (character_type == user_settings.character_type)
+        if (character_type == game_settings.character_type)
         {
             ui_image.color = selected_color;
         }

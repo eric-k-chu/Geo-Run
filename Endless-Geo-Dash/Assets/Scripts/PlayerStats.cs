@@ -16,7 +16,9 @@ public enum Ailments { Burning, Chilled, Grasped, None }
 
 public class PlayerStats : MonoBehaviour
 {
-    private float health = 100f;
+    [SerializeField] private GameSettings game_settings;
+
+    private float health;
 
     private int fire_crystal_count = 0;
 
@@ -36,7 +38,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        ailment_on_player = Ailments.None;           
+        ailment_on_player = Ailments.None;
+        health = game_settings.maximum_player_health;
     }
 
     private void Update()

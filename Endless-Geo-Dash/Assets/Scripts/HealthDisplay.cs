@@ -12,9 +12,10 @@ using UnityEngine.UI;
 
 public class HealthDisplay : MonoBehaviour
 {
+    [SerializeField] private GameSettings game_settings;
     private GameObject player_object;
 
-    private const float k_player_max_health = 100;
+    private float player_max_health;
     private float player_health;
 
     private Slider ui_slider;
@@ -28,7 +29,8 @@ public class HealthDisplay : MonoBehaviour
 
     private void Start()
     {
-        ui_slider.maxValue = k_player_max_health;
+        player_max_health = game_settings.maximum_player_health;
+        ui_slider.maxValue = player_max_health;
         player_health = 100;
     }
 
@@ -43,7 +45,7 @@ public class HealthDisplay : MonoBehaviour
         if (!GameStateManager.instance.IsPaused() && !GameStateManager.instance.IsLost())
         {
             player_health = player_stats.GetCurrentHealth();
-            ui_slider.value = (player_health / k_player_max_health) * 100f;
+            ui_slider.value = (player_health / player_max_health) * 100f;
         }
     }
 }

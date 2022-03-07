@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class SetVolumeNumber : MonoBehaviour
 {
-    [SerializeField] private UserSettings user_settings;
+    [SerializeField] private GameSettings game_settings;
 
     private Text ui_text;
 
@@ -34,7 +34,7 @@ public class SetVolumeNumber : MonoBehaviour
     // Changes the volume text given user_settings.volume
     private void UpdateVolumeText()
     {
-        int vol = (int)user_settings.volume;
+        int vol = (int)game_settings.volume;
         ui_text.text = vol.ToString();
     }
 }

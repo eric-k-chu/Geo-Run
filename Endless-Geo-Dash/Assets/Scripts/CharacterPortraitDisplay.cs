@@ -12,9 +12,7 @@ using UnityEngine.UI;
 
 public class CharacterPortraitDisplay : MonoBehaviour
 {
-    [SerializeField] private UserSettings user_settings;
-
-    [SerializeField] private Sprite[] character_image_list;
+    [SerializeField] private GameSettings game_settings;
 
     private Image ui_image;
 
@@ -25,6 +23,6 @@ public class CharacterPortraitDisplay : MonoBehaviour
 
     private void Start()
     {
-        ui_image.sprite = character_image_list[user_settings.character_type];
+        ui_image.sprite = game_settings.GetPortrait();
     }
 }
