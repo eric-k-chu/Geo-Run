@@ -47,6 +47,12 @@ public class PauseInterface: MonoBehaviour
         SettingsInterface.instance.SetActiveSettingsMenu(true);
     }
 
+    public void Retry()
+    {
+        GameStateManager.instance.TerminateLostState();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     // Exits the application
     public void QuitGame()
     {
