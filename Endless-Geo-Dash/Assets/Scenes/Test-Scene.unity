@@ -784,8 +784,9 @@ GameObject:
   - component: {fileID: 176198945}
   - component: {fileID: 176198947}
   - component: {fileID: 176198946}
+  - component: {fileID: 176198948}
   m_Layer: 5
-  m_Name: Hexagon
+  m_Name: Character Portrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,6 +849,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176198944}
   m_CullTransparentMesh: 1
+--- !u!114 &176198948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176198944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81de1f7349dde54ab30d5c89ea482e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  user_settings: {fileID: 11400000, guid: d1afb8077cc5f1746bb811955ffb24cb, type: 2}
+  character_image_list:
+  - {fileID: 21300000, guid: 6ca1ffc959bb6f7469fbc7bf68248301, type: 3}
+  - {fileID: 21300000, guid: f02dc5f2c9e93bf4eb92321b45d7ccd1, type: 3}
+  - {fileID: 21300000, guid: bf4c7cbdffbda8f42972fc6903061835, type: 3}
 --- !u!1 &180553243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   user_settings: {fileID: 11400000, guid: d1afb8077cc5f1746bb811955ffb24cb, type: 2}
   character_list:
+  - {fileID: 6196513913645911986, guid: f542885a06ba61e4389fb890a32a7814, type: 3}
   - {fileID: 541574591937561417, guid: 18acef3912aeda446a95da6cc691be77, type: 3}
   - {fileID: 6860927869186383723, guid: e65f2f5ecc213cb43a29fa51e3e7cb85, type: 3}
 --- !u!1 &247275194
@@ -1679,6 +1698,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c25ce3d48fe793f41ba8f806cbdf18a8, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c095fdba2b03e54882fd20833f0b36d, type: 2}
     - target: {fileID: 919132149155446097, guid: c25ce3d48fe793f41ba8f806cbdf18a8, type: 3}
       propertyPath: m_Name
       value: Background-Model-01
@@ -2272,6 +2295,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   user_settings: {fileID: 11400000, guid: d1afb8077cc5f1746bb811955ffb24cb, type: 2}
+  character_name_list:
+  - Hexagonal Prism
+  - Cube
+  - Pyramid
 --- !u!1 &667120305
 GameObject:
   m_ObjectHideFlags: 0
@@ -6297,6 +6324,14 @@ PrefabInstance:
     - target: {fileID: 4564136778252184763, guid: 339da5e28edd56a499d337b4666fe6c2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5349149701114542019, guid: 339da5e28edd56a499d337b4666fe6c2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5349149701114542019, guid: 339da5e28edd56a499d337b4666fe6c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 339da5e28edd56a499d337b4666fe6c2, type: 3}

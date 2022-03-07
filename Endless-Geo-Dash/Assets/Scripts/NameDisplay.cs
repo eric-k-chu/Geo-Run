@@ -14,6 +14,8 @@ public class NameDisplay : MonoBehaviour
 {
     [SerializeField] private UserSettings user_settings;
 
+    [SerializeField] private string[] character_name_list;
+
     private Text ui_text;
 
     private void Awake()
@@ -23,17 +25,7 @@ public class NameDisplay : MonoBehaviour
 
     private void Start()
     {
-        switch (user_settings.character_type)
-        {
-            case 0:
-                ui_text.text = "Cube";
-                break;
-            case 1:
-                ui_text.text = "Pyramid";
-                break;
-            default:
-                break;
-        }
+        ui_text.text = character_name_list[user_settings.character_type];
     }
 
 }

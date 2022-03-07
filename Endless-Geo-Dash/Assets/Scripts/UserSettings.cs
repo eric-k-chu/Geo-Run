@@ -11,7 +11,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New User Settings", menuName = "Game Settings/User")]
 public class UserSettings : ScriptableObject
 {
-    [Range(0,1)]
+    [Range(0,2)]
     public int character_type;
 
     [Range(0,100)]
