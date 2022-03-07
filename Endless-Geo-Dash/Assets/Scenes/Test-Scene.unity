@@ -5412,13 +5412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2667aafd40d273458ead4ab56384a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lanes:
-  - {fileID: 7791092685502325003, guid: c4b9593f497f4aa48bfbdf03819b150c, type: 3}
-  - {fileID: 6230860732251648474, guid: 14406c3259bed3c4abedaa489606af62, type: 3}
-  - {fileID: 3928290300467534277, guid: 9e3efb51936127d4b82f0c3f3463572d, type: 3}
-  - {fileID: 6215798179298831352, guid: ab15c1da80f1c9f4f96a46f0e76c4afb, type: 3}
-  - {fileID: 6678128599218158867, guid: 2dc649b3e8e8a2d4e89bf1060218a893, type: 3}
-  lane_length: 80
+  terrains: {fileID: 11400000, guid: 626d1bafd2f3e2e4e8ac8848321427c6, type: 2}
 --- !u!65 &1895415304
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6343,6 +6337,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 197563627, guid: 3ef49fe3e067994428d4c059e287b5fd, type: 3}
+      propertyPath: terrains
+      value: 
+      objectReference: {fileID: 11400000, guid: 626d1bafd2f3e2e4e8ac8848321427c6, type: 2}
     - target: {fileID: 197563627, guid: 3ef49fe3e067994428d4c059e287b5fd, type: 3}
       propertyPath: background_model
       value: 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648fe5ff4a9c86e47b702ae34e32c90b, type: 3}
-  m_Name: Ailment-Curves
+  m_Name: Ailment-Curves-01
   m_EditorClassIdentifier: 
   burn_multiplier_curve:
     serializedVersion: 2

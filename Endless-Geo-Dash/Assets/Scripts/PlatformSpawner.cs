@@ -12,22 +12,30 @@ using UnityEngine;
 
 public class PlatformSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] lanes;
+    [SerializeField] private TerrainObjects terrains;
 
-    [SerializeField] private float lane_length;
+    private GameObject[] platforms;
+
+    private float length;
 
     private bool is_triggered = true;
+
+    private void Start()
+    {
+        platforms = terrains.platform_objects;
+        length = terrains.platform_object_length;
+    }
 
     private void OnTriggerEnter()
     {
         if (is_triggered)
         {
             Vector3 spawn_point_1 = new Vector3(transform.position.x, 
-                transform.position.y, transform.position.z + lane_length);
+                transform.position.y, transform.position.z + length);
 
             Quaternion orientation = Quaternion.Euler(Vector3.zero);
-            int lane_index = Random.Range(0, 5);
-            Instantiate(lanes[lane_index], spawn_point_1, orientation);
+            int index = Random.Range(0, platforms.Length);
+            Instantiate(platforms[index], spawn_point_1, orientation);
 
             // prevents double triggers
             is_triggered = false; 

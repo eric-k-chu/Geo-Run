@@ -10,22 +10,30 @@ using UnityEngine;
 
 public class BackgroundSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject background_model;
+    [SerializeField] private TerrainObjects terrains;
 
-    [SerializeField] private float background_model_length;
+    private GameObject background;
+
+    private float length;
 
     private bool is_triggered = true;
+
+    private void Start()
+    {
+        background = terrains.background_object;
+        length = terrains.background_object_length;
+    }
 
     private void OnTriggerEnter()
     {
         if (is_triggered)
         {
             Vector3 spawn_position_1 = new Vector3(transform.position.x, 
-                transform.position.y, transform.position.z + background_model_length);
+                transform.position.y, transform.position.z + length);
 
             Quaternion orientation = Quaternion.Euler(Vector3.zero);
 
-            Instantiate(background_model, spawn_position_1, orientation);
+            Instantiate(background, spawn_position_1, orientation);
 
             // prevents double triggers
             is_triggered = false;   
