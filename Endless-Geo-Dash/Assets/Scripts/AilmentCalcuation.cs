@@ -92,8 +92,8 @@ public class AilmentCalcuation : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Crystal"))
         {
-            Elements obj = other.gameObject.GetComponent<Crystal>().GetElementalType();
-            if (obj == Elements.Fire)
+            Elements type = other.gameObject.GetComponent<Crystal>().GetElementalType();
+            if (type == Elements.Fire)
             {
                 player_stats.SetFireCount(fire_crystal_count++);
                 if (earth_crystal_count > 0)
@@ -101,7 +101,7 @@ public class AilmentCalcuation : MonoBehaviour
                     player_stats.SetEarthCount(earth_crystal_count--);
                 }
             }
-            else if (obj == Elements.Water)
+            else if (type == Elements.Water)
             {
                 player_stats.SetWaterCount(water_crystal_count++);
                 if (fire_crystal_count > 0)
@@ -109,13 +109,29 @@ public class AilmentCalcuation : MonoBehaviour
                     player_stats.SetFireCount(fire_crystal_count--);
                 }
             }
-            else if (obj == Elements.Earth)
+            else if (type == Elements.Earth)
             {
                 player_stats.SetEarthCount(earth_crystal_count++);
                 if (water_crystal_count > 0)
                 {
                     player_stats.SetWaterCount(water_crystal_count--);
                 }
+            }
+        }
+        else if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            Elements type = other.gameObject.GetComponent<Checkpoints>().GetElementalType();
+            if (type == Elements.Fire && current_ailment != Ailments.Burning)
+            {
+                GameStateManager.instance.TransitionToLostState();
+            }
+            else if (type == Elements.Water && current_ailment != Ailments.Chilled)
+            {
+                GameStateManager.instance.TransitionToLostState();
+            }
+            else if (type == Elements.Earth && current_ailment != Ailments.Grasped)
+            {
+                GameStateManager.instance.TransitionToLostState();
             }
         }
     }

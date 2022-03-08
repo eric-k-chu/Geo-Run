@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 7321437015445795031}
   - component: {fileID: 8455854941257848931}
   - component: {fileID: 3390656828316764437}
+  - component: {fileID: 2556570859548205971}
   m_Layer: 8
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +110,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrains: {fileID: 11400000, guid: 626d1bafd2f3e2e4e8ac8848321427c6, type: 2}
+--- !u!114 &2556570859548205971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238620890159309610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40ab5298d9285c43bf1ed981533ef3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elemental_type: 1
 --- !u!1001 &5991734090423344200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,6 +209,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 81620b2c6531a3a43961db25233f4277, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 81620b2c6531a3a43961db25233f4277, type: 3}
+      propertyPath: m_TagString
+      value: Checkpoint
       objectReference: {fileID: 0}
     - target: {fileID: 3030517092494915122, guid: 81620b2c6531a3a43961db25233f4277, type: 3}
       propertyPath: m_Layer
