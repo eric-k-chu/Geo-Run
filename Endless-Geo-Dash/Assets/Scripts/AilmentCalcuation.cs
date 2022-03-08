@@ -95,26 +95,26 @@ public class AilmentCalcuation : MonoBehaviour
             Elements type = other.gameObject.GetComponent<Crystal>().GetElementalType();
             if (type == Elements.Fire)
             {
-                player_stats.SetFireCount(fire_crystal_count++);
+                player_stats.SetFireCount(++fire_crystal_count);
                 if (earth_crystal_count > 0)
                 {
-                    player_stats.SetEarthCount(earth_crystal_count--);
+                    player_stats.SetEarthCount(--earth_crystal_count);
                 }
             }
             else if (type == Elements.Water)
             {
-                player_stats.SetWaterCount(water_crystal_count++);
+                player_stats.SetWaterCount(++water_crystal_count);
                 if (fire_crystal_count > 0)
                 {
-                    player_stats.SetFireCount(fire_crystal_count--);
+                    player_stats.SetFireCount(--fire_crystal_count);
                 }
             }
             else if (type == Elements.Earth)
             {
-                player_stats.SetEarthCount(earth_crystal_count++);
+                player_stats.SetEarthCount(++earth_crystal_count);
                 if (water_crystal_count > 0)
                 {
-                    player_stats.SetWaterCount(water_crystal_count--);
+                    player_stats.SetWaterCount(--water_crystal_count);
                 }
             }
         }
