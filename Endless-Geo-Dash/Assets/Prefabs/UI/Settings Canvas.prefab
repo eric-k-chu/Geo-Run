@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character_type: 1
-  user_settings: {fileID: 11400000, guid: d1afb8077cc5f1746bb811955ffb24cb, type: 2}
+  game_settings: {fileID: 0}
   selected_color: {r: 0.2509804, g: 1, b: 0, a: 1}
   disabled_color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2800772942281268768
@@ -549,7 +549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 60}
+  m_AnchoredPosition: {x: 5, y: 60}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4564136777350169797
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1877c8bfc00da37428275d8c8be0f091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  user_settings: {fileID: 11400000, guid: d1afb8077cc5f1746bb811955ffb24cb, type: 2}
+  game_settings: {fileID: 0}
   master_mixer: {fileID: 0}
 --- !u!1 &4564136777835190249
 GameObject:
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ec8aa5c0b3c624083ca201599a96ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  user_settings: {fileID: 11400000, guid: d1afb8077cc5f1746bb811955ffb24cb, type: 2}
+  game_settings: {fileID: 0}
 --- !u!1 &4564136777938211418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +1258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee46a08de4dfebc44a1c1d706bfe0fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  user_settings: {fileID: 0}
 --- !u!1 &4564136778881740166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,11 +1420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c9095a49d2f9b47940b28329b8eda4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui_character_list:
-  - {fileID: 7837575110671784151}
-  - {fileID: 929574110819189380}
-  - {fileID: 7555130224146415774}
-  user_settings: {fileID: 11400000, guid: d1afb8077cc5f1746bb811955ffb24cb, type: 2}
+  ui_character_image_list: []
+  game_settings: {fileID: 0}
 --- !u!1 &7555130224146415774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,7 +1511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character_type: 2
-  user_settings: {fileID: 11400000, guid: d1afb8077cc5f1746bb811955ffb24cb, type: 2}
+  game_settings: {fileID: 0}
   selected_color: {r: 0.25194645, g: 1, b: 0, a: 1}
   disabled_color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &7837575110671784151
@@ -1607,7 +1603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character_type: 0
-  user_settings: {fileID: 11400000, guid: d1afb8077cc5f1746bb811955ffb24cb, type: 2}
+  game_settings: {fileID: 0}
   selected_color: {r: 0.2509804, g: 1, b: 0, a: 1}
   disabled_color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8106434296783737926

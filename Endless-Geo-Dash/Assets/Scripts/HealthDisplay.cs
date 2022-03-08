@@ -20,7 +20,7 @@ public class HealthDisplay : MonoBehaviour
 
     private Slider ui_slider;
 
-    private PlayerStats player_stats;
+    private AilmentCalcuation player_stats;
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class HealthDisplay : MonoBehaviour
     {
         player_max_health = game_settings.maximum_player_health;
         ui_slider.maxValue = player_max_health;
-        player_health = 100;
+        player_health = player_max_health;
     }
 
     private void Update()
@@ -39,7 +39,7 @@ public class HealthDisplay : MonoBehaviour
         if (player_object == null)
         {
             player_object = GameObject.FindWithTag("Player");
-            player_stats = player_object.GetComponent<PlayerStats>();
+            player_stats = player_object.GetComponent<AilmentCalcuation>();
         }
 
         if (!GameStateManager.instance.IsPaused() && !GameStateManager.instance.IsLost())

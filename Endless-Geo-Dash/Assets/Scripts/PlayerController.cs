@@ -12,13 +12,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private PlayerStats player_stats;
+
     // Three lane system
     private enum LanePosition {Left, Middle, Right}
 
     // Player Components
     private Animator player_animator;
     private CharacterController player_controller;
-    private PlayerStats player_stats;
 
     // Lane Variables
     [SerializeField] private float lane_distance;
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private float vertical_velocity;
     private float artificial_gravity;
 
-    private Ailments ailment_on_player;
+    private Ailments current_ailment;
 
     private float burn_multiplier = 1f;
     private float chill_multiplier = 1f;
@@ -44,7 +45,6 @@ public class PlayerController : MonoBehaviour
     {
         player_controller = GetComponent<CharacterController>();
         player_animator = GetComponent<Animator>();
-        player_stats = GetComponent<PlayerStats>();
     }
 
     private void Start()
@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         if (!GameStateManager.instance.IsLost())
         {
             GetCurrentAilment();
+            player_stats.SetDistanceTraveled((int)transform.position.z);
             // User press Right
             if (Input.GetKeyDown(KeyCode.D) && !GameStateManager.instance.IsPaused())
             {
@@ -128,22 +129,22 @@ public class PlayerController : MonoBehaviour
     // Gets the current inflicted Ailment on the player
     private void GetCurrentAilment()
     {
-        ailment_on_player = player_stats.GetCurrentAilmentOnPlayer();
+        current_ailment = player_stats.GetCurrentAilment();
 
-        if (ailment_on_player == Ailments.Burning)
+        if (current_ailment == Ailments.Burning)
         {
             chill_multiplier = grasp_multiplier = 1f;
-            burn_multiplier = player_stats.GetCurrentAilmentMultiplier(ailment_on_player);
+            burn_multiplier = player_stats.GetBurnMultiplier();
         }
-        else if (ailment_on_player == Ailments.Chilled)
+        else if (current_ailment == Ailments.Chilled)
         {
             burn_multiplier = grasp_multiplier = 1f;
-            chill_multiplier = player_stats.GetCurrentAilmentMultiplier(ailment_on_player);
+            chill_multiplier = player_stats.GetChillMultiplier();
         } 
-        else if (ailment_on_player == Ailments.Grasped)
+        else if (current_ailment == Ailments.Grasped)
         {
             burn_multiplier = chill_multiplier = 1f;
-            grasp_multiplier = player_stats.GetCurrentAilmentMultiplier(ailment_on_player);
+            grasp_multiplier = player_stats.GetGraspMultiplier();
         } 
         // return ailment multipliers back to normal if no ailment is inflicted on the player
         else

@@ -135,12 +135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c80a670668a6c541a0ed76dc10f8aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_stats: {fileID: 11400000, guid: 7d1890b584daac24ba9107e7920ac2dc, type: 2}
   lane_distance: 8
   forward_speed: 20
   horizontal_speed: 10
   jump_force: 70
   fall_multiplier: 2.5
---- !u!114 &287757776
+--- !u!114 &4823192130800932959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,8 +150,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6196513913645911986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281a433176310c444ad573abe7f491f3, type: 3}
+  m_Script: {fileID: 11500000, guid: c2e9fcbd513a39d418c3021ed45e552e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game_settings: {fileID: 11400000, guid: 9cd891ea747ac0141bf44fecf6f18453, type: 2}
+  player_stats: {fileID: 11400000, guid: 7d1890b584daac24ba9107e7920ac2dc, type: 2}
   ailment_curves: {fileID: 11400000, guid: a51ddd2851b2f464d9c3894f56f1a16d, type: 2}

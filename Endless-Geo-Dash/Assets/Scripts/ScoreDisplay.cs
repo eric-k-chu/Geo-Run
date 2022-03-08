@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class ScoreDisplay : MonoBehaviour
 {
-    private Transform player_object;
+    [SerializeField] private PlayerStats player_stats;
 
     private int player_score;
 
@@ -30,15 +30,10 @@ public class ScoreDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (player_object == null)
-        {
-            player_object = GameObject.FindWithTag("Player").transform;
-        }
-
         if (!GameStateManager.instance.IsPaused() && !GameStateManager.instance.IsLost())
         {
             // player's score will increase as they keep moving forward (z axis)
-            player_score = (int) player_object.position.z;
+            player_score = player_stats.GetDistancedTraveled();
             ui_text.text = player_score.ToString();
         }
     }

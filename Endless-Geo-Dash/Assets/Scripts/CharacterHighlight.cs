@@ -9,7 +9,6 @@ character portrait based on user preference
 */
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class CharacterHighlight : MonoBehaviour
 {

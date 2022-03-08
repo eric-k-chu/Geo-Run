@@ -16,6 +16,8 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] private GameSettings game_settings;
 
+    [SerializeField] private PlayerStats player_score_stats;
+
     private GameObject active_player_object;
 
     private enum GameState { Initial, Running, Pause, Lost }
@@ -49,6 +51,7 @@ public class GameStateManager : MonoBehaviour
     private void Start()
     {
         TransitionState(GameState.Initial);
+        player_score_stats.ResetAllStats();
     }
 
     private void Update()

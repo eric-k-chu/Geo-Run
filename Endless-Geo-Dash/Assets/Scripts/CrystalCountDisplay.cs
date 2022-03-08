@@ -17,7 +17,7 @@ public class CrystalCountDisplay : MonoBehaviour
     [SerializeField] private bool is_earth;
 
     private GameObject player_object;
-    private PlayerStats player_stats;
+    private AilmentCalcuation player_stats;
 
     private int crystal_count;
 
@@ -38,7 +38,7 @@ public class CrystalCountDisplay : MonoBehaviour
         if (player_object == null)
         {
             player_object = GameObject.FindWithTag("Player");
-            player_stats = player_object.GetComponent<PlayerStats>();
+            player_stats = player_object.GetComponent<AilmentCalcuation>();
         }
 
         if (is_fire)

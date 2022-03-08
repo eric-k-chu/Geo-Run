@@ -4,201 +4,110 @@ MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
-This file contains the PlayerStats class, which has variables and functions
-that define and manipulate the various stats of the player
+This file contains the PlayerStats class, which contains
+information about certain ingame stats
 */
 using UnityEngine;
 
-// Burning causes the player to take damage over time
-// Chilled reduces the player's horizontal speed and forward speed
-// Grasped reduces the player's vertical velocity
-public enum Ailments { Burning, Chilled, Grasped, None }
-
-public class PlayerStats : MonoBehaviour
+[CreateAssetMenu(fileName = "New PlayerStats", menuName = "Game Settings/Player Stats")]
+public class PlayerStats : ScriptableObject
 {
-    [SerializeField] private GameSettings game_settings;
+    private int distance_traveled;
+    private int fire_crystal_count;
+    private int water_crystal_count;
+    private int earth_crystal_count;
 
-    private float health;
+    private Ailments current_ailment;
+    private float burning_multiplier;
+    private float chilled_multiplier;
+    private float grasped_multiplier;
 
-    private int fire_crystal_count = 0;
-
-    private int water_crystal_count = 0;
-
-    private int earth_crystal_count = 0;
-
-    private Ailments ailment_on_player;
-
-    private float burn_multiplier = 1f;
-
-    private float chill_multiplier = 1f;
-
-    private float grasp_multiplier = 1f;
-
-    [SerializeField] private AilmentCurves ailment_curves;
-
-    private void Start()
+    public void ResetAllStats()
     {
-        ailment_on_player = Ailments.None;
-        health = game_settings.maximum_player_health;
+        distance_traveled = fire_crystal_count = water_crystal_count = earth_crystal_count = 0;
+        current_ailment = Ailments.None;
+        burning_multiplier = chilled_multiplier = grasped_multiplier = 1f;
     }
 
-    private void Update()
+    // Setters
+    public void SetDistanceTraveled(int val)
     {
-        if (!GameStateManager.instance.IsLost())
-        {
-            if (health <= 0)
-            {
-                GameStateManager.instance.TransitionToLostState();
-            }
-            HandleAilmentState();
-
-            switch (ailment_on_player)
-            {
-                case Ailments.Burning:
-                    burn_multiplier = ailment_curves.burn_multiplier_curve.Evaluate(fire_crystal_count);
-
-                    if (health > 0)
-                    {
-                        health -= (burn_multiplier / 100f);
-                    }
-                    break;
-                case Ailments.Chilled:
-                    chill_multiplier = ailment_curves.chill_multiplier_curve.Evaluate(water_crystal_count);
-                    break;
-                case Ailments.Grasped:
-                    grasp_multiplier = ailment_curves.grasp_multiplier_curve.Evaluate(earth_crystal_count);
-
-                    if (health < 100f)
-                    {
-                        health += 0.01f;
-                        if (health > 100f)
-                        {
-                            health = 100f;
-                        }
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
+        distance_traveled = val;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SetFireCount(int val)
     {
-        if (other.gameObject.CompareTag("Crystal"))
-        {
-            Elements obj = other.gameObject.GetComponent<Crystal>().GetElementalType();
-            if (obj == Elements.Fire)
-            {
-                fire_crystal_count++;
-                if (earth_crystal_count > 0)
-                {
-                    earth_crystal_count--;
-                }
-            }
-            else if (obj == Elements.Water)
-            {
-                water_crystal_count++;
-                if (fire_crystal_count > 0)
-                {
-                    fire_crystal_count--;
-                }
-            }
-            else if (obj == Elements.Earth)
-            {
-                earth_crystal_count++;
-                if (water_crystal_count > 0)
-                {
-                    water_crystal_count--;
-                }
-            }
-        }
+        fire_crystal_count = val;
     }
 
-    private void HandleAilmentState()
+    public void SetWaterCount(int val)
     {
-        // Fire crystal count is highest
-        if (fire_crystal_count > water_crystal_count && fire_crystal_count > earth_crystal_count)
-        {
-            ailment_on_player = Ailments.Burning;
-        }
-
-        // Water crystal count is highest
-        else if (water_crystal_count > fire_crystal_count && water_crystal_count > earth_crystal_count)
-        {
-            ailment_on_player = Ailments.Chilled;
-        }
-
-        // Earth crystal count is highest
-        else if (earth_crystal_count > fire_crystal_count && earth_crystal_count > water_crystal_count)
-        {
-            ailment_on_player = Ailments.Grasped;
-        }
-
-        // Fire crystal count = Water crystal count, both greater than earth crystal count
-        else if (fire_crystal_count == water_crystal_count && fire_crystal_count > earth_crystal_count)
-        {
-            ailment_on_player = Ailments.Chilled;
-        }
-
-        // Earth crystal count = Water crystal count, both greater than fire crystal count
-        else if (earth_crystal_count == water_crystal_count && earth_crystal_count > fire_crystal_count)
-        {
-            ailment_on_player = Ailments.Grasped;
-        }
-
-        // Earth crystal count = Fire crystal count, both greater than water crystal count
-        else if (earth_crystal_count == fire_crystal_count && earth_crystal_count > water_crystal_count)
-        {
-            ailment_on_player = Ailments.Burning;
-        }
-
-        // All crystal counts are equal
-        else if (earth_crystal_count == fire_crystal_count && earth_crystal_count == water_crystal_count)
-        {
-            ailment_on_player = Ailments.None;
-        }
+        water_crystal_count = val;
     }
 
-    public Ailments GetCurrentAilmentOnPlayer()
+    public void SetEarthCount(int val)
     {
-        return ailment_on_player;
+        earth_crystal_count = val;
     }
 
-    public float GetCurrentAilmentMultiplier(Ailments ailment)
+    public void SetCurrentAilment(Ailments ailment)
     {
-        if (ailment == Ailments.Burning)
-        {
-            return burn_multiplier;
-        }
-        else if (ailment == Ailments.Chilled)
-        {
-            return chill_multiplier;
-        }
-        else if (ailment == Ailments.Grasped)
-        {
-            return grasp_multiplier;
-        }
-        return 0f;
+        current_ailment = ailment;
     }
 
-    public float GetCurrentHealth()
+    public void SetBurnMultiplier(float val)
     {
-        return health;
+        burning_multiplier = val;
     }
 
-    public int GetFireCrystalCount()
+    public void SetChillMultiplier(float val)
+    {
+        chilled_multiplier = val;
+    }
+
+    public void SetGraspMultiplier(float val)
+    {
+        grasped_multiplier = val;
+    }
+
+    // Getters
+    public int GetDistancedTraveled()
+    {
+        return distance_traveled;
+    }
+
+    public int GetFireCount()
     {
         return fire_crystal_count;
     }
 
-    public int GetWaterCrystalCount()
+    public int GetWaterCount()
     {
         return water_crystal_count;
     }
 
-    public int GetEarthCrystalCount()
+    public int GetEarthCount()
     {
         return earth_crystal_count;
+    }
+
+    public Ailments GetCurrentAilment()
+    {
+        return current_ailment;
+    }
+
+    public float GetBurnMultiplier()
+    {
+        return burning_multiplier;
+    }
+
+    public float GetChillMultiplier()
+    {
+        return chilled_multiplier;
+    }
+
+    public float GetGraspMultiplier()
+    {
+        return grasped_multiplier;
     }
 }
