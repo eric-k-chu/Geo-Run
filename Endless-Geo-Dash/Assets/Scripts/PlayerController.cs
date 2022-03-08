@@ -66,12 +66,14 @@ public class PlayerController : MonoBehaviour
                     player_animator.SetTrigger("move_right");
                     current_lane_pos = LanePosition.Middle;
                     target_lane_xpos = 0f;
+                    AudioManager.instance.PlayMoveSFX();
                 }
                 else if (current_lane_pos == LanePosition.Middle)
                 {
                     player_animator.SetTrigger("move_right");
                     current_lane_pos = LanePosition.Right;
                     target_lane_xpos = lane_distance;
+                    AudioManager.instance.PlayMoveSFX();
                 }
             }
             // User press Left
@@ -82,14 +84,14 @@ public class PlayerController : MonoBehaviour
                     player_animator.SetTrigger("move_left");
                     current_lane_pos = LanePosition.Middle;
                     target_lane_xpos = 0f;
-
+                    AudioManager.instance.PlayMoveSFX();
                 }
                 else if (current_lane_pos == LanePosition.Middle)
                 {
                     player_animator.SetTrigger("move_left");
                     current_lane_pos = LanePosition.Left;
                     target_lane_xpos = -lane_distance;
-
+                    AudioManager.instance.PlayMoveSFX();
                 }
             }
 
@@ -99,6 +101,7 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space) && !GameStateManager.instance.IsPaused())
                 {
                     vertical_velocity = jump_force;
+                    AudioManager.instance.PlayJumpSFX();
                 }
             }
             // Calculating Falling Physics

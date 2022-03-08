@@ -12,11 +12,20 @@ using UnityEngine;
 public class GameSettings : ScriptableObject
 {
     [Header("Player Controlled Settings")]
-    [Range(0,2)]
+    [Range(0, 2)]
     public int character_type;
 
-    [Range(0,100)]
-    public float volume;
+    [Range(0, 1)]
+    public float master_volume;
+
+    [Range(0, 1)]
+    public float music_volume;
+
+    [Range(0, 1)]
+    public float sfx_volume;
+
+    [Range(0, 1)]
+    public float ui_volume;
 
     [Header("Dev Controlled Settings")]
     public float maximum_player_health;

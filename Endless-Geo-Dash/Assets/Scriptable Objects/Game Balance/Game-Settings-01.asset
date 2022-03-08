@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Game-Settings-01
   m_EditorClassIdentifier: 
   character_type: 0
-  volume: 50
+  master_volume: 0.25
+  music_volume: 0.5
+  sfx_volume: 0.5
+  ui_volume: 0.5
   maximum_player_health: 100
   character_list:
   - {fileID: 11400000, guid: 9a297a2a871201d4385f27784dc28552, type: 2}

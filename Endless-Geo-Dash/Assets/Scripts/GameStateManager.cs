@@ -24,9 +24,13 @@ public class GameStateManager : MonoBehaviour
     private GameState current_state;
     private bool in_grace_period;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     // Get the player's transform on spawn
     public event Action<Transform> OnPlayerSpawn;
-    public void GetPlayerTransform (Transform player)
+    public void GetPlayerTransform(Transform player)
     {
         OnPlayerSpawn?.Invoke(player);
     }
@@ -41,11 +45,6 @@ public class GameStateManager : MonoBehaviour
     public void SetActiveGameOverMenu(bool value)
     {
         OnGameStateLost?.Invoke(value);
-    }
-
-    private void Awake()
-    {
-        instance = this;
     }
 
     private void Start()

@@ -12,12 +12,9 @@ using UnityEngine.UI;
 
 public class CrystalCountDisplay : MonoBehaviour
 {
-    [SerializeField] private bool is_fire;
-    [SerializeField] private bool is_water;
-    [SerializeField] private bool is_earth;
+    [SerializeField] private Elements type;
 
-    private GameObject player_object;
-    private AilmentCalcuation player_stats;
+    [SerializeField] private PlayerStats player_stats;
 
     private int crystal_count;
 
@@ -35,23 +32,17 @@ public class CrystalCountDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (player_object == null)
+        if (type == Elements.Fire)
         {
-            player_object = GameObject.FindWithTag("Player");
-            player_stats = player_object.GetComponent<AilmentCalcuation>();
+            crystal_count = player_stats.GetFireCount();
         }
-
-        if (is_fire)
+        else if (type == Elements.Water)
         {
-            crystal_count = player_stats.GetFireCrystalCount();
+            crystal_count = player_stats.GetWaterCount();
         }
-        else if (is_water)
+        else if (type == Elements.Earth)
         {
-            crystal_count = player_stats.GetWaterCrystalCount();
-        }
-        else if (is_earth)
-        {
-            crystal_count = player_stats.GetEarthCrystalCount();
+            crystal_count = player_stats.GetEarthCount();
         }
         ui_slider.value = crystal_count;
     }

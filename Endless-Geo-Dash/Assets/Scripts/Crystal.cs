@@ -76,6 +76,7 @@ public class Crystal : MonoBehaviour
     // Destroy object when player collides
     private void OnTriggerEnter()
     {
+        AudioManager.instance.PlayCrystalPickupSFX();
         Destroy(gameObject);
     }
 

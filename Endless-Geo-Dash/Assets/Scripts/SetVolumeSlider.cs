@@ -11,12 +11,13 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-
 public class SetVolumeSlider : MonoBehaviour
 {
     [SerializeField] private GameSettings game_settings;
 
     [SerializeField] private AudioMixer master_mixer;
+
+    [SerializeField] private VolumeType type;
 
     private Slider ui_slider;
 
@@ -27,20 +28,56 @@ public class SetVolumeSlider : MonoBehaviour
 
     private void Start()
     {
-        ui_slider.value = game_settings.volume;
+        float volume_value = 0f;
+        if (type == VolumeType.Master)
+        {
+            volume_value = game_settings.master_volume;
+            SetMasterVolume(volume_value);
+        }
+        else if (type == VolumeType.Music)
+        {
+            volume_value = game_settings.music_volume;
+            SetMusicVolume(volume_value);
+        }
+        else if (type == VolumeType.SFX)
+        {
+            volume_value = game_settings.sfx_volume;
+            SetSFXVolume(volume_value);
+        }
+        else if (type == VolumeType.UI)
+        {
+            volume_value = game_settings.ui_volume;
+            SetUIVolume(volume_value);
+        }
+        ui_slider.value = volume_value;
     }
 
-    // Change the volume of the game. Slider will call this function
-    public void SetVolume(float value)
+    // Change Master Volume
+    public void SetMasterVolume(float value)
     {
-        game_settings.volume = value;
-        /* TODO:
-         * Add AudioMixer and set change the settings based on param 'value'
-         * 
-         * CONVERSION FACTOR:
-         * master_mixer.SetFloat(arg, Mathf.Log10(value) * 20);
-         * 
-         */
-
+        game_settings.master_volume = value;
+        master_mixer.SetFloat("MasterVol", Mathf.Log10(value) * 20);
     }
+
+    // Change Music Volume
+    public void SetMusicVolume(float value)
+    {
+        game_settings.music_volume = value;
+        master_mixer.SetFloat("MusicVol", Mathf.Log10(value) * 20);
+    }
+
+    // Change SFX Volume
+    public void SetSFXVolume(float value)
+    {
+        game_settings.sfx_volume = value;
+        master_mixer.SetFloat("SFXVol", Mathf.Log10(value) * 20);
+    }
+
+    // Change UI Volume
+    public void SetUIVolume(float value)
+    {
+        game_settings.ui_volume = value;
+        master_mixer.SetFloat("UIVol", Mathf.Log10(value) * 20);
+    }
+
 }

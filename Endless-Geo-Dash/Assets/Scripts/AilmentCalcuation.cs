@@ -123,15 +123,22 @@ public class AilmentCalcuation : MonoBehaviour
             Elements type = other.gameObject.GetComponent<Checkpoints>().GetElementalType();
             if (type == Elements.Fire && current_ailment != Ailments.Burning)
             {
+                AudioManager.instance.PlayCheckPointFailSFX();
                 GameStateManager.instance.TransitionToLostState();
             }
             else if (type == Elements.Water && current_ailment != Ailments.Chilled)
             {
+                AudioManager.instance.PlayCheckPointFailSFX();
                 GameStateManager.instance.TransitionToLostState();
             }
             else if (type == Elements.Earth && current_ailment != Ailments.Grasped)
             {
+                AudioManager.instance.PlayCheckPointFailSFX();
                 GameStateManager.instance.TransitionToLostState();
+            }
+            else
+            {
+                AudioManager.instance.PlayCheckpointPassSFX();
             }
         }
     }
