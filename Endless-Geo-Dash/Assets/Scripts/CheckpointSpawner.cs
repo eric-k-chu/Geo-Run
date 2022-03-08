@@ -13,7 +13,7 @@ public class CheckpointSpawner : MonoBehaviour
 {
     [SerializeField] private TerrainObjects terrains;
 
-    private GameObject checkpoint;
+    private GameObject[] checkpoint;
 
     private float length;
 
@@ -21,7 +21,7 @@ public class CheckpointSpawner : MonoBehaviour
 
     private void Start()
     {
-        checkpoint = terrains.checkpoint_object;
+        checkpoint = terrains.checkpoint_objects;
         length = terrains.checkpoint_object_length;
     }
 
@@ -34,7 +34,9 @@ public class CheckpointSpawner : MonoBehaviour
 
             Quaternion orientation = Quaternion.Euler(Vector3.zero);
 
-            Instantiate(checkpoint, spawn_position_1, orientation);
+            int index = Random.Range(0, checkpoint.Length);
+            Instantiate(checkpoint[index], spawn_position_1, orientation);
+            CheckpointDisplay.instance.SetCheckpointDisplay(index);
 
             // prevents double triggers
             is_triggered = false;

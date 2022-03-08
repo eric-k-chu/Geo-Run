@@ -17,7 +17,7 @@ public class TerrainObjects : ScriptableObject
     public float background_object_length;
 
     [Header("Checkpoint")]
-    public GameObject checkpoint_object;
+    public GameObject[] checkpoint_objects;
     public float checkpoint_object_length;
 
     [Header("Platform Variations")]

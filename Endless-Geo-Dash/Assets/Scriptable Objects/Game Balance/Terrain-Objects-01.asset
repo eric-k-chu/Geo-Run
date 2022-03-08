@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background_object: {fileID: 3862090923583898606, guid: 3ef49fe3e067994428d4c059e287b5fd, type: 3}
   background_object_length: 650
-  checkpoint_object: {fileID: 0}
-  checkpoint_object_length: 0
+  checkpoint_objects:
+  - {fileID: 2584102621756580478, guid: 9abda77e8ccb5a2419c4edb3ea07c46b, type: 3}
+  - {fileID: 6910636983887143193, guid: 24114219808210e4b989094abc89b64d, type: 3}
+  - {fileID: 4632245949864433599, guid: 74d62d952050f314da10efa961c00194, type: 3}
+  checkpoint_object_length: 240
   platform_objects:
   - {fileID: 6230860732251648474, guid: 14406c3259bed3c4abedaa489606af62, type: 3}
   - {fileID: 3928290300467534277, guid: 9e3efb51936127d4b82f0c3f3463572d, type: 3}

@@ -57,8 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3bab016de6e730448c3f0e5fe66dd64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background_model: {fileID: 3862090923583898606}
-  background_model_length: 650
+  terrains: {fileID: 11400000, guid: 626d1bafd2f3e2e4e8ac8848321427c6, type: 2}
 --- !u!1001 &4132491270683082431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,11 +123,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c25ce3d48fe793f41ba8f806cbdf18a8, type: 3}
---- !u!1 &3862090923583898606 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c25ce3d48fe793f41ba8f806cbdf18a8, type: 3}
-  m_PrefabInstance: {fileID: 4132491270683082431}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4527023172331690324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c25ce3d48fe793f41ba8f806cbdf18a8, type: 3}
