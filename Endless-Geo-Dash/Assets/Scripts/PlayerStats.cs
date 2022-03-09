@@ -9,9 +9,11 @@ information about certain ingame stats
 */
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New PlayerStats", menuName = "Game Settings/Player Stats")]
-public class PlayerStats : ScriptableObject
+public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats instance { get; private set; }
+
+    private float current_health;
     private int distance_traveled;
     private int fire_crystal_count;
     private int water_crystal_count;
@@ -22,6 +24,11 @@ public class PlayerStats : ScriptableObject
     private float chilled_multiplier;
     private float grasped_multiplier;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void ResetAllStats()
     {
         distance_traveled = fire_crystal_count = water_crystal_count = earth_crystal_count = 0;
@@ -30,6 +37,11 @@ public class PlayerStats : ScriptableObject
     }
 
     // Setters
+    public void SetCurrentHealth(float val)
+    {
+        current_health = val;
+    }
+
     public void SetDistanceTraveled(int val)
     {
         distance_traveled = val;
@@ -71,6 +83,11 @@ public class PlayerStats : ScriptableObject
     }
 
     // Getters
+    public float GetCurrenHealth()
+    {
+        return current_health;
+    }
+
     public int GetDistancedTraveled()
     {
         return distance_traveled;

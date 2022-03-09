@@ -201,17 +201,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5325363118151659623}
-        m_TargetAssemblyTypeName: GameOverInterface, Assembly-CSharp
-        m_MethodName: ToSettings
-        m_Mode: 1
+      - m_Target: {fileID: 4564136778252184758, guid: 339da5e28edd56a499d337b4666fe6c2, type: 3}
+        m_TargetAssemblyTypeName: SettingsInterface, Assembly-CSharp
+        m_MethodName: SetActiveSettingsMenu
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!95 &5325363116371508589
 Animator:
@@ -1812,12 +1812,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bd0250f63b1b149811b151cb582d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_stats: {fileID: 11400000, guid: 7d1890b584daac24ba9107e7920ac2dc, type: 2}
   distance_traveled: {fileID: 5325363118151696377}
   fire_crystal_count: {fileID: 5325363116841742457}
   water_crystal_count: {fileID: 5325363116242688902}
   earth_crystal_count: {fileID: 5325363116468442821}
   final_score: {fileID: 5325363117452093899}
+  high_score: {fileID: 0}
 --- !u!1 &5325363117951820958
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,11 +42,6 @@ public class PauseInterface: MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
-    public void ToSettings()
-    {
-        SettingsInterface.instance.SetActiveSettingsMenu(true);
-    }
-
     public void Retry()
     {
         GameStateManager.instance.TerminateLostState();

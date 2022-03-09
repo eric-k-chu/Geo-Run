@@ -11,13 +11,6 @@ using UnityEngine;
 
 public class SettingsInterface : MonoBehaviour
 {
-    public static SettingsInterface instance { get; private set; }
-
-    private void Awake()
-    {
-        instance = this;
-    }
-
     private void Start()
     {
         gameObject.SetActive(false);

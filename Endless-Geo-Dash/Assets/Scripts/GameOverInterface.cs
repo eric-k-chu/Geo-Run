@@ -42,11 +42,6 @@ public class GameOverInterface : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
-    public void ToSettings()
-    {
-        // TODO: Bring up settings UI canvas
-    }
-
     // Restarts the Game
     public void Retry()
     {

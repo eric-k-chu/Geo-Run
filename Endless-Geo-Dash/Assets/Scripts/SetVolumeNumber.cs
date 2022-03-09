@@ -10,12 +10,8 @@ that allow update the Volume number based on the user's preferences
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum VolumeType { Master, Music, SFX, UI }
-
 public class SetVolumeNumber : MonoBehaviour
 {
-    [SerializeField] private GameSettings game_settings;
-
     [SerializeField] private VolumeType type;
 
     private Text ui_text;
@@ -27,7 +23,7 @@ public class SetVolumeNumber : MonoBehaviour
 
     private void Start()
     {
-        UpdateVolumeText();       
+        UpdateVolumeText();
     }
 
     private void Update()
@@ -41,19 +37,19 @@ public class SetVolumeNumber : MonoBehaviour
         float volume_value = 0;
         if (type == VolumeType.Master)
         {
-            volume_value = game_settings.master_volume;
+            volume_value = PlayerPrefs.GetFloat(UserPref.instance.MasterVolume);
         }
         else if (type == VolumeType.Music)
         {
-            volume_value = game_settings.music_volume;
+            volume_value = PlayerPrefs.GetFloat(UserPref.instance.MusicVolume);
         }
         else if (type == VolumeType.SFX)
         {
-            volume_value = game_settings.sfx_volume;
+            volume_value = PlayerPrefs.GetFloat(UserPref.instance.SFXVolume);
         }
         else if (type == VolumeType.UI)
         {
-            volume_value = game_settings.ui_volume;
+            volume_value = PlayerPrefs.GetFloat(UserPref.instance.UIVolume);
         }
         int volume_to_change = (int)(volume_value * 100f);
         ui_text.text = volume_to_change.ToString();

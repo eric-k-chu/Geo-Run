@@ -12,8 +12,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private PlayerStats player_stats;
-
     // Three lane system
     private enum LanePosition {Left, Middle, Right}
 
@@ -57,7 +55,7 @@ public class PlayerController : MonoBehaviour
         if (!GameStateManager.instance.IsLost())
         {
             GetCurrentAilment();
-            player_stats.SetDistanceTraveled((int)transform.position.z);
+            PlayerStats.instance.SetDistanceTraveled((int)transform.position.z);
             // User press Right
             if (Input.GetKeyDown(KeyCode.D) && !GameStateManager.instance.IsPaused())
             {
@@ -132,22 +130,22 @@ public class PlayerController : MonoBehaviour
     // Gets the current inflicted Ailment on the player
     private void GetCurrentAilment()
     {
-        current_ailment = player_stats.GetCurrentAilment();
+        current_ailment = PlayerStats.instance.GetCurrentAilment();
 
         if (current_ailment == Ailments.Burning)
         {
             chill_multiplier = grasp_multiplier = 1f;
-            burn_multiplier = player_stats.GetBurnMultiplier();
+            burn_multiplier = PlayerStats.instance.GetBurnMultiplier();
         }
         else if (current_ailment == Ailments.Chilled)
         {
             burn_multiplier = grasp_multiplier = 1f;
-            chill_multiplier = player_stats.GetChillMultiplier();
+            chill_multiplier = PlayerStats.instance.GetChillMultiplier();
         } 
         else if (current_ailment == Ailments.Grasped)
         {
             burn_multiplier = chill_multiplier = 1f;
-            grasp_multiplier = player_stats.GetGraspMultiplier();
+            grasp_multiplier = PlayerStats.instance.GetGraspMultiplier();
         } 
         // return ailment multipliers back to normal if no ailment is inflicted on the player
         else

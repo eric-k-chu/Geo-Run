@@ -13,8 +13,6 @@ public class CharacterManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] ui_character_image_list;
 
-    [SerializeField] private GameSettings game_settings;
-
     public void ChangeCharacter(int id)
     {
         for (int index = 0; index < ui_character_image_list.Length; index++)
@@ -30,7 +28,7 @@ public class CharacterManager : MonoBehaviour
             else
             {
                 character_button.HighlightIMG(true);
-                game_settings.character_type = id;
+                PlayerPrefs.SetInt(UserPref.instance.CharacterType, id);
             }
         }
     }

@@ -13,14 +13,12 @@ using UnityEngine.UI;
 public class HealthDisplay : MonoBehaviour
 {
     [SerializeField] private GameSettings game_settings;
-    private GameObject player_object;
 
     private float player_max_health;
     private float player_health;
 
     private Slider ui_slider;
 
-    private AilmentCalcuation player_stats;
 
     private void Awake()
     {
@@ -36,15 +34,9 @@ public class HealthDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (player_object == null)
-        {
-            player_object = GameObject.FindWithTag("Player");
-            player_stats = player_object.GetComponent<AilmentCalcuation>();
-        }
-
         if (!GameStateManager.instance.IsPaused() && !GameStateManager.instance.IsLost())
         {
-            player_health = player_stats.GetCurrentHealth();
+            player_health = PlayerStats.instance.GetCurrenHealth();
             ui_slider.value = (player_health / player_max_health) * 100f;
         }
     }

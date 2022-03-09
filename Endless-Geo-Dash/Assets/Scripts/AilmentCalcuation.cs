@@ -9,16 +9,9 @@ that define and manipulate the different ailment on the player
 */
 using UnityEngine;
 
-// Burning causes the player to take damage over time
-// Chilled reduces the player's horizontal speed and forward speed
-// Grasped reduces the player's vertical velocity
-public enum Ailments { Burning, Chilled, Grasped, None }
-
 public class AilmentCalcuation : MonoBehaviour
 {
     [SerializeField] private GameSettings game_settings;
-
-    [SerializeField] private PlayerStats player_stats;
 
     private float health;
 
@@ -58,20 +51,21 @@ public class AilmentCalcuation : MonoBehaviour
             {
                 case Ailments.Burning:
                     burn_multiplier = ailment_curves.burn_multiplier_curve.Evaluate(fire_crystal_count);
-                    player_stats.SetBurnMultiplier(burn_multiplier);
+                    PlayerStats.instance.SetBurnMultiplier(burn_multiplier);
 
                     if (health > 0)
                     {
                         health -= (burn_multiplier / 100f);
+                        PlayerStats.instance.SetCurrentHealth(health);
                     }
                     break;
                 case Ailments.Chilled:
                     chill_multiplier = ailment_curves.chill_multiplier_curve.Evaluate(water_crystal_count);
-                    player_stats.SetChillMultiplier(chill_multiplier);
+                    PlayerStats.instance.SetChillMultiplier(chill_multiplier);
                     break;
                 case Ailments.Grasped:
                     grasp_multiplier = ailment_curves.grasp_multiplier_curve.Evaluate(earth_crystal_count);
-                    player_stats.SetGraspMultiplier(grasp_multiplier);
+                    PlayerStats.instance.SetGraspMultiplier(grasp_multiplier);
 
                     if (health < 100f)
                     {
@@ -95,26 +89,26 @@ public class AilmentCalcuation : MonoBehaviour
             Elements type = other.gameObject.GetComponent<Crystal>().GetElementalType();
             if (type == Elements.Fire)
             {
-                player_stats.SetFireCount(++fire_crystal_count);
+                PlayerStats.instance.SetFireCount(++fire_crystal_count);
                 if (earth_crystal_count > 0)
                 {
-                    player_stats.SetEarthCount(--earth_crystal_count);
+                    PlayerStats.instance.SetEarthCount(--earth_crystal_count);
                 }
             }
             else if (type == Elements.Water)
             {
-                player_stats.SetWaterCount(++water_crystal_count);
+                PlayerStats.instance.SetWaterCount(++water_crystal_count);
                 if (fire_crystal_count > 0)
                 {
-                    player_stats.SetFireCount(--fire_crystal_count);
+                    PlayerStats.instance.SetFireCount(--fire_crystal_count);
                 }
             }
             else if (type == Elements.Earth)
             {
-                player_stats.SetEarthCount(++earth_crystal_count);
+                PlayerStats.instance.SetEarthCount(++earth_crystal_count);
                 if (water_crystal_count > 0)
                 {
-                    player_stats.SetWaterCount(--water_crystal_count);
+                    PlayerStats.instance.SetWaterCount(--water_crystal_count);
                 }
             }
         }
@@ -186,7 +180,7 @@ public class AilmentCalcuation : MonoBehaviour
         {
             current_ailment = Ailments.None;
         }
-        player_stats.SetCurrentAilment(current_ailment);
+        PlayerStats.instance.SetCurrentAilment(current_ailment);
     }
 
     public float GetCurrentHealth()

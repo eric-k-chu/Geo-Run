@@ -13,8 +13,6 @@ using UnityEngine.UI;
 
 public class AilmentDisplay : MonoBehaviour
 {
-    [SerializeField] private PlayerStats player_stats;
-
     [SerializeField] private Color fire_color;
 
     [SerializeField] private Color water_color;
@@ -34,7 +32,7 @@ public class AilmentDisplay : MonoBehaviour
 
     private void Update()
     {
-        current_ailment = player_stats.GetCurrentAilment();
+        current_ailment = PlayerStats.instance.GetCurrentAilment();
         switch (current_ailment)
         {
             case Ailments.Burning:

@@ -12,8 +12,6 @@ using UnityEngine.UI;
 
 public class EndScoreDisplay : MonoBehaviour
 {
-    [SerializeField] private PlayerStats player_stats;
-
     [SerializeField] private GameObject distance_traveled;
 
     [SerializeField] private GameObject fire_crystal_count;
@@ -23,6 +21,8 @@ public class EndScoreDisplay : MonoBehaviour
     [SerializeField] private GameObject earth_crystal_count;
 
     [SerializeField] private GameObject final_score;
+
+    [SerializeField] private GameObject high_score;
 
     private Text distance_traveled_text;
 
@@ -46,14 +46,15 @@ public class EndScoreDisplay : MonoBehaviour
     private void Start()
     {
         GameStateManager.instance.OnGameStateLost += DisplayScore;
+        // highs_score.SetActive(true);
     }
 
     private void DisplayScore(bool val)
     {
-        float dist = player_stats.GetDistancedTraveled();
-        float fire_count = player_stats.GetFireCount();
-        float water_count = player_stats.GetWaterCount();
-        float earth_count = player_stats.GetEarthCount();
+        float dist = PlayerStats.instance.GetDistancedTraveled();
+        float fire_count = PlayerStats.instance.GetFireCount();
+        float water_count = PlayerStats.instance.GetWaterCount();
+        float earth_count = PlayerStats.instance.GetEarthCount();
 
         distance_traveled_text.text = dist.ToString() + " m";
         fire_crystal_count_text.text = fire_count.ToString();
@@ -62,6 +63,13 @@ public class EndScoreDisplay : MonoBehaviour
 
         float crystal_count = fire_count + water_count + earth_count;
         int total_score = (int)(dist * (1 + (crystal_count / 100f)));
+
+        if (PlayerPrefs.GetInt(UserPref.instance.HighScore) < total_score)
+        {
+            PlayerPrefs.SetInt(UserPref.instance.HighScore, total_score);
+            // TODO: Display new high score msg
+            // high_score.SetActive(true);
+        }
 
         final_score_text.text = total_score.ToString();
     }

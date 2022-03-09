@@ -9,8 +9,6 @@ functions that make up a Crystal object
 */
 using UnityEngine;
 
-public enum Elements { Fire, Water, Earth}
-
 public class Crystal : MonoBehaviour
 {
     private Elements type;

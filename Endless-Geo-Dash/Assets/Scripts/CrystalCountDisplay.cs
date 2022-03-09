@@ -14,8 +14,6 @@ public class CrystalCountDisplay : MonoBehaviour
 {
     [SerializeField] private Elements type;
 
-    [SerializeField] private PlayerStats player_stats;
-
     private int crystal_count;
 
     private Slider ui_slider;
@@ -34,15 +32,15 @@ public class CrystalCountDisplay : MonoBehaviour
     {
         if (type == Elements.Fire)
         {
-            crystal_count = player_stats.GetFireCount();
+            crystal_count = PlayerStats.instance.GetFireCount();
         }
         else if (type == Elements.Water)
         {
-            crystal_count = player_stats.GetWaterCount();
+            crystal_count = PlayerStats.instance.GetWaterCount();
         }
         else if (type == Elements.Earth)
         {
-            crystal_count = player_stats.GetEarthCount();
+            crystal_count = PlayerStats.instance.GetEarthCount();
         }
         ui_slider.value = crystal_count;
     }
