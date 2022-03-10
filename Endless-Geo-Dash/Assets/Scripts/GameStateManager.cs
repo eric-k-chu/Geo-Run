@@ -14,24 +14,9 @@ public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager instance { get; private set; }
 
-    [SerializeField] private GameSettings game_settings;
-
-    private GameObject active_player_object;
-
     private enum GameState { Initial, Running, Pause, Lost }
     private GameState current_state;
     private bool in_grace_period;
-
-    private void Awake()
-    {
-        instance = this;
-    }
-    // Get the player's transform on spawn
-    public event Action<Transform> OnPlayerSpawn;
-    public void GetPlayerTransform(Transform player)
-    {
-        OnPlayerSpawn?.Invoke(player);
-    }
 
     public event Action<bool> OnPlayerPause;
     public void SetActivePauseMenu(bool value)
@@ -45,10 +30,15 @@ public class GameStateManager : MonoBehaviour
         OnGameStateLost?.Invoke(value);
     }
 
+    private void Awake()
+    {
+        instance = this;
+        PlayerStats.instance.ResetAllStats();
+    }
+
     private void Start()
     {
         TransitionState(GameState.Initial);
-        PlayerStats.instance.ResetAllStats();
     }
 
     private void Update()
@@ -126,7 +116,6 @@ public class GameStateManager : MonoBehaviour
             case GameState.Initial:
                 StartCoroutine(ActivateGracePeriod());
                 Time.timeScale = 1f;
-                SpawnPlayer();
                 TransitionState(GameState.Running);
                 break;
             case GameState.Running:
@@ -142,13 +131,6 @@ public class GameStateManager : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    // Spawns the player object at world origin (0,0,0)
-    private void SpawnPlayer()
-    {
-        active_player_object = Instantiate(game_settings.GetGameObject());
-        GameStateManager.instance.GetPlayerTransform(active_player_object.transform);
     }
 
     // Returns true if current game state is Pause, otherwise false

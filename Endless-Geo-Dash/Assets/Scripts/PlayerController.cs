@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
 
     private Ailments current_ailment;
 
-    private float burn_multiplier = 1f;
     private float chill_multiplier = 1f;
     private float grasp_multiplier = 1f;
 
@@ -111,17 +110,18 @@ public class PlayerController : MonoBehaviour
 
             // Movement vector for move()
             Vector3 motion_vector = new Vector3(distance_to_lane - transform.position.x,
-                vertical_velocity * grasp_multiplier * Time.deltaTime, forward_speed * chill_multiplier * burn_multiplier * Time.deltaTime);
+                vertical_velocity * grasp_multiplier * Time.deltaTime, forward_speed * chill_multiplier * Time.deltaTime);
 
             // The distance between the lane will update as we approach the target lane
             distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos,
-                horizontal_speed * chill_multiplier * burn_multiplier * Time.deltaTime);
+                horizontal_speed * chill_multiplier * Time.deltaTime);
 
             player_controller.Move(motion_vector);
 
             // Ends the game if the player has collided with terrain and stops moving forward.
             if (GameStateManager.instance.isRunning() && player_controller.velocity.magnitude <= 0f && !GameStateManager.instance.IsGracePeriod())
             {
+                AudioManager.instance.PlayCheckPointFailSFX();
                 GameStateManager.instance.TransitionToLostState();
             }
         }
@@ -135,22 +135,21 @@ public class PlayerController : MonoBehaviour
         if (current_ailment == Ailments.Burning)
         {
             chill_multiplier = grasp_multiplier = 1f;
-            burn_multiplier = PlayerStats.instance.GetBurnMultiplier();
         }
         else if (current_ailment == Ailments.Chilled)
         {
-            burn_multiplier = grasp_multiplier = 1f;
+            grasp_multiplier = 1f;
             chill_multiplier = PlayerStats.instance.GetChillMultiplier();
         } 
         else if (current_ailment == Ailments.Grasped)
         {
-            burn_multiplier = chill_multiplier = 1f;
+            chill_multiplier = 1f;
             grasp_multiplier = PlayerStats.instance.GetGraspMultiplier();
         } 
         // return ailment multipliers back to normal if no ailment is inflicted on the player
         else
         {
-            burn_multiplier = chill_multiplier = grasp_multiplier = 1f;
+            chill_multiplier = grasp_multiplier = 1f;
         }
     }
 }

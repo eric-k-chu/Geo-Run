@@ -13,6 +13,10 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats instance { get; private set; }
 
+    [SerializeField] private GameSettings game_settings;
+
+    private GameObject player_object;
+
     private float current_health;
     private int distance_traveled;
     private int fire_crystal_count;
@@ -31,12 +35,19 @@ public class PlayerStats : MonoBehaviour
 
     public void ResetAllStats()
     {
+        player_object = Instantiate(game_settings.GetGameObject());
+        current_health = 100f;
         distance_traveled = fire_crystal_count = water_crystal_count = earth_crystal_count = 0;
         current_ailment = Ailments.None;
         burning_multiplier = chilled_multiplier = grasped_multiplier = 1f;
     }
 
     // Setters
+    public void SetPlayerObject(GameObject obj)
+    {
+        player_object = obj;
+    }
+
     public void SetCurrentHealth(float val)
     {
         current_health = val;
@@ -83,6 +94,11 @@ public class PlayerStats : MonoBehaviour
     }
 
     // Getters
+    public GameObject GetPlayerObject()
+    {
+        return player_object;
+    }
+
     public float GetCurrenHealth()
     {
         return current_health;

@@ -36,12 +36,12 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Start()
     {
-        GameStateManager.instance.OnPlayerSpawn += GetPlayerTransform;
+        GetPlayerTransform();
     }
 
-    private void GetPlayerTransform(Transform player)
+    private void GetPlayerTransform()
     {
-        player_object = player;
+        player_object = PlayerStats.instance.GetPlayerObject().transform;
 
         cinemachine.LookAt = cinemachine.Follow = player_object;
 
@@ -53,10 +53,5 @@ public class PlayerCamera : MonoBehaviour
         CinemachineComposer composer = cinemachine.AddCinemachineComponent<CinemachineComposer>();
         composer.m_HorizontalDamping = aim_horizontal_damping;
         composer.m_VerticalDamping = aim_vertical_damping;
-    }
-
-    private void OnDestroy()
-    {
-        GameStateManager.instance.OnPlayerSpawn -= GetPlayerTransform;
     }
 }
