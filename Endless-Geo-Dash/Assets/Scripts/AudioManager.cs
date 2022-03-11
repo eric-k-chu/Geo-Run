@@ -15,8 +15,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance { get; private set; }
 
     [Header("Audio Sources")]
-    [SerializeField] private AudioGroup sfx_source;
-    [SerializeField] private AudioGroup ui_source;
+    [SerializeField] private AudioSource sfx_source;
+    [SerializeField] private AudioSource ui_source;
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip jump;
@@ -33,31 +33,31 @@ public class AudioManager : MonoBehaviour
 
     public void PlayJumpSFX()
     {
-        sfx_source.PlayClipAsOneshot(jump);    
+        sfx_source.PlayOneShot(jump);
     }
 
     public void PlayMoveSFX()
     {
-        sfx_source.PlayClipAsOneshot(move_sideways);
+        sfx_source.PlayOneShot(move_sideways);
     }
 
     public void PlayButtonUI()
     {
-        ui_source.PlayClipAsOneshot(ui_button);
+        ui_source.PlayOneShot(ui_button);
     }
 
     public void PlayCrystalPickupSFX()
     {
-        sfx_source.PlayClipAsOneshot(crystal_pickup);
+        sfx_source.PlayOneShot(crystal_pickup);
     }
 
     public void PlayCheckpointPassSFX()
     {
-        sfx_source.PlayClipAsOneshot(checkpoint_pass);
+        sfx_source.PlayOneShot(checkpoint_pass);
     }
 
     public void PlayCheckPointFailSFX()
     {
-        sfx_source.PlayClipAsOneshot(checkpoint_fail);
+        sfx_source.PlayOneShot(checkpoint_fail);
     }
 }
