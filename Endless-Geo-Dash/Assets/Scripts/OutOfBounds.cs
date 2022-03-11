@@ -13,6 +13,7 @@ public class OutOfBounds : MonoBehaviour
 {
     private void OnTriggerEnter()
     {
+        Debug.Log("Died to out of bounds");
         GameStateManager.instance.TransitionToLostState();   
     }
 }

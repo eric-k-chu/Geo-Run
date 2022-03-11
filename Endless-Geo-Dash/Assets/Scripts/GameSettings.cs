@@ -16,10 +16,6 @@ public class GameSettings : ScriptableObject
 
     public Character[] character_list;
 
-    public GameObject GetGameObject()
-    {
-        return character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].character_model;
-    }
 
     public string GetName()
     {

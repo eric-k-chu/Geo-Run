@@ -14,6 +14,8 @@ public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager instance { get; private set; }
 
+    [SerializeField] private GameObject[] character_list;
+
     private enum GameState { Initial, Running, Pause, Lost }
     private GameState current_state;
     private bool in_grace_period;
@@ -30,14 +32,20 @@ public class GameStateManager : MonoBehaviour
         OnGameStateLost?.Invoke(value);
     }
 
+    public event Action<GameObject> OnPlayerSpawn;
+    public void SetPlayerTransform(GameObject player)
+    {
+        OnPlayerSpawn?.Invoke(player);
+    }
+
     private void Awake()
     {
         instance = this;
-        PlayerStats.instance.ResetAllStats();
     }
 
     private void Start()
     {
+        PlayerStats.instance.ResetAllStats();
         TransitionState(GameState.Initial);
     }
 
@@ -114,6 +122,9 @@ public class GameStateManager : MonoBehaviour
         switch (current_state)
         {
             case GameState.Initial:
+
+                GameObject player = character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)];
+                player.SetActive(true);
                 StartCoroutine(ActivateGracePeriod());
                 Time.timeScale = 1f;
                 TransitionState(GameState.Running);

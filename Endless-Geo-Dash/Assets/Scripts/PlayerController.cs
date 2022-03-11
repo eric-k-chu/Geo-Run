@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
             if (GameStateManager.instance.isRunning() && player_controller.velocity.magnitude <= 0f && !GameStateManager.instance.IsGracePeriod())
             {
                 AudioManager.instance.PlayCheckPointFailSFX();
+                Debug.Log("Collided");
                 GameStateManager.instance.TransitionToLostState();
             }
         }

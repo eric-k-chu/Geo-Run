@@ -43,6 +43,7 @@ public class AilmentCalcuation : MonoBehaviour
         {
             if (health <= 0)
             {
+                Debug.Log("HP has reached zero");
                 GameStateManager.instance.TransitionToLostState();
             }
             HandleAilmentState();

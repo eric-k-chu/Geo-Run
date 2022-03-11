@@ -20,11 +20,11 @@ MonoBehaviour:
   - {fileID: 4632245949864433599, guid: 74d62d952050f314da10efa961c00194, type: 3}
   checkpoint_object_length: 240
   platform_objects:
+  - {fileID: 8857502701322689825, guid: a31ce7da35ac08c4cb0cd8deb5db5e2b, type: 3}
+  - {fileID: 7219722966473816873, guid: 4f61f7395bb2d994a985e88721a973bc, type: 3}
+  - {fileID: 4705175786999517981, guid: 16a700cdd8e77f8478a1fb2d6391f3c1, type: 3}
   - {fileID: 6230860732251648474, guid: 14406c3259bed3c4abedaa489606af62, type: 3}
   - {fileID: 3928290300467534277, guid: 9e3efb51936127d4b82f0c3f3463572d, type: 3}
   - {fileID: 6678128599218158867, guid: 2dc649b3e8e8a2d4e89bf1060218a893, type: 3}
   - {fileID: 6215798179298831352, guid: ab15c1da80f1c9f4f96a46f0e76c4afb, type: 3}
-  - {fileID: 8857502701322689825, guid: a31ce7da35ac08c4cb0cd8deb5db5e2b, type: 3}
-  - {fileID: 7219722966473816873, guid: 4f61f7395bb2d994a985e88721a973bc, type: 3}
-  - {fileID: 4705175786999517981, guid: 16a700cdd8e77f8478a1fb2d6391f3c1, type: 3}
   platform_object_length: 80

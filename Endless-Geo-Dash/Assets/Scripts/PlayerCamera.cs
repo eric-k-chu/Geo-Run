@@ -11,6 +11,8 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
+    [SerializeField] private GameObject[] character_list;
+
     [Header("Follow Offset")]
     [SerializeField] private Vector3 follow_offset;
 
@@ -41,7 +43,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void GetPlayerTransform()
     {
-        player_object = PlayerStats.instance.GetPlayerObject().transform;
+        player_object = character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].transform;
 
         cinemachine.LookAt = cinemachine.Follow = player_object;
 
