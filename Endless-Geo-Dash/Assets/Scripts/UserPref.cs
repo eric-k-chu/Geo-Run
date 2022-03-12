@@ -36,22 +36,22 @@ public class UserPref : MonoBehaviour
 
         if (!PlayerPrefs.HasKey(k_master_vol))
         {
-            PlayerPrefs.SetFloat(k_master_vol, 0.5f);
+            PlayerPrefs.SetFloat(k_master_vol, 0.25f);
         }
 
         if (!PlayerPrefs.HasKey(k_music_vol))
         {
-            PlayerPrefs.SetFloat(k_music_vol, 0.5f);
+            PlayerPrefs.SetFloat(k_music_vol, 0.25f);
         }
 
         if (!PlayerPrefs.HasKey(k_sfx_vol))
         {
-            PlayerPrefs.SetFloat(k_sfx_vol, 0.5f);
+            PlayerPrefs.SetFloat(k_sfx_vol, 0.25f);
         }
 
         if (!PlayerPrefs.HasKey(k_ui_vol))
         {
-            PlayerPrefs.SetFloat(k_ui_vol, 0.5f);
+            PlayerPrefs.SetFloat(k_ui_vol, 0.25f);
         }
 
         if (!PlayerPrefs.HasKey(k_high_score))

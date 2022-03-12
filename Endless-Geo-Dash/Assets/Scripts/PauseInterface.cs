@@ -40,13 +40,13 @@ public class PauseInterface: MonoBehaviour
     public void ToMainMenu()
     {
         GameStateManager.instance.TerminateLostState();
-        SceneManager.LoadScene("Menu-Scene");
+        SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
     }
 
     public void Retry()
     {
         GameStateManager.instance.TerminateLostState();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
     // Exits the application

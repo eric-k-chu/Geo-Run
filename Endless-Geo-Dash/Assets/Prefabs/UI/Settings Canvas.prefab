@@ -2842,9 +2842,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui_character_image_list:
-  - {fileID: 8106434296783737926}
-  - {fileID: 2800772942281268768}
-  - {fileID: 561192713785674942}
+  - {fileID: 7837575110671784151}
+  - {fileID: 929574110819189380}
+  - {fileID: 7555130224146415774}
 --- !u!1 &6790221187000831812
 GameObject:
   m_ObjectHideFlags: 0
