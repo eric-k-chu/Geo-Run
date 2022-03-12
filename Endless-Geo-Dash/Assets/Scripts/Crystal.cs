@@ -27,7 +27,6 @@ public class Crystal : MonoBehaviour
     private void Start()
     {
         SetRandomElement();
-        SetMaterial();
     }
 
     // Sets a random element to the crystal
@@ -37,30 +36,16 @@ public class Crystal : MonoBehaviour
         if (random_element == 1)
         {
             type = Elements.Fire;
+            mesh.material = fire_mat;
         }
         else if (random_element == 2)
         {
             type = Elements.Water;
+            mesh.material = water_mat;
         }
         else if (random_element == 3)
         {
             type = Elements.Earth;
-        }
-    }
-
-    // sets the color of the material of a crystal object
-    private void SetMaterial()
-    {
-        if (type == Elements.Fire)
-        {
-            mesh.material = fire_mat;
-        }
-        else if (type == Elements.Water)
-        {
-            mesh.material = water_mat;
-        }
-        else if (type == Elements.Earth)
-        {
             mesh.material = earth_mat;
         }
     }

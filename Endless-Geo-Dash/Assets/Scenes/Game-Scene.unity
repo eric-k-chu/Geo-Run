@@ -2913,6 +2913,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2504740594918271765, guid: 4a70de4f311f3ba47891e81a945c2eb9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2504740594918271769, guid: 4a70de4f311f3ba47891e81a945c2eb9, type: 3}
       propertyPath: m_Camera
       value: 
@@ -3118,12 +3122,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3875217527621244174, guid: bf6e90c41ccb55a4c9c7c3b1ff7b8794, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3875217527635045284, guid: bf6e90c41ccb55a4c9c7c3b1ff7b8794, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3875217527635045284, guid: bf6e90c41ccb55a4c9c7c3b1ff7b8794, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875217527635045284, guid: bf6e90c41ccb55a4c9c7c3b1ff7b8794, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3875217527851640019, guid: bf6e90c41ccb55a4c9c7c3b1ff7b8794, type: 3}
@@ -3683,6 +3695,10 @@ PrefabInstance:
     - target: {fileID: 8266914607310610825, guid: b2761e6423277384d937c803a034bfd9, type: 3}
       propertyPath: m_Name
       value: Game Over Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266914607310610825, guid: b2761e6423277384d937c803a034bfd9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8266914607310610828, guid: b2761e6423277384d937c803a034bfd9, type: 3}
       propertyPath: m_Pivot.x
