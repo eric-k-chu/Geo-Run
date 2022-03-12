@@ -23,6 +23,7 @@ public class PauseInterface: MonoBehaviour
         if (value)
         {
             gameObject.SetActive(true);
+            AudioManager.instance.PlayUIMenuAppear();
         }
         else
         {
@@ -39,7 +40,7 @@ public class PauseInterface: MonoBehaviour
     public void ToMainMenu()
     {
         GameStateManager.instance.TerminateLostState();
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Menu-Scene");
     }
 
     public void Retry()

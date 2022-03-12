@@ -39,7 +39,7 @@ public class GameOverInterface : MonoBehaviour
     public void ToMainMenu()
     {
         GameStateManager.instance.TerminateLostState();
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Menu-Scene");
     }
 
     // Restarts the Game

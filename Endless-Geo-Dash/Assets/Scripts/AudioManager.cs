@@ -22,9 +22,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip move_sideways;
     [SerializeField] private AudioClip ui_button;
+    [SerializeField] private AudioClip ui_menu_appear;
     [SerializeField] private AudioClip crystal_pickup;
     [SerializeField] private AudioClip checkpoint_pass;
-    [SerializeField] private AudioClip checkpoint_fail;
+    [SerializeField] private AudioClip death;
 
     private void Awake()
     {
@@ -41,9 +42,14 @@ public class AudioManager : MonoBehaviour
         sfx_source.PlayOneShot(move_sideways);
     }
 
-    public void PlayButtonUI()
+    public void PlayUIButton()
     {
         ui_source.PlayOneShot(ui_button);
+    }
+
+    public void PlayUIMenuAppear()
+    {
+        ui_source.PlayOneShot(ui_menu_appear);
     }
 
     public void PlayCrystalPickupSFX()
@@ -56,8 +62,8 @@ public class AudioManager : MonoBehaviour
         sfx_source.PlayOneShot(checkpoint_pass);
     }
 
-    public void PlayCheckPointFailSFX()
+    public void PlayDeathSFX()
     {
-        sfx_source.PlayOneShot(checkpoint_fail);
+        sfx_source.PlayOneShot(death);
     }
 }

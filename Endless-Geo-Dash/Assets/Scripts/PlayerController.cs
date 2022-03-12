@@ -117,14 +117,6 @@ public class PlayerController : MonoBehaviour
                 horizontal_speed * chill_multiplier * Time.deltaTime);
 
             player_controller.Move(motion_vector);
-
-            // Ends the game if the player has collided with terrain and stops moving forward.
-            if (GameStateManager.instance.isRunning() && player_controller.velocity.magnitude <= 0f && !GameStateManager.instance.IsGracePeriod())
-            {
-                AudioManager.instance.PlayCheckPointFailSFX();
-                Debug.Log("Collided");
-                GameStateManager.instance.TransitionToLostState();
-            }
         }
     }
 

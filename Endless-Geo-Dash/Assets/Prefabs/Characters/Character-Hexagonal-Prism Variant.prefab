@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7316278038415139179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7716015780013671781}
+  - component: {fileID: 6013785495220135993}
+  m_Layer: 12
+  m_Name: Player Collision Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7716015780013671781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316278038415139179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6824537000479102216}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6013785495220135993
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316278038415139179}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6430886568607380195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,6 +130,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
   m_PrefabInstance: {fileID: 6430886568607380195}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6824537000479102216 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
+  m_PrefabInstance: {fileID: 6430886568607380195}
+  m_PrefabAsset: {fileID: 0}
 --- !u!143 &287757773
 CharacterController:
   m_ObjectHideFlags: 0
@@ -135,13 +184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c80a670668a6c541a0ed76dc10f8aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_stats: {fileID: 11400000, guid: 7d1890b584daac24ba9107e7920ac2dc, type: 2}
   lane_distance: 8
   forward_speed: 20
   horizontal_speed: 10
   jump_force: 70
   fall_multiplier: 2.5
---- !u!114 &4823192130800932959
+--- !u!114 &6651213904663886999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,5 +202,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game_settings: {fileID: 11400000, guid: 9cd891ea747ac0141bf44fecf6f18453, type: 2}
-  player_stats: {fileID: 11400000, guid: 7d1890b584daac24ba9107e7920ac2dc, type: 2}
   ailment_curves: {fileID: 11400000, guid: a51ddd2851b2f464d9c3894f56f1a16d, type: 2}

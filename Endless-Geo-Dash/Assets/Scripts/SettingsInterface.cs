@@ -21,6 +21,7 @@ public class SettingsInterface : MonoBehaviour
         if (value)
         {
             gameObject.SetActive(true);
+            AudioManager.instance.PlayUIMenuAppear();
         }
         else
         {

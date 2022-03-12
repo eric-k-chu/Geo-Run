@@ -18,8 +18,8 @@ TagManager:
   - Spawner
   - Collectibles
   - Panels
-  - Out of Bounds
-  - 
+  - Trigger Death
+  - Player Collision Area
   - 
   - 
   - 

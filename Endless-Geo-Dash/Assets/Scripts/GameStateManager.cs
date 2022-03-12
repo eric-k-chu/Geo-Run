@@ -18,7 +18,6 @@ public class GameStateManager : MonoBehaviour
 
     private enum GameState { Initial, Running, Pause, Lost }
     private GameState current_state;
-    private bool in_grace_period;
 
     public event Action<bool> OnPlayerPause;
     public void SetActivePauseMenu(bool value)
@@ -97,7 +96,6 @@ public class GameStateManager : MonoBehaviour
             case GameState.Pause:
                 GameStateManager.instance.SetActivePauseMenu(false);
                 Time.timeScale = 1f;
-                StartCoroutine(ActivateGracePeriod());
                 break;
             case GameState.Lost:
                 GameStateManager.instance.SetActiveGameOverMenu(false);
@@ -108,12 +106,6 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    IEnumerator ActivateGracePeriod()
-    {
-        in_grace_period = true;
-        yield return new WaitForSeconds(0.5f);
-        in_grace_period = false;
-    }
 
     // Performs the necessary functions on entering a game state given a GameState obj param
     private void ActivateState(GameState state)
@@ -125,7 +117,6 @@ public class GameStateManager : MonoBehaviour
 
                 GameObject player = character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)];
                 player.SetActive(true);
-                StartCoroutine(ActivateGracePeriod());
                 Time.timeScale = 1f;
                 TransitionState(GameState.Running);
                 break;
@@ -177,18 +168,6 @@ public class GameStateManager : MonoBehaviour
     public void TerminateLostState()
     {
         TerminateState(current_state);
-    }
-
-    public bool IsGracePeriod()
-    {
-        if (in_grace_period)
-        {
-            return true;
-        } 
-        else
-        {
-            return false;
-        }
     }
 
     public void TransitionToLostState()
