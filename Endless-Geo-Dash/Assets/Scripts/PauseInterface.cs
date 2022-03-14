@@ -8,26 +8,31 @@ This file contains the PauseInterface class, which contains functions that allow
 to interact with the pause GUI.
 */
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseInterface: MonoBehaviour
 {
+    [SerializeField] private Animator pause_menu;
+
+    [SerializeField] private Button[] buttons;
+
     private void Start()
     {
         GameStateManager.instance.OnPlayerPause += SetActivePauseMenu;
-        gameObject.SetActive(false);
     }
 
     private void SetActivePauseMenu(bool value)
     {
         if (value)
         {
-            gameObject.SetActive(true);
+            pause_menu.SetTrigger("Active");
             AudioManager.instance.PlayUIMenuAppear();
         }
         else
         {
-            gameObject.SetActive(false);
+            pause_menu.SetTrigger("Inactive");
+            EnableInteractable();
         }
     }
 
@@ -54,5 +59,23 @@ public class PauseInterface: MonoBehaviour
     {
         GameStateManager.instance.TerminateLostState();
         Application.Quit();
+    }
+
+    // Makes the pause menu buttons uninteractable
+    public void DisableInteractable()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = false;
+        }
+    }
+
+    // Makes the pause menu buttons interactable
+    public void EnableInteractable()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = true;
+        }
     }
 }

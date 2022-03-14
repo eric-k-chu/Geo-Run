@@ -31,12 +31,6 @@ public class GameStateManager : MonoBehaviour
         OnGameStateLost?.Invoke(value);
     }
 
-    public event Action<GameObject> OnPlayerSpawn;
-    public void SetPlayerTransform(GameObject player)
-    {
-        OnPlayerSpawn?.Invoke(player);
-    }
-
     private void Awake()
     {
         instance = this;

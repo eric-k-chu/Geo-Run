@@ -8,36 +8,47 @@ This file contains the SettingsInterface class, which contains functions
 that allow the user to interact with the settings GUI
 */
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SettingsInterface : MonoBehaviour
 {
+    [SerializeField] private Animator settings_menu;
+
     private void Start()
     {
-        gameObject.SetActive(false);
+        if (SceneManager.GetActiveScene().name == "Game-Scene")
+        {
+            GameStateManager.instance.OnPlayerPause += HideSettingsMenu;
+        }
     }
 
     public void SetActiveSettingsMenu(bool value)
     {
         if (value)
         {
-            gameObject.SetActive(true);
+            settings_menu.SetTrigger("ActiveSettings");
             AudioManager.instance.PlayUIMenuAppear();
         }
         else
         {
-            gameObject.SetActive(false);
+            settings_menu.SetTrigger("InactiveSettings");
         }
     }
 
-    private void LateUpdate()
+    // Close out of settings menu when player presses ESC
+    public void HideSettingsMenu(bool value)
     {
-        // Close the settings menu if ESC is pressed and settings menu is open
-        if (gameObject.activeSelf)
+        if (!value)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                SetActiveSettingsMenu(false);
-            }
+            SetActiveSettingsMenu(value);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (SceneManager.GetActiveScene().name == "Game-Scene")
+        {
+            GameStateManager.instance.OnPlayerPause -= HideSettingsMenu;
         }
     }
 }

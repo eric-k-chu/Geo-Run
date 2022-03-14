@@ -12,21 +12,22 @@ using UnityEngine.SceneManagement;
 
 public class GameOverInterface : MonoBehaviour
 {
+    [SerializeField] private Animator game_over_menu;
+
     private void Start()
     {
         GameStateManager.instance.OnGameStateLost += SetActiveGameOverMenu;
-        gameObject.SetActive(false);
     }
 
     private void SetActiveGameOverMenu(bool value)
     {
         if (value)
         {
-            gameObject.SetActive(true);
+            game_over_menu.SetTrigger("Active");
         } 
         else
         {
-            gameObject.SetActive(false);
+            game_over_menu.SetTrigger("Inactive");
         }
     }
 
@@ -39,14 +40,15 @@ public class GameOverInterface : MonoBehaviour
     public void ToMainMenu()
     {
         GameStateManager.instance.TerminateLostState();
-        SceneManager.LoadScene("Menu-Scene");
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+
     }
 
     // Restarts the Game
     public void Retry()
     {
         GameStateManager.instance.TerminateLostState();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }
 
     // Exits the application
