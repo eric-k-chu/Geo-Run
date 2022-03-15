@@ -5036,14 +5036,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7210992823597833342, guid: e01fc8095e6455347862a08b489772e2, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210992823597833342, guid: e01fc8095e6455347862a08b489772e2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.45773745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210992823597833342, guid: e01fc8095e6455347862a08b489772e2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7210992823618008679, guid: e01fc8095e6455347862a08b489772e2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210992824662056688, guid: e01fc8095e6455347862a08b489772e2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 7210992824662056694, guid: e01fc8095e6455347862a08b489772e2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1621502171}
+    - target: {fileID: 7210992825060426710, guid: e01fc8095e6455347862a08b489772e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210992825060426714, guid: e01fc8095e6455347862a08b489772e2, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210992825060426714, guid: e01fc8095e6455347862a08b489772e2, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210992825060426714, guid: e01fc8095e6455347862a08b489772e2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210992825060426714, guid: e01fc8095e6455347862a08b489772e2, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7210992825112791001, guid: e01fc8095e6455347862a08b489772e2, type: 3}
       propertyPath: m_Name
       value: Menu Canvas
@@ -5055,6 +5091,10 @@ PrefabInstance:
     - target: {fileID: 7210992825112791004, guid: e01fc8095e6455347862a08b489772e2, type: 3}
       propertyPath: m_RenderMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210992825112791004, guid: e01fc8095e6455347862a08b489772e2, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7210992825112791005, guid: e01fc8095e6455347862a08b489772e2, type: 3}
       propertyPath: m_Pivot.x
