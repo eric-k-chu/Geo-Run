@@ -11,15 +11,9 @@ using UnityEngine;
 
 public class TriggerDeath : MonoBehaviour
 {
-    private bool is_trigger = false;
-
     private void OnTriggerEnter(Collider other)
     {
-        if (!is_trigger)
-        {
-            AudioManager.instance.PlayDeathSFX();
-            GameStateManager.instance.TransitionToLostState();
-            is_trigger = true;
-        }
+        AudioManager.instance.PlayDeathSFX();
+        GameStateManager.instance.TransitionToLostState();
     }
 }

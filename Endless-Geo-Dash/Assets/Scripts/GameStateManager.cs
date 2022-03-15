@@ -20,13 +20,13 @@ public class GameStateManager : MonoBehaviour
     private GameState current_state;
 
     public event Action<bool> OnPlayerPause;
-    public void SetActivePauseMenu(bool value)
+    public void ShowPauseMenu(bool value)
     {
         OnPlayerPause?.Invoke(value);
     }
 
     public event Action<bool> OnGameStateLost;
-    public void SetActiveGameOverMenu(bool value)
+    public void ShowGameMenu(bool value)
     {
         OnGameStateLost?.Invoke(value);
     }
@@ -88,11 +88,11 @@ public class GameStateManager : MonoBehaviour
             case GameState.Running:
                 break;
             case GameState.Pause:
-                GameStateManager.instance.SetActivePauseMenu(false);
+                ShowPauseMenu(false);
                 Time.timeScale = 1f;
                 break;
             case GameState.Lost:
-                GameStateManager.instance.SetActiveGameOverMenu(false);
+                ShowGameMenu(false);
                 Time.timeScale = 1f;
                 break;
             default:
@@ -118,11 +118,11 @@ public class GameStateManager : MonoBehaviour
                 break;
             case GameState.Pause:
                 Time.timeScale = 0f;
-                GameStateManager.instance.SetActivePauseMenu(true);
+                ShowPauseMenu(true);
                 break;
             case GameState.Lost:         
                 Time.timeScale = 0f;
-                GameStateManager.instance.SetActiveGameOverMenu(true);
+                ShowGameMenu(true);
                 break;
             default:
                 break;

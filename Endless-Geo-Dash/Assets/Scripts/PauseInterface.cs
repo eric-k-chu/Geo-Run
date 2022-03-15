@@ -54,7 +54,6 @@ public class PauseInterface: MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
-    // Exits the application
     public void QuitGame()
     {
         GameStateManager.instance.TerminateLostState();
