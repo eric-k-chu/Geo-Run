@@ -11,8 +11,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New User Settings", menuName = "Game Settings/User")]
 public class GameSettings : ScriptableObject
 {
-    [Header("Dev Controlled Settings")]
     public float maximum_player_health;
+    public float distance_between_lanes;
+    public float forward_speed;
+    public float horizontal_speed;
+    public float jump_force;
+    public float fall_multiplier;
 
     public Character[] character_list;
 

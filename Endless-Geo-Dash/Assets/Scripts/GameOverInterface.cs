@@ -8,11 +8,14 @@ This file contains the GameOverInterface class, which contains functions that al
 to interact with the GameOver GUI.
 */
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameOverInterface : MonoBehaviour
 {
     [SerializeField] private Animator game_over_menu;
+
+    [SerializeField] private Button[] buttons;
 
     private void Start()
     {
@@ -23,11 +26,13 @@ public class GameOverInterface : MonoBehaviour
     {
         if (value)
         {
-            game_over_menu.SetTrigger("Active");
+            game_over_menu.SetTrigger("ActiveGameOver");
         } 
         else
         {
-            game_over_menu.SetTrigger("Inactive");
+            Debug.Log("Game Over Inactive");
+            game_over_menu.SetTrigger("InactiveGameOver");
+            EnableInteractable();
         }
     }
 
@@ -40,7 +45,7 @@ public class GameOverInterface : MonoBehaviour
     public void ToMainMenu()
     {
         GameStateManager.instance.TerminateLostState();
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
 
     }
 
@@ -48,7 +53,7 @@ public class GameOverInterface : MonoBehaviour
     public void Retry()
     {
         GameStateManager.instance.TerminateLostState();
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Game-Scene", LoadSceneMode.Single);
     }
 
     // Exits the application
@@ -56,5 +61,22 @@ public class GameOverInterface : MonoBehaviour
     {
         GameStateManager.instance.TerminateLostState();
         Application.Quit();
+    }
+
+    public void DisableInteractable()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = false;
+        }
+    }
+
+    // Makes the pause menu buttons interactable
+    public void EnableInteractable()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = true;
+        }
     }
 }

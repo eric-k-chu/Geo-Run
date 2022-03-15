@@ -24,26 +24,20 @@ public class Crystal : MonoBehaviour
         mesh = GetComponent<MeshRenderer>();
     }
 
-    private void Start()
-    {
-        SetRandomElement();
-    }
-
     // Sets a random element to the crystal
-    private void SetRandomElement()
+    public void SetElementalType(int ele_type)
     {
-        int random_element = Random.Range(1, 4);
-        if (random_element == 1)
+        if (ele_type == 0)
         {
             type = Elements.Fire;
             mesh.material = fire_mat;
         }
-        else if (random_element == 2)
+        else if (ele_type == 1)
         {
             type = Elements.Water;
             mesh.material = water_mat;
         }
-        else if (random_element == 3)
+        else if (ele_type == 2)
         {
             type = Elements.Earth;
             mesh.material = earth_mat;

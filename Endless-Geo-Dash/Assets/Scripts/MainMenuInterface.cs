@@ -33,7 +33,7 @@ public class MainMenuInterface : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Game-Scene", LoadSceneMode.Single);
     }
 
     public void QuitGame()

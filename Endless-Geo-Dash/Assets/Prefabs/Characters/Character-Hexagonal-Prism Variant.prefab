@@ -42,7 +42,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6430886568607380195
 PrefabInstance:
@@ -184,11 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c80a670668a6c541a0ed76dc10f8aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lane_distance: 8
-  forward_speed: 20
-  horizontal_speed: 10
-  jump_force: 70
-  fall_multiplier: 2.5
+  game_settings: {fileID: 11400000, guid: 9cd891ea747ac0141bf44fecf6f18453, type: 2}
 --- !u!114 &6651213904663886999
 MonoBehaviour:
   m_ObjectHideFlags: 0

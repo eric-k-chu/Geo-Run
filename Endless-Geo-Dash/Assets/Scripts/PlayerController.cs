@@ -20,16 +20,12 @@ public class PlayerController : MonoBehaviour
     private CharacterController player_controller;
 
     // Lane Variables
-    [SerializeField] private float lane_distance;
     private LanePosition current_lane_pos;
     private float target_lane_xpos;
     private float distance_to_lane;
 
     // Movement Variables
-    [SerializeField] private float forward_speed;
-    [SerializeField] private float horizontal_speed;
-    [SerializeField] private float jump_force;
-    [SerializeField] private float fall_multiplier;
+    [SerializeField] private GameSettings game_settings;
     private float vertical_velocity;
     private float artificial_gravity;
 
@@ -69,7 +65,7 @@ public class PlayerController : MonoBehaviour
                 {
                     player_animator.SetTrigger("move_right");
                     current_lane_pos = LanePosition.Right;
-                    target_lane_xpos = lane_distance;
+                    target_lane_xpos = game_settings.distance_between_lanes;
                     AudioManager.instance.PlayMoveSFX();
                 }
             }
@@ -87,7 +83,7 @@ public class PlayerController : MonoBehaviour
                 {
                     player_animator.SetTrigger("move_left");
                     current_lane_pos = LanePosition.Left;
-                    target_lane_xpos = -lane_distance;
+                    target_lane_xpos = -game_settings.distance_between_lanes;
                     AudioManager.instance.PlayMoveSFX();
                 }
             }
@@ -97,24 +93,24 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space) && !GameStateManager.instance.IsPaused())
                 {
-                    vertical_velocity = jump_force;
+                    vertical_velocity = game_settings.jump_force;
                     AudioManager.instance.PlayJumpSFX();
                 }
             }
             // Calculating Falling Physics
             else
             {
-                artificial_gravity = Mathf.Lerp(fall_multiplier, fall_multiplier * 1.2f, Time.deltaTime);
-                vertical_velocity -= jump_force * artificial_gravity * Time.deltaTime;
+                artificial_gravity = Mathf.Lerp(game_settings.fall_multiplier, game_settings.fall_multiplier * 1.2f, Time.deltaTime);
+                vertical_velocity -= game_settings.jump_force * artificial_gravity * Time.deltaTime;
             }
 
             // Movement vector for move()
             Vector3 motion_vector = new Vector3(distance_to_lane - transform.position.x,
-                vertical_velocity * grasp_multiplier * Time.deltaTime, forward_speed * chill_multiplier * Time.deltaTime);
+                vertical_velocity * grasp_multiplier * Time.deltaTime, game_settings.forward_speed* chill_multiplier * Time.deltaTime);
 
             // The distance between the lane will update as we approach the target lane
             distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos,
-                horizontal_speed * chill_multiplier * Time.deltaTime);
+                game_settings.horizontal_speed * chill_multiplier * Time.deltaTime);
 
             player_controller.Move(motion_vector);
         }
