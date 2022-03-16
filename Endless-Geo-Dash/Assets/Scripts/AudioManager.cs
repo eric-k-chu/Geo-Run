@@ -15,10 +15,12 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance { get; private set; }
 
     [Header("Audio Sources")]
+    [SerializeField] private AudioSource music_source;
     [SerializeField] private AudioSource sfx_source;
     [SerializeField] private AudioSource ui_source;
 
     [Header("Audio Clips")]
+    [SerializeField] private AudioClip bgm;
     [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip move_sideways;
     [SerializeField] private AudioClip ui_button;
@@ -65,5 +67,10 @@ public class AudioManager : MonoBehaviour
     public void PlayDeathSFX()
     {
         sfx_source.PlayOneShot(death);
+    }
+
+    public void PlayMusic()
+    {
+        music_source.PlayOneShot(bgm);
     }
 }

@@ -44,7 +44,7 @@ public class AilmentCalcuation : MonoBehaviour
             if (health <= 0)
             {
                 Debug.Log("HP has reached zero");
-                GameStateManager.instance.TransitionToLostState();
+                GameStateManager.instance.LoseGame();
             }
             HandleAilmentState();
 
@@ -119,17 +119,17 @@ public class AilmentCalcuation : MonoBehaviour
             if (type == Elements.Fire && current_ailment != Ailments.Burning)
             {
                 AudioManager.instance.PlayDeathSFX();
-                GameStateManager.instance.TransitionToLostState();
+                GameStateManager.instance.LoseGame();
             }
             else if (type == Elements.Water && current_ailment != Ailments.Chilled)
             {
                 AudioManager.instance.PlayDeathSFX();
-                GameStateManager.instance.TransitionToLostState();
+                GameStateManager.instance.LoseGame();
             }
             else if (type == Elements.Earth && current_ailment != Ailments.Grasped)
             {
                 AudioManager.instance.PlayDeathSFX();
-                GameStateManager.instance.TransitionToLostState();
+                GameStateManager.instance.LoseGame();
             }
             else
             {

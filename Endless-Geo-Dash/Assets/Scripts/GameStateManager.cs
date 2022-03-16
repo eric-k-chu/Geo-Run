@@ -7,7 +7,6 @@ FILE DESCRIPTION:
 This file contains the GameStateManager class, which keeps track of the user and the current game state
 */
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
@@ -16,7 +15,7 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] private GameObject[] character_list;
 
-    private enum GameState { Initial, Running, Pause, Lost }
+    private enum GameState { Initial, Waiting, Running, Pause, Lost }
     private GameState current_state;
 
     public event Action<bool> OnPlayerPause;
@@ -48,22 +47,30 @@ public class GameStateManager : MonoBehaviour
         {
             case GameState.Initial:
                 break;
+            case GameState.Waiting:
+                {
+                    if (Input.anyKeyDown)
+                    {
+                        TransitionState(GameState.Running);
+                    }
+                    break;
+                }
             case GameState.Running:
-
-                if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    TransitionState(GameState.Pause);
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        TransitionState(GameState.Pause);
+                    }
+                    break;
                 }
-
-                break;
             case GameState.Pause:
-
-                if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    TransitionState(GameState.Running);
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        TransitionState(GameState.Running);
+                    }
+                    break;
                 }
-
-                break;
             case GameState.Lost:
                 break;
             default:
@@ -85,16 +92,28 @@ public class GameStateManager : MonoBehaviour
         {
             case GameState.Initial:
                 break;
+            case GameState.Waiting:
+                {
+                    Time.timeScale = 1f;
+                    // TODO: Hide Waiting UI canvas
+                    AudioManager.instance.PlayMusic();
+
+                    break;
+                }
             case GameState.Running:
                 break;
             case GameState.Pause:
-                ShowPauseMenu(false);
-                Time.timeScale = 1f;
-                break;
+                {
+                    ShowPauseMenu(false);
+                    Time.timeScale = 1f;
+                    break;
+                }
             case GameState.Lost:
-                ShowGameMenu(false);
-                Time.timeScale = 1f;
-                break;
+                {
+                    ShowGameMenu(false);
+                    Time.timeScale = 1f;
+                    break;
+                }
             default:
                 break;
         }
@@ -108,28 +127,39 @@ public class GameStateManager : MonoBehaviour
         switch (current_state)
         {
             case GameState.Initial:
+                {
+                    GameObject player = character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)];
+                    player.SetActive(true);
+                    Time.timeScale = 1f;
+                    TransitionState(GameState.Waiting);
+                    break;
+                }
+            case GameState.Waiting:
+                {
+                    Time.timeScale = 0f;
+                    // TODO: Show Waiting UI canvas
 
-                GameObject player = character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)];
-                player.SetActive(true);
-                Time.timeScale = 1f;
-                TransitionState(GameState.Running);
-                break;
+                    break;
+                }
             case GameState.Running:
                 break;
             case GameState.Pause:
-                Time.timeScale = 0f;
-                ShowPauseMenu(true);
-                break;
-            case GameState.Lost:         
-                Time.timeScale = 0f;
-                ShowGameMenu(true);
-                break;
+                {
+                    Time.timeScale = 0f;
+                    ShowPauseMenu(true);
+                    break;
+                }
+            case GameState.Lost:
+                {
+                    Time.timeScale = 0f;
+                    ShowGameMenu(true);
+                    break;
+                }
             default:
                 break;
         }
     }
 
-    // Returns true if current game state is Pause, otherwise false
     public bool IsPaused()
     {
         if (current_state == GameState.Pause)
@@ -139,7 +169,6 @@ public class GameStateManager : MonoBehaviour
         return false;
     }
 
-    // Returns true if current game state is Lost, otherwise false
     public bool IsLost()
     {
         if (current_state == GameState.Lost)
@@ -149,7 +178,6 @@ public class GameStateManager : MonoBehaviour
         return false;
     }
 
-    // Returns true if current game state is Running, otherwise false
     public bool isRunning()
     {
         if (current_state == GameState.Running)
@@ -159,12 +187,13 @@ public class GameStateManager : MonoBehaviour
         return false;
     }
 
-    public void TerminateLostState()
+    // Terminate GameState.Lost
+    public void EndGameStates()
     {
         TerminateState(current_state);
     }
 
-    public void TransitionToLostState()
+    public void LoseGame()
     {
         TransitionState(GameState.Lost);
     }

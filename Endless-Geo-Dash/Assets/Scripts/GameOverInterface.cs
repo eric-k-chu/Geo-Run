@@ -43,20 +43,20 @@ public class GameOverInterface : MonoBehaviour
     // Loads Main Menu Scene
     public void ToMainMenu()
     {
-        GameStateManager.instance.TerminateLostState();
+        GameStateManager.instance.EndGameStates();
         SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
 
     }
 
     public void Retry()
     {
-        GameStateManager.instance.TerminateLostState();
+        GameStateManager.instance.EndGameStates();
         SceneManager.LoadSceneAsync("Game-Scene", LoadSceneMode.Single);
     }
 
     public void QuitGame()
     {
-        GameStateManager.instance.TerminateLostState();
+        GameStateManager.instance.EndGameStates();
         Application.Quit();
     }
 

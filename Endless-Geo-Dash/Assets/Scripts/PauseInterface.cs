@@ -44,19 +44,19 @@ public class PauseInterface: MonoBehaviour
     // Loads Main Menu Scene
     public void ToMainMenu()
     {
-        GameStateManager.instance.TerminateLostState();
+        GameStateManager.instance.EndGameStates();
         SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
     }
 
     public void Retry()
     {
-        GameStateManager.instance.TerminateLostState();
+        GameStateManager.instance.EndGameStates();
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
     public void QuitGame()
     {
-        GameStateManager.instance.TerminateLostState();
+        GameStateManager.instance.EndGameStates();
         Application.Quit();
     }
 

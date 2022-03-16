@@ -2027,8 +2027,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4408712191055521394, guid: 26f0732907c91f148a6bb88b86975ed0, type: 2}
-  m_audioClip: {fileID: 8300000, guid: dc30d40c2e841aa4e85ff124f8d2b702, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -8177,8 +8177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0b797f12ef60144aef12123b62e086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music_source: {fileID: 468761676}
   sfx_source: {fileID: 1636191197}
   ui_source: {fileID: 415403373}
+  bgm: {fileID: 8300000, guid: dc30d40c2e841aa4e85ff124f8d2b702, type: 3}
   jump: {fileID: 8300000, guid: b71edef5d6eb84fe0b6837f05a411bd4, type: 3}
   move_sideways: {fileID: 8300000, guid: 626aeda33e0134a66a6257c865d0c5c0, type: 3}
   ui_button: {fileID: 8300000, guid: 792a6e132d38a4f70bbae7f091a6cab3, type: 3}
