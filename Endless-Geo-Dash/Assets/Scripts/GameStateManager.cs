@@ -15,6 +15,8 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] private GameObject[] character_list;
 
+    [SerializeField] private GameObject waiting_ui_canvas;
+
     private enum GameState { Initial, Waiting, Running, Pause, Lost }
     private GameState current_state;
 
@@ -95,9 +97,8 @@ public class GameStateManager : MonoBehaviour
             case GameState.Waiting:
                 {
                     Time.timeScale = 1f;
-                    // TODO: Hide Waiting UI canvas
+                    waiting_ui_canvas.SetActive(false);
                     AudioManager.instance.PlayMusic();
-
                     break;
                 }
             case GameState.Running:
@@ -137,8 +138,7 @@ public class GameStateManager : MonoBehaviour
             case GameState.Waiting:
                 {
                     Time.timeScale = 0f;
-                    // TODO: Show Waiting UI canvas
-
+                    waiting_ui_canvas.SetActive(true);
                     break;
                 }
             case GameState.Running:
