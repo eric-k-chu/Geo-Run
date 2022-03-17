@@ -13,5 +13,5 @@ using UnityEngine;
 public class Character : ScriptableObject
 {
     public string character_name;
-    public Sprite character_portrait;
+    public Texture character_portrait;
 }

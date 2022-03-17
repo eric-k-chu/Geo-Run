@@ -8,7 +8,7 @@ This file contains the GameSettings scriptable object, which contains data about
 */
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New User Settings", menuName = "Game Settings/User")]
+[CreateAssetMenu(fileName = "New Game Settings", menuName = "Game Settings")]
 public class GameSettings : ScriptableObject
 {
     public float maximum_player_health;
@@ -20,13 +20,12 @@ public class GameSettings : ScriptableObject
 
     public Character[] character_list;
 
-
     public string GetName()
     {
         return character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].character_name;
     }
 
-    public Sprite GetPortrait()
+    public Texture GetPortrait()
     {
         return character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].character_portrait;
     }

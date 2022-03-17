@@ -71,6 +71,6 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic()
     {
-        music_source.PlayOneShot(bgm);
+        music_source.Play();
     }
 }

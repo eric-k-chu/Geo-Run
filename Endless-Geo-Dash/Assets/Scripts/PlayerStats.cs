@@ -15,9 +15,6 @@ public class PlayerStats : MonoBehaviour
 
     private float current_health;
     private int distance_traveled;
-    private int fire_crystal_count;
-    private int water_crystal_count;
-    private int earth_crystal_count;
 
     private Ailments current_ailment;
     private float burning_multiplier;
@@ -32,7 +29,7 @@ public class PlayerStats : MonoBehaviour
     public void ResetAllStats()
     {
         current_health = 100f;
-        distance_traveled = fire_crystal_count = water_crystal_count = earth_crystal_count = 0;
+        distance_traveled = 0;
         current_ailment = Ailments.None;
         burning_multiplier = chilled_multiplier = grasped_multiplier = 1f;
     }
@@ -46,21 +43,6 @@ public class PlayerStats : MonoBehaviour
     public void SetDistanceTraveled(int val)
     {
         distance_traveled = val;
-    }
-
-    public void SetFireCount(int val)
-    {
-        fire_crystal_count = val;
-    }
-
-    public void SetWaterCount(int val)
-    {
-        water_crystal_count = val;
-    }
-
-    public void SetEarthCount(int val)
-    {
-        earth_crystal_count = val;
     }
 
     public void SetCurrentAilment(Ailments ailment)
@@ -93,21 +75,6 @@ public class PlayerStats : MonoBehaviour
     public int GetDistancedTraveled()
     {
         return distance_traveled;
-    }
-
-    public int GetFireCount()
-    {
-        return fire_crystal_count;
-    }
-
-    public int GetWaterCount()
-    {
-        return water_crystal_count;
-    }
-
-    public int GetEarthCount()
-    {
-        return earth_crystal_count;
     }
 
     public Ailments GetCurrentAilment()

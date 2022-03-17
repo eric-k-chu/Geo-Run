@@ -20,7 +20,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float body_xdamping;
 
     [Range(0f, 20f)]
-    [SerializeField] private float body_ydamping;
+    [SerializeField] private float body_yawdamping;
 
     [Header("Composer"), Range(0f, 20f)]
     [SerializeField] private float aim_horizontal_damping;
@@ -50,7 +50,7 @@ public class PlayerCamera : MonoBehaviour
         CinemachineTransposer transposer = cinemachine.AddCinemachineComponent<CinemachineTransposer>();
         transposer.m_FollowOffset = follow_offset;
         transposer.m_XDamping = body_xdamping;
-        transposer.m_YawDamping = body_ydamping;
+        transposer.m_YawDamping = body_yawdamping;
 
         CinemachineComposer composer = cinemachine.AddCinemachineComponent<CinemachineComposer>();
         composer.m_HorizontalDamping = aim_horizontal_damping;

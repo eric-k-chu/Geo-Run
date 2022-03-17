@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     // Movement Variables
     [SerializeField] private GameSettings game_settings;
+    public float forward_speed;
     private float vertical_velocity;
     private float artificial_gravity;
 
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         current_lane_pos = LanePosition.Middle;
+        forward_speed = game_settings.forward_speed;
     }
 
     private void Update()
@@ -51,8 +53,10 @@ public class PlayerController : MonoBehaviour
         {
             GetCurrentAilment();
             PlayerStats.instance.SetDistanceTraveled((int)transform.position.z);
+            forward_speed += (Time.deltaTime / 10f);
+
             // User press Right
-            if (Input.GetKeyDown(KeyCode.D) && !GameStateManager.instance.IsPaused())
+            if (Input.GetKeyDown(KeyCode.D) && Time.timeScale != 0f)
             {
                 if (current_lane_pos == LanePosition.Left)
                 {
@@ -70,7 +74,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             // User press Left
-            if (Input.GetKeyDown(KeyCode.A) && !GameStateManager.instance.IsPaused())
+            if (Input.GetKeyDown(KeyCode.A) && Time.timeScale != 0f)
             {
                 if (current_lane_pos == LanePosition.Right)
                 {
@@ -91,7 +95,7 @@ public class PlayerController : MonoBehaviour
             // User press Jump 
             if (player_controller.isGrounded)
             {
-                if (Input.GetKeyDown(KeyCode.Space) && !GameStateManager.instance.IsPaused())
+                if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale != 0f)
                 {
                     vertical_velocity = game_settings.jump_force;
                     AudioManager.instance.PlayJumpSFX();
@@ -106,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
             // Movement vector for move()
             Vector3 motion_vector = new Vector3(distance_to_lane - transform.position.x,
-                vertical_velocity * grasp_multiplier * Time.deltaTime, game_settings.forward_speed* chill_multiplier * Time.deltaTime);
+                vertical_velocity * grasp_multiplier * Time.deltaTime, forward_speed * Time.deltaTime);
 
             // The distance between the lane will update as we approach the target lane
             distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos,

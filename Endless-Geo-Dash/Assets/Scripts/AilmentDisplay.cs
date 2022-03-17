@@ -21,41 +21,38 @@ public class AilmentDisplay : MonoBehaviour
 
     [SerializeField] private Color default_color;
 
-    [SerializeField] private Color default_particle_color;
+    [SerializeField] private RawImage color_display;
 
-    [SerializeField] private ParticleSystem particle;
-
-    private Image image;
+    private RawImage image;
 
     private Ailments current_ailment;
 
     private void Awake()
     {
-        image = GetComponent<Image>();
+        image = GetComponent<RawImage>();
     }
 
     private void Update()
     {
         current_ailment = PlayerStats.instance.GetCurrentAilment();
-        var main = particle.main;
         switch (current_ailment)
         {
 
             case Ailments.Burning:
                 image.color = fire_color;
-                main.startColor = fire_color;
+                color_display.color = fire_color;
                 break;
             case Ailments.Chilled:
                 image.color = water_color;
-                main.startColor = water_color;
+                color_display.color = water_color;
                 break;
             case Ailments.Grasped:
                 image.color = earth_color;
-                main.startColor = earth_color;
+                color_display.color = earth_color;
                 break;
             case Ailments.None:
                 image.color = default_color;
-                main.startColor = default_particle_color;
+                color_display.color = default_color;
                 break;
             default:
                 break;

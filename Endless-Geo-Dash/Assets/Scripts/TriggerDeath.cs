@@ -14,6 +14,10 @@ public class TriggerDeath : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         AudioManager.instance.PlayDeathSFX();
-        GameStateManager.instance.LoseGame();
+
+        if (!GameStateManager.instance.IsLost())
+        {
+            GameStateManager.instance.LoseGame();
+        }
     }
 }

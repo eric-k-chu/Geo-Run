@@ -14,15 +14,15 @@ public class CharacterPortraitDisplay : MonoBehaviour
 {
     [SerializeField] private GameSettings game_settings;
 
-    private Image ui_image;
+    private RawImage ui_image;
 
     private void Awake()
     {
-        ui_image = GetComponent<Image>();
+        ui_image = GetComponent<RawImage>();
     }
 
     private void Start()
     {
-        ui_image.sprite = game_settings.GetPortrait();
+        ui_image.texture = game_settings.GetPortrait();
     }
 }

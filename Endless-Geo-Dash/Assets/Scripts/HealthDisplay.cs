@@ -34,7 +34,7 @@ public class HealthDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (!GameStateManager.instance.IsPaused() && !GameStateManager.instance.IsLost())
+        if (Time.timeScale != 0f && !GameStateManager.instance.IsLost())
         {
             player_health = PlayerStats.instance.GetCurrenHealth();
             ui_slider.value = (player_health / player_max_health) * 100f;

@@ -28,7 +28,7 @@ public class ScoreDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (!GameStateManager.instance.IsPaused() && !GameStateManager.instance.IsLost())
+        if (Time.timeScale != 0f && !GameStateManager.instance.IsLost())
         {
             // player's score will increase as they keep moving forward (z axis)
             player_score = PlayerStats.instance.GetDistancedTraveled();

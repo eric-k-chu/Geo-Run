@@ -160,15 +160,6 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    public bool IsPaused()
-    {
-        if (current_state == GameState.Pause)
-        {
-            return true;
-        }
-        return false;
-    }
-
     public bool IsLost()
     {
         if (current_state == GameState.Lost)

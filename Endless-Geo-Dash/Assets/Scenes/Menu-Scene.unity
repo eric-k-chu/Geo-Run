@@ -4311,7 +4311,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6280888568702301191}
   - component: {fileID: 6280888568702301190}
-  - component: {fileID: 6280888568702301189}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -4319,18 +4318,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6280888568702301189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6280888568702301184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107d7f0d812744b4cbae1027ae5d16bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &6280888568702301190
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4578,7 +4565,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6280888569352106679}
   - component: {fileID: 6280888569352106678}
-  - component: {fileID: 6280888569352106677}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -4586,18 +4572,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6280888569352106677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6280888569352106672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107d7f0d812744b4cbae1027ae5d16bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &6280888569352106678
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4792,8 +4766,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0b797f12ef60144aef12123b62e086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music_source: {fileID: 0}
   sfx_source: {fileID: 6280888568702301190}
   ui_source: {fileID: 6280888569352106678}
+  bgm: {fileID: 0}
   jump: {fileID: 8300000, guid: b71edef5d6eb84fe0b6837f05a411bd4, type: 3}
   move_sideways: {fileID: 8300000, guid: 626aeda33e0134a66a6257c865d0c5c0, type: 3}
   ui_button: {fileID: 8300000, guid: 792a6e132d38a4f70bbae7f091a6cab3, type: 3}
