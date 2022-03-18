@@ -3021,12 +3021,12 @@ MonoBehaviour:
   sfx_source: {fileID: 1636191197}
   ui_source: {fileID: 415403373}
   bgm: {fileID: 8300000, guid: dc30d40c2e841aa4e85ff124f8d2b702, type: 3}
-  jump: {fileID: 8300000, guid: b71edef5d6eb84fe0b6837f05a411bd4, type: 3}
+  jump: {fileID: 8300000, guid: 6a55b1210d28e48f9be508821dfab1d3, type: 3}
   move_sideways: {fileID: 8300000, guid: 626aeda33e0134a66a6257c865d0c5c0, type: 3}
   ui_button: {fileID: 8300000, guid: 792a6e132d38a4f70bbae7f091a6cab3, type: 3}
   ui_menu_appear: {fileID: 8300000, guid: 0155e7fb6ef844abc976d5f934ce1b1e, type: 3}
   crystal_pickup: {fileID: 8300000, guid: 24eaeae153b524bb6a55fdcc7ee3c735, type: 3}
-  checkpoint_pass: {fileID: 8300000, guid: c1726d04415374b73a017619468158d2, type: 3}
+  checkpoint_pass: {fileID: 8300000, guid: 1713622cd2b3b4eb59001aa73d8b96e4, type: 3}
   death: {fileID: 8300000, guid: aa56a9a240f7f4261b6b3c11198a0b1a, type: 3}
 --- !u!1 &965083491
 GameObject:
