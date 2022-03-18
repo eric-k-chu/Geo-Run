@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     // Movement Variables
     [SerializeField] private GameSettings game_settings;
-    public float forward_speed;
+    private float forward_speed;
     private float vertical_velocity;
     private float artificial_gravity;
 

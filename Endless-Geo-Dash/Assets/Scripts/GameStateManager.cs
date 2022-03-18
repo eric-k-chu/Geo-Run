@@ -7,6 +7,7 @@ FILE DESCRIPTION:
 This file contains the GameStateManager class, which keeps track of the user and the current game state
 */
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
@@ -15,7 +16,13 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] private GameObject[] character_list;
 
+    [SerializeField] private GameObject[] fractured_character_list;
+
     [SerializeField] private GameObject waiting_ui_canvas;
+
+    private GameObject active_player;
+
+    private int character_type;
 
     private enum GameState { Initial, Waiting, Running, Pause, Lost }
     private GameState current_state;
@@ -40,6 +47,8 @@ public class GameStateManager : MonoBehaviour
     private void Start()
     {
         PlayerStats.instance.ResetAllStats();
+        character_type = PlayerPrefs.GetInt(UserPref.instance.CharacterType);
+        active_player = character_list[character_type];
         TransitionState(GameState.Initial);
     }
 
@@ -129,8 +138,7 @@ public class GameStateManager : MonoBehaviour
         {
             case GameState.Initial:
                 {
-                    GameObject player = character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)];
-                    player.SetActive(true);
+                    active_player.SetActive(true);
                     Time.timeScale = 1f;
                     TransitionState(GameState.Waiting);
                     break;
@@ -151,13 +159,23 @@ public class GameStateManager : MonoBehaviour
                 }
             case GameState.Lost:
                 {
-                    Time.timeScale = 0f;
+                    Instantiate(fractured_character_list[character_type], 
+                        active_player.transform.position, 
+                        active_player.transform.rotation);
+                    active_player.SetActive(false);
                     ShowGameMenu(true);
+                    StartCoroutine(PauseTimeAfterSeconds(2f));
                     break;
                 }
             default:
                 break;
         }
+    }
+
+    IEnumerator PauseTimeAfterSeconds(float value)
+    {
+        yield return new WaitForSeconds(value);
+        Time.timeScale = 0f;
     }
 
     public bool IsLost()
