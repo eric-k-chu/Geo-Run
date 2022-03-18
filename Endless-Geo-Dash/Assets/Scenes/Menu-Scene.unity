@@ -1642,7 +1642,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You need to be grasped to pass a <color=lime>water</color> checkpoint.
+  m_Text: You need to be grasped to pass a <color=lime>earth</color> checkpoint.
 --- !u!222 &498954197
 CanvasRenderer:
   m_ObjectHideFlags: 0
