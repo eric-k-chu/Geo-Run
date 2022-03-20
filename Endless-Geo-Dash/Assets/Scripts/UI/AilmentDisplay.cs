@@ -32,30 +32,48 @@ public class AilmentDisplay : MonoBehaviour
         image = GetComponent<RawImage>();
     }
 
-    private void Update()
+    private void Start()
     {
-        current_ailment = PlayerStats.instance.GetCurrentAilment();
+        GameStateManager.instance.OnPlayerInflictedAilment += SetAilmentDisplay;
+    }
+
+    private void SetAilmentDisplay(Ailments type)
+    {
+        current_ailment = type;
         switch (current_ailment)
         {
-
             case Ailments.Burning:
-                image.color = fire_color;
-                color_display.color = fire_color;
-                break;
+                {
+                    image.color = fire_color;
+                    color_display.color = fire_color;
+                    break;
+                }
             case Ailments.Chilled:
-                image.color = water_color;
-                color_display.color = water_color;
-                break;
+                {
+                    image.color = water_color;
+                    color_display.color = water_color;
+                    break;
+                }
             case Ailments.Grasped:
-                image.color = earth_color;
-                color_display.color = earth_color;
-                break;
+                {
+                    image.color = earth_color;
+                    color_display.color = earth_color;
+                    break;
+                }
             case Ailments.None:
-                image.color = default_color;
-                color_display.color = default_color;
-                break;
+                {
+                    image.color = default_color;
+                    color_display.color = default_color;
+                    break;
+                }
             default:
                 break;
         }
     }
+
+    private void OnDestroy()
+    {
+        GameStateManager.instance.OnPlayerInflictedAilment -= SetAilmentDisplay;
+    }
+
 }

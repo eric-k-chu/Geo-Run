@@ -28,16 +28,24 @@ public class GameStateManager : MonoBehaviour
     private GameState current_state;
 
     public event Action<bool> OnPlayerPause;
-    public void ShowPauseMenu(bool value)
-    {
-        OnPlayerPause?.Invoke(value);
-    }
 
     public event Action<bool> OnGameStateLost;
-    public void ShowGameMenu(bool value)
-    {
-        OnGameStateLost?.Invoke(value);
-    }
+
+    public event Action<int> OnPlayerCheckpoint;
+
+    public event Action<int> OnPlayerMoveForward;
+
+    public event Action<int> OnPlayerDeath;
+
+    public event Action<float> OnPlayerHealthChange;
+
+    public event Action<Ailments> OnPlayerInflictedAilment;
+
+    public event Action<float> OnPlayerBurned;
+
+    public event Action<float> OnPlayerChilled;
+
+    public event Action<float> OnPlayerGrasped;
 
     private void Awake()
     {
@@ -46,7 +54,6 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerStats.instance.ResetAllStats();
         character_type = PlayerPrefs.GetInt(UserPref.instance.CharacterType);
         active_player = character_list[character_type];
         TransitionState(GameState.Initial);
@@ -194,6 +201,56 @@ public class GameStateManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void ShowPauseMenu(bool value)
+    {
+        OnPlayerPause?.Invoke(value);
+    }
+
+    public void ShowGameMenu(bool value)
+    {
+        OnGameStateLost?.Invoke(value);
+    }
+
+    public void SetCheckpointDisplay(int value)
+    {
+        OnPlayerCheckpoint?.Invoke(value);
+    }
+
+    public void SetDistance(int value)
+    {
+        OnPlayerMoveForward?.Invoke(value);
+    }
+
+    public void SetFinalDistanceTraveled(int value)
+    {
+        OnPlayerDeath?.Invoke(value);
+    }
+
+    public void SetPlayerHealth(float value)
+    {
+        OnPlayerHealthChange?.Invoke(value);
+    }
+
+    public void SetPlayerAilment(Ailments type)
+    {
+        OnPlayerInflictedAilment?.Invoke(type);
+    }
+
+    public void SetBurnMultiplier(float value)
+    {
+        OnPlayerBurned?.Invoke(value);
+    }
+
+    public void SetChillMultiplier(float value)
+    {
+        OnPlayerChilled?.Invoke(value);
+    }
+
+    public void SetGraspMulitplier(float value)
+    {
+        OnPlayerGrasped?.Invoke(value);
     }
 
     // Terminate GameState.Lost

@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class CharacterPortraitDisplay : MonoBehaviour
 {
-    [SerializeField] private GameSettings game_settings;
+    [SerializeField] private PlayerVariables player_var;
 
     private RawImage ui_image;
 
@@ -23,6 +23,6 @@ public class CharacterPortraitDisplay : MonoBehaviour
 
     private void Start()
     {
-        ui_image.texture = game_settings.GetPortrait();
+        ui_image.texture = player_var.GetPortrait();
     }
 }

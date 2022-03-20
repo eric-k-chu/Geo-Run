@@ -23,16 +23,19 @@ public class ScoreDisplay : MonoBehaviour
 
     private void Start()
     {
+        GameStateManager.instance.OnPlayerMoveForward += UpdateDistance;
         player_score = 0;
+        ui_text.text = player_score.ToString();
     }
 
-    private void Update()
+    private void UpdateDistance(int value)
     {
-        if (Time.timeScale != 0f && !GameStateManager.instance.IsLost())
-        {
-            // player's score will increase as they keep moving forward (z axis)
-            player_score = PlayerStats.instance.GetDistancedTraveled();
-            ui_text.text = player_score.ToString();
-        }
+        player_score = value;
+        ui_text.text = player_score.ToString();
+    }
+
+    private void OnDestroy()
+    {
+        GameStateManager.instance.OnPlayerMoveForward -= UpdateDistance;
     }
 }

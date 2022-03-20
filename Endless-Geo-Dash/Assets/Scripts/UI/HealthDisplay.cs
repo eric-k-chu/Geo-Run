@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class HealthDisplay : MonoBehaviour
 {
-    [SerializeField] private GameSettings game_settings;
+    [SerializeField] private PlayerVariables player_var;
 
     private float player_max_health;
     private float player_health;
@@ -27,17 +27,21 @@ public class HealthDisplay : MonoBehaviour
 
     private void Start()
     {
-        player_max_health = game_settings.maximum_player_health;
+        GameStateManager.instance.OnPlayerHealthChange += UpdateHealth;
+        player_max_health = player_var.maximum_player_health;
         ui_slider.maxValue = player_max_health;
         player_health = player_max_health;
+        ui_slider.value = (player_health / player_max_health) * 100f;
     }
 
-    private void Update()
+    private void UpdateHealth(float value)
     {
-        if (Time.timeScale != 0f && !GameStateManager.instance.IsLost())
-        {
-            player_health = PlayerStats.instance.GetCurrenHealth();
-            ui_slider.value = (player_health / player_max_health) * 100f;
-        }
+        player_health = value;
+        ui_slider.value = (player_health / player_max_health) * 100f;
+    }
+
+    private void OnDestroy()
+    {
+        GameStateManager.instance.OnPlayerHealthChange -= UpdateHealth;
     }
 }

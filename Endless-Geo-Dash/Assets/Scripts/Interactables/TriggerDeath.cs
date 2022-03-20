@@ -13,11 +13,14 @@ public class TriggerDeath : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        AudioManager.instance.PlayDeathSFX();
-
-        if (!GameStateManager.instance.IsLost())
+        if (other.gameObject.CompareTag("Player Collision Area"))
         {
-            GameStateManager.instance.LoseGame();
+            AudioManager.instance.PlayDeathSFX();
+            GameStateManager.instance.SetFinalDistanceTraveled((int)other.gameObject.transform.parent.transform.position.z);
+            if (!GameStateManager.instance.IsLost())
+            {
+                GameStateManager.instance.LoseGame();
+            }
         }
     }
 }

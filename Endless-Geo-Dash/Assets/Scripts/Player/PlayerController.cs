@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private float distance_to_lane;
 
     // Movement Variables
-    [SerializeField] private GameSettings game_settings;
+    [SerializeField] private PlayerVariables player_var;
     private float forward_speed;
     private float vertical_velocity;
     private float artificial_gravity;
@@ -43,16 +43,18 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        GameStateManager.instance.OnPlayerInflictedAilment += GetCurrentAilment;
+        GameStateManager.instance.OnPlayerChilled += GetChillMultiplier;
+        GameStateManager.instance.OnPlayerGrasped += GetGraspMultiplier;
         current_lane_pos = LanePosition.Middle;
-        forward_speed = game_settings.forward_speed;
+        forward_speed = player_var.forward_speed;
     }
 
     private void Update()
     {
         if (!GameStateManager.instance.IsLost())
         {
-            GetCurrentAilment();
-            PlayerStats.instance.SetDistanceTraveled((int)transform.position.z);
+            GameStateManager.instance.SetDistance((int)transform.position.z);
             forward_speed += (Time.deltaTime / 10f);
 
             // User press Right
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour
                 {
                     player_animator.SetTrigger("move_right");
                     current_lane_pos = LanePosition.Right;
-                    target_lane_xpos = game_settings.distance_between_lanes;
+                    target_lane_xpos = player_var.distance_between_lanes;
                     AudioManager.instance.PlayMoveSFX();
                 }
             }
@@ -87,7 +89,7 @@ public class PlayerController : MonoBehaviour
                 {
                     player_animator.SetTrigger("move_left");
                     current_lane_pos = LanePosition.Left;
-                    target_lane_xpos = -game_settings.distance_between_lanes;
+                    target_lane_xpos = -player_var.distance_between_lanes;
                     AudioManager.instance.PlayMoveSFX();
                 }
             }
@@ -97,15 +99,15 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale != 0f)
                 {
-                    vertical_velocity = game_settings.jump_force;
+                    vertical_velocity = player_var.jump_force;
                     AudioManager.instance.PlayJumpSFX();
                 }
             }
             // Calculating Falling Physics
             else
             {
-                artificial_gravity = Mathf.Lerp(game_settings.fall_multiplier, game_settings.fall_multiplier * 1.2f, Time.deltaTime);
-                vertical_velocity -= game_settings.jump_force * artificial_gravity * Time.deltaTime;
+                artificial_gravity = Mathf.Lerp(player_var.fall_multiplier, player_var.fall_multiplier * 1.2f, Time.deltaTime);
+                vertical_velocity -= player_var.jump_force * artificial_gravity * Time.deltaTime;
             }
 
             // Movement vector for move()
@@ -114,16 +116,16 @@ public class PlayerController : MonoBehaviour
 
             // The distance between the lane will update as we approach the target lane
             distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos,
-                game_settings.horizontal_speed * chill_multiplier * Time.deltaTime);
+                player_var.horizontal_speed * chill_multiplier * Time.deltaTime);
 
             player_controller.Move(motion_vector);
         }
     }
 
     // Gets the current inflicted Ailment on the player
-    private void GetCurrentAilment()
+    private void GetCurrentAilment(Ailments type)
     {
-        current_ailment = PlayerStats.instance.GetCurrentAilment();
+        current_ailment = type;
 
         if (current_ailment == Ailments.Burning)
         {
@@ -132,17 +134,32 @@ public class PlayerController : MonoBehaviour
         else if (current_ailment == Ailments.Chilled)
         {
             grasp_multiplier = 1f;
-            chill_multiplier = PlayerStats.instance.GetChillMultiplier();
         } 
         else if (current_ailment == Ailments.Grasped)
         {
             chill_multiplier = 1f;
-            grasp_multiplier = PlayerStats.instance.GetGraspMultiplier();
         } 
         // return ailment multipliers back to normal if no ailment is inflicted on the player
         else
         {
             chill_multiplier = grasp_multiplier = 1f;
         }
+    }
+
+    private void GetChillMultiplier(float value)
+    {
+        chill_multiplier = value;
+    }
+
+    private void GetGraspMultiplier(float value)
+    {
+        grasp_multiplier = value;
+    }
+
+    private void OnDestroy()
+    {
+        GameStateManager.instance.OnPlayerInflictedAilment -= GetCurrentAilment;
+        GameStateManager.instance.OnPlayerChilled -= GetChillMultiplier;
+        GameStateManager.instance.OnPlayerGrasped -= GetGraspMultiplier;
     }
 }

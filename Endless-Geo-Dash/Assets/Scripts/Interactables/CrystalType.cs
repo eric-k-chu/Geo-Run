@@ -4,12 +4,12 @@ MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
-This file contains the Crystal class, which contains the
-functions that make up a Crystal object
+This file contains the CrystalType class, which contains the
+functions that make up a CrystalType object
 */
 using UnityEngine;
 
-public class Crystal : MonoBehaviour
+public class CrystalType : MonoBehaviour
 {
     private Elements type;
 

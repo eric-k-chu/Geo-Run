@@ -18,6 +18,8 @@ public class EndScoreDisplay : MonoBehaviour
 
     [SerializeField] private GameObject high_score;
 
+    private int distance;
+
     private Text distance_traveled_text;
 
     private Text final_score_text;
@@ -30,17 +32,21 @@ public class EndScoreDisplay : MonoBehaviour
 
     private void Start()
     {
+        GameStateManager.instance.OnPlayerDeath += SetDistanceTraveled;
         GameStateManager.instance.OnGameStateLost += DisplayScore;
         // highs_score.SetActive(true);
     }
 
-    private void DisplayScore(bool val)
+    private void SetDistanceTraveled(int value)
     {
-        float dist = PlayerStats.instance.GetDistancedTraveled();
+        distance = value;
+    }
 
-        distance_traveled_text.text = dist.ToString() + " m";
+    private void DisplayScore(bool value)
+    {
+        distance_traveled_text.text = distance.ToString() + " m";
 
-        int total_score = (int)(dist);
+        int total_score = distance;
 
         if (PlayerPrefs.GetInt(UserPref.instance.HighScore) < total_score)
         {
@@ -55,6 +61,7 @@ public class EndScoreDisplay : MonoBehaviour
 
     private void OnDestroy()
     {
+        GameStateManager.instance.OnPlayerDeath -= SetDistanceTraveled;
         GameStateManager.instance.OnGameStateLost -= DisplayScore;     
     }
 }

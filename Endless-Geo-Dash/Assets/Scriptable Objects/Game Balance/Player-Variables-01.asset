@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1e26fe49d287e54c81be1801ce79421, type: 3}
-  m_Name: Game-Settings-01
+  m_Name: Player-Variables-01
   m_EditorClassIdentifier: 
   maximum_player_health: 100
   distance_between_lanes: 8
@@ -20,5 +20,5 @@ MonoBehaviour:
   fall_multiplier: 2.5
   character_list:
   - {fileID: 11400000, guid: 9a297a2a871201d4385f27784dc28552, type: 2}
-  - {fileID: 11400000, guid: a4ae0226a0b29f24482cd3652b5f9520, type: 2}
+  - {fileID: 11400000, guid: 3952401430cbb394e976cffe1c22f979, type: 2}
   - {fileID: 11400000, guid: a0b74b007896aea49a2a4c04bd849e33, type: 2}

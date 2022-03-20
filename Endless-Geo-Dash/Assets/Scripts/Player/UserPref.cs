@@ -19,7 +19,7 @@ public class UserPref : MonoBehaviour
 {
     public static UserPref instance { get; private set; }
 
-    private const string k_character_type = "Character-Type";
+    private const string k_character_type = "CharacterInfo-Type";
     private const string k_master_vol = "Master-Volume";
     private const string k_music_vol = "Music-Volume";
     private const string k_sfx_vol = "SFX-Volume";

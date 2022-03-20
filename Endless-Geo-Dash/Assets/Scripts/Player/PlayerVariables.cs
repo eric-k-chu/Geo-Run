@@ -4,12 +4,13 @@ MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
-This file contains the GameSettings scriptable object, which contains data about the game
+This file contains the PlayerVariables scriptable object, which contains variables that 
+control player movement and health
 */
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Game Settings", menuName = "Game Settings")]
-public class GameSettings : ScriptableObject
+[CreateAssetMenu(fileName = "New Player Variables", menuName = "Player Variables")]
+public class PlayerVariables : ScriptableObject
 {
     public float maximum_player_health;
     public float distance_between_lanes;
@@ -18,7 +19,7 @@ public class GameSettings : ScriptableObject
     public float jump_force;
     public float fall_multiplier;
 
-    public Character[] character_list;
+    public CharacterInfo[] character_list;
 
     public string GetName()
     {

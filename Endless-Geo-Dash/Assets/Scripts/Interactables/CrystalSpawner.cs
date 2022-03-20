@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class CrystalSpawner : MonoBehaviour
 {
-    [SerializeField] private Crystal[] crystals;
+    [SerializeField] private CrystalType[] crystals;
 
     private int[] elemental_typeset_0 = { 0, 1, 2 };
     private int[] elemental_typeset_1 = { 0, 2, 1 };

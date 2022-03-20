@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1801922970437772659}
   m_Layer: 12
   m_Name: Player Collision Area
-  m_TagString: Untagged
+  m_TagString: Player Collision Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,24 +104,28 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2668605608433959078, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2844976710075627971, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3328702346450542074, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8140667698216066233, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
@@ -184,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c80a670668a6c541a0ed76dc10f8aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game_settings: {fileID: 11400000, guid: 9cd891ea747ac0141bf44fecf6f18453, type: 2}
+  player_var: {fileID: 11400000, guid: 9cd891ea747ac0141bf44fecf6f18453, type: 2}
 --- !u!114 &6651213904663886999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,5 +201,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e9fcbd513a39d418c3021ed45e552e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game_settings: {fileID: 11400000, guid: 9cd891ea747ac0141bf44fecf6f18453, type: 2}
+  player_var: {fileID: 11400000, guid: 9cd891ea747ac0141bf44fecf6f18453, type: 2}
   ailment_curves: {fileID: 11400000, guid: a51ddd2851b2f464d9c3894f56f1a16d, type: 2}
