@@ -23,7 +23,7 @@ public class AilmentCalcuation : MonoBehaviour
 
     private float grasp_multiplier = 1f;
 
-    private float timer;
+    private float timer;    // timer used to evaluate the functions from ailment curves at f(x) = function(timer)
 
     [SerializeField] private AilmentCurves ailment_curves;
 
@@ -123,7 +123,7 @@ public class AilmentCalcuation : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Checkpoint"))
         {
-            Elements type = other.gameObject.GetComponent<Checkpoints>().GetElementalType();
+            Elements type = other.gameObject.GetComponent<CheckpointType>().GetElementalType();
             if (type == Elements.Fire && current_ailment != Ailments.Burning)
             {
                 AudioManager.instance.PlayDeathSFX();

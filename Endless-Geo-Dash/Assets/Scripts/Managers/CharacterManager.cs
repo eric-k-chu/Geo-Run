@@ -4,8 +4,8 @@ MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
-This file contains the CharacterManager class, which manages
-which character is highlighted in the CharacterHighlight Selection GUI
+This file contains the CharacterManager class, which tells the CharacterHighlight
+object which character image should be highlighted
 */
 using UnityEngine;
 
@@ -15,6 +15,7 @@ public class CharacterManager : MonoBehaviour
 
     public void ChangeCharacter(int id)
     {
+        // Turn off previous highlighted image and higlight the player selected image
         for (int index = 0; index < ui_character_image_list.Length; index++)
         {
             CharacterHighlight character_button = ui_character_image_list[index].GetComponent<CharacterHighlight>();

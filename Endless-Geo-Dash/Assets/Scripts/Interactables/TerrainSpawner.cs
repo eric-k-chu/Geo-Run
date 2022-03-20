@@ -29,9 +29,6 @@ public class TerrainSpawner : MonoBehaviour
             Vector3 spawn_position_1 = new Vector3(transform.position.x,
                 transform.position.y, transform.position.z + length);
 
-            //Quaternion orientation = Quaternion.Euler(Vector3.zero);
-
-            //Instantiate(checkpoint[index], spawn_position_1, orientation);
             GameObject obj;
             int max = 1;
             int index = 0;
@@ -58,7 +55,6 @@ public class TerrainSpawner : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        // Destroy(transform.parent.gameObject, 8f);
         if (other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(DisableObjectAfterSeconds());

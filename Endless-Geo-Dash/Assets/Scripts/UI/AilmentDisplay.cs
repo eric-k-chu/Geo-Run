@@ -5,7 +5,7 @@ COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
 This file contains the AilmentDisplay class, which contains
-functions that modifies the fill image of the ring sprite
+functions that modifies the image of the ring sprite
 located under the Ailment Display UI object
 */
 using UnityEngine;

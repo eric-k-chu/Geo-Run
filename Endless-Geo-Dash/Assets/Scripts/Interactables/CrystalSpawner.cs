@@ -5,7 +5,7 @@ COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
 This file contains the CrystalSpawner class, which chooses
-the elemental type of a crystal for a platform
+the elemental type of the three crystals for a platform
 */
 using UnityEngine;
 
@@ -13,6 +13,7 @@ public class CrystalSpawner : MonoBehaviour
 {
     [SerializeField] private CrystalType[] crystals;
 
+    // Permutations of fire (0), water(1), and earth(2)
     private int[] elemental_typeset_0 = { 0, 1, 2 };
     private int[] elemental_typeset_1 = { 0, 2, 1 };
     private int[] elemental_typeset_2 = { 1, 0, 2 };
@@ -22,7 +23,7 @@ public class CrystalSpawner : MonoBehaviour
 
     private void Start()
     {
-        int random_permutation = Random.Range(0, 5);
+        int random_permutation = Random.Range(0, 6);
 
         switch (random_permutation)
         {

@@ -1047,7 +1047,6 @@ GameObject:
   m_Component:
   - component: {fileID: 217675127}
   - component: {fileID: 1667911291508135439}
-  - component: {fileID: 4698897510803046994}
   - component: {fileID: 217675128}
   - component: {fileID: 217675129}
   m_Layer: 0
@@ -7327,18 +7326,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 339da5e28edd56a499d337b4666fe6c2, type: 3}
---- !u!114 &4698897510803046994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217675126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53dd06563d66f974098975604c64aca8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6535802079350663719
 PrefabInstance:
   m_ObjectHideFlags: 0

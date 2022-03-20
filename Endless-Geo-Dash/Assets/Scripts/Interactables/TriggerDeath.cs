@@ -5,7 +5,7 @@ COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
 This file contains the TriggerDeath class, which causes 
-the player to die if the collide with a trigger layer
+the player to die if they collide with the trigger death layer
 */
 using UnityEngine;
 

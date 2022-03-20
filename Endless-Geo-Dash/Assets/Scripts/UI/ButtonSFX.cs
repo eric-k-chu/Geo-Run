@@ -5,7 +5,7 @@ COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
 This file contains the ButtonSFX class, which plays the
-UI button sfx on state enter and exit
+UI button sfx on state enter
 */
 using UnityEngine;
 

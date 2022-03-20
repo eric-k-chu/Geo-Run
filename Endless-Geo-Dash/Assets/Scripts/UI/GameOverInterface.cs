@@ -40,7 +40,6 @@ public class GameOverInterface : MonoBehaviour
         GameStateManager.instance.OnGameStateLost -= SetActiveGameOverMenu;
     }
 
-    // Loads Main Menu Scene
     public void ToMainMenu()
     {
         GameStateManager.instance.EndGameStates();

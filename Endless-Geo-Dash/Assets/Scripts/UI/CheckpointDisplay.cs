@@ -5,7 +5,7 @@ COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
 This file contains the CheckpointDisplay class, which will display 
-the element of the next checkpoint on the screen
+the next checkpoint type on the screen
 */
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,7 +32,7 @@ public class CheckpointDisplay : MonoBehaviour
         GameStateManager.instance.OnPlayerCheckpoint += SetCheckpointDisplay;
     }
 
-    // Updates the next checkpoint given an integer param
+    // Displays the next checkpoint type given an integer param
     // 1 for fire, 2 for water, 3 for earth
     public void SetCheckpointDisplay(int val)
     {

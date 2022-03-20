@@ -5,7 +5,7 @@ COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
 This file contains the SetVolumeNumber class, which contains functions
-that allow update the Volume number based on the user's preferences
+that updates the Volume number based on the user's preferences
 */
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +31,6 @@ public class SetVolumeNumber : MonoBehaviour
         UpdateVolumeText();
     }
 
-    // Changes the volume text given user_settings.volume
     private void UpdateVolumeText()
     {
         float volume_value = 0;

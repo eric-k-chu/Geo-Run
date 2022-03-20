@@ -8,7 +8,6 @@ This file contains the PooledObjectManager class, which manages
 all the object pools in the game
 */
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

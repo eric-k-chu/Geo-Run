@@ -5,7 +5,7 @@ COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
 This file contains the MenuObjectAnimations class, which contains
-functions that rotate the background objects
+functions that rotate the background objects in the menu scene
 */
 using UnityEngine;
 

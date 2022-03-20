@@ -4,7 +4,8 @@ MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
-This file contains the GameStateManager class, which keeps track of the user and the current game state
+This file contains the GameStateManager class, which keeps track of 
+the player object and the current game state
 */
 using System;
 using System.Collections;
@@ -96,14 +97,12 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    // Transition to a new game state given a GameState obj param
     private void TransitionState (GameState state)
     {
         TerminateState(current_state);
         ActivateState(state);
     }
 
-    // Performs the necessary functions on exiting a game state given a GameState obj param
     private void TerminateState(GameState state)
     {
         switch (state)
@@ -136,8 +135,6 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-
-    // Performs the necessary functions on entering a game state given a GameState obj param
     private void ActivateState(GameState state)
     {
         current_state = state;

@@ -41,7 +41,6 @@ public class PauseInterface: MonoBehaviour
         GameStateManager.instance.OnPlayerPause -= SetActivePauseMenu;
     }
 
-    // Loads Main Menu Scene
     public void ToMainMenu()
     {
         GameStateManager.instance.EndGameStates();

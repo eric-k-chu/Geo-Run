@@ -51,28 +51,26 @@ public class SetVolumeSlider : MonoBehaviour
         ui_slider.value = volume_value;
     }
 
-    // Change Master Volume
+    // audio mixer value is logarithmic, so conversion is needed float -> log 10
+
     public void SetMasterVolume(float value)
     {
         PlayerPrefs.SetFloat(UserPref.instance.MasterVolume, value);
         master_mixer.SetFloat("MasterVol", Mathf.Log10(value) * 20);
     }
 
-    // Change Music Volume
     public void SetMusicVolume(float value)
     {
         PlayerPrefs.SetFloat(UserPref.instance.MusicVolume, value);
         master_mixer.SetFloat("MusicVol", Mathf.Log10(value) * 20);
     }
 
-    // Change SFX Volume
     public void SetSFXVolume(float value)
     {
         PlayerPrefs.SetFloat(UserPref.instance.SFXVolume, value);
         master_mixer.SetFloat("SFXVol", Mathf.Log10(value) * 20);
     }
 
-    // Change UI Volume
     public void SetUIVolume(float value)
     {
         PlayerPrefs.SetFloat(UserPref.instance.UIVolume, value);

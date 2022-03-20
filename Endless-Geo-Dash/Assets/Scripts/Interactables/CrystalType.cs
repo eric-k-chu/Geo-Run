@@ -4,8 +4,8 @@ MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
-This file contains the CrystalType class, which contains the
-functions that make up a CrystalType object
+This file contains the CrystalType class, contains methods
+that set the elemental type of a crystal and return the elemental type
 */
 using UnityEngine;
 
@@ -24,7 +24,6 @@ public class CrystalType : MonoBehaviour
         mesh = GetComponent<MeshRenderer>();
     }
 
-    // Sets a random element to the crystal
     public void SetElementalType(int ele_type)
     {
         if (ele_type == 0)
@@ -44,13 +43,12 @@ public class CrystalType : MonoBehaviour
         }
     }
 
-    // returns type
     public Elements GetElementalType()
     {
         return type;
     }
 
-    // Destroy object when player collides
+    // Destroy crystal when player collides
     private void OnTriggerEnter()
     {
         AudioManager.instance.PlayCrystalPickupSFX();
