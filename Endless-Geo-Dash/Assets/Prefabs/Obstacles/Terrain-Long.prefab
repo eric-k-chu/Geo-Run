@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4502603059007774164}
   - component: {fileID: 1844367987644967198}
   - component: {fileID: 1033883189074769304}
-  - component: {fileID: 1033883189074769305}
+  - component: {fileID: 3401386742083375271}
   m_Layer: 7
   m_Name: Terrain-Long
   m_TagString: Untagged
@@ -63,7 +63,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 57332becde030f0468ddf35668cfe819, type: 2}
-  - {fileID: 2100000, guid: 5c095fdba2b03e54882fd20833f0b36d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 1.0148859, z: 48}
   m_Center: {x: 0, y: 7.492557, z: 0}
---- !u!65 &1033883189074769305
+--- !u!65 &3401386742083375271
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,7 +108,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 16, z: 48}
+  m_Size: {x: 6, y: 16, z: 48}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1033883188833987872
 GameObject:
