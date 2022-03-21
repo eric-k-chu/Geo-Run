@@ -14,7 +14,6 @@ namespace GPEJ
     [CreateAssetMenu(fileName = "New Player Variables", menuName = "Player Variables")]
     public class PlayerVariables : ScriptableObject
     {
-        public float maximum_player_health;
         public float distance_between_lanes;
         public float forward_speed;
         public float horizontal_speed;

@@ -9,7 +9,7 @@ that increase the score multiplier
 */
 using UnityEngine;
 
-namespace GPEJ.Player.Collectibles
+namespace GPEJ.Player.Interactables
 {
     public class Crystals : MonoBehaviour
     {
@@ -17,7 +17,9 @@ namespace GPEJ.Player.Collectibles
         {
             if (other.gameObject.CompareTag("Player"))
             {
-
+                AudioManager.instance.PlayCrystalPickupSFX();
+                GameStateManager.instance.UpdateCrystalInUI();
+                gameObject.SetActive(false);
             }
         }
     }

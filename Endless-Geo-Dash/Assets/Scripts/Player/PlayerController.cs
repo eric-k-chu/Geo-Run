@@ -46,6 +46,7 @@ namespace GPEJ.Player
             {
                 UpdateScore();
                 forward_speed += (Time.deltaTime / 10f);
+                GameStateManager.instance.UpdateVelocityInUI(forward_speed);
 
                 if (Input.GetKeyDown(KeyCode.D) && Time.timeScale != 0f)
                 {
@@ -75,7 +76,7 @@ namespace GPEJ.Player
 
         private void UpdateScore()
         {
-            GameStateManager.instance.SetDistance((int)transform.position.z);
+            GameStateManager.instance.UpdateScoreInUI((int)transform.position.z);
         }
 
         private void MovingRight()

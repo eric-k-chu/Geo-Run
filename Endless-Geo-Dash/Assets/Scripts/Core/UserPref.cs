@@ -54,7 +54,7 @@ namespace GPEJ
 
             if (!PlayerPrefs.HasKey(k_high_score))
             {
-                PlayerPrefs.SetInt(k_high_score, 0);
+                PlayerPrefs.SetFloat(k_high_score, 0f);
             }
         }
 

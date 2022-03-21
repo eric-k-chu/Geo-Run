@@ -20,6 +20,7 @@ namespace GPEJ
         [SerializeField] private GameObject waiting_ui_canvas;
 
         [SerializeField] private float seconds_in_death_animation;
+        private WaitForSeconds timer;
 
         public static GameStateManager instance { get; private set; }
 
@@ -30,13 +31,14 @@ namespace GPEJ
 
         private int character_type;
 
-        private bool is_beginning_of_game = true;
+        private bool is_beginning_of_game;
        
         public event Action<bool> OnPlayerPause;
         public event Action<bool> OnGameStateLost;
         public event Action<int> OnPlayerMoveForward;
+        public event Action<float> OnPlayerVelocityIncrease;
         public event Action<int> OnPlayerDeath;
-        public event Action<float> OnPlayerHealthChange;
+        public event Action OnPlayerCrystalPickup;
 
         private void Awake()
         {
@@ -48,6 +50,8 @@ namespace GPEJ
             character_type = PlayerPrefs.GetInt(UserPref.instance.CharacterType);
             active_player = character_list[character_type];
             TransitionState(GameState.Initial);
+            timer = new WaitForSeconds(seconds_in_death_animation);
+            is_beginning_of_game = true;
         }
 
         private void Update()
@@ -176,12 +180,12 @@ namespace GPEJ
 
         private void StopTime()
         {
-            StartCoroutine(PauseTimeAfterSeconds(seconds_in_death_animation));
+            StartCoroutine(PauseTimeAfterSeconds());
         }
 
-        private IEnumerator PauseTimeAfterSeconds(float value)
+        private IEnumerator PauseTimeAfterSeconds()
         {
-            yield return new WaitForSeconds(value);
+            yield return timer;
             ShowGameOverMenu(true);
             Time.timeScale = 0f;
         }
@@ -191,29 +195,34 @@ namespace GPEJ
             return (current_state == GameState.Lost) ? true : false;
         }
 
-        public void ShowPauseMenu(bool value)
+        public void ShowPauseMenu(bool condition)
         {
-            OnPlayerPause?.Invoke(value);
+            OnPlayerPause?.Invoke(condition);
         }
 
-        public void ShowGameOverMenu(bool value)
+        public void ShowGameOverMenu(bool condition)
         {
-            OnGameStateLost?.Invoke(value);
+            OnGameStateLost?.Invoke(condition);
         }
 
-        public void SetDistance(int value)
+        public void UpdateVelocityInUI(float velocity)
         {
-            OnPlayerMoveForward?.Invoke(value);
+            OnPlayerVelocityIncrease?.Invoke(velocity);
         }
 
-        public void SetFinalDistanceTraveled(int value)
+        public void UpdateScoreInUI(int distance)
         {
-            OnPlayerDeath?.Invoke(value);
+            OnPlayerMoveForward?.Invoke(distance);
         }
 
-        public void SetPlayerHealth(float value)
+        public void SetFinalDistanceTraveled(int distance)
         {
-            OnPlayerHealthChange?.Invoke(value);
+            OnPlayerDeath?.Invoke(distance);
+        }
+
+        public void UpdateCrystalInUI()
+        {
+            OnPlayerCrystalPickup?.Invoke();
         }
 
         public void EndGameStateManager()
