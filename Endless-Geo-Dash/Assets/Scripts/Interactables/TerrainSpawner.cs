@@ -10,55 +10,67 @@ terrain after the player enters the collision area
 
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class TerrainSpawner : MonoBehaviour
+namespace GPEJ.Terrain
 {
-    [SerializeField] private TerrainType type;
-
-    [Header("Length of terrain")]
-    [SerializeField] private int length;
-
-    [Header("Disable terrain after seconds")]
-    [SerializeField] private float time;
-
-
-    private void OnTriggerEnter(Collider other)
+    public class TerrainSpawner : MonoBehaviour
     {
-        if (other.gameObject.CompareTag("Player"))
+        [SerializeField] private TerrainType type;
+
+        [Header("Length of terrain")]
+        [SerializeField] private int length;
+
+        [Header("Disable terrain after seconds")]
+        [SerializeField] private float seconds;
+
+        private WaitForSeconds timer;
+
+        private void Start()
         {
-            Vector3 spawn_position_1 = new Vector3(transform.position.x,
-                transform.position.y, transform.position.z + length);
-
-            GameObject obj;
-            int max = 1;
-            int index = 0;
-            if (type == TerrainType.Background)
-            {
-                index = 0;
-            }
-            else if (type == TerrainType.Platform)
-            {
-                max = PooledObjectManager.instance.pooled_object_list.Count;
-                index = Random.Range(1, max);
-            }
-            obj = PooledObjectManager.instance.GetPooledObject(index);
-            obj.transform.position = spawn_position_1;
-            obj.transform.rotation = Quaternion.identity;
-            obj.SetActive(true);
+            timer = new WaitForSeconds(seconds);
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                Vector3 spawn_position_1 = new Vector3(transform.position.x,
+                    transform.position.y, transform.position.z + length);
+
+                GameObject obj = null;
+                int index = 0;
+
+                if (type == TerrainType.Platform)
+                {
+                    int max = TerrainManager.instance.GetPooledListSize();
+                    // list of platform objects start at position 1 in pool_list
+                    // there is only one background model, so it is at position 0 in pool_list
+                    index = Random.Range(1, max);
+                }
+                obj = TerrainManager.instance.GetPooledTerrain(index);
+                obj.transform.SetPositionAndRotation(spawn_position_1, Quaternion.identity);
+                obj.SetActive(true);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                DisableTerrain();
+            }
+        }
+
+        private void DisableTerrain()
         {
             StartCoroutine(DisableObjectAfterSeconds());
         }
-    }
 
-    IEnumerator DisableObjectAfterSeconds()
-    {
-        yield return new WaitForSeconds(time);
-        gameObject.SetActive(false);
+        private IEnumerator DisableObjectAfterSeconds()
+        {
+            yield return timer;
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -11,69 +11,72 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PauseInterface: MonoBehaviour
+namespace GPEJ.UI
 {
-    [SerializeField] private Animator pause_menu;
-
-    [SerializeField] private Button[] buttons;
-
-    private void Start()
+    public class PauseInterface : MonoBehaviour
     {
-        GameStateManager.instance.OnPlayerPause += SetActivePauseMenu;
-    }
+        [SerializeField] private Animator pause_menu;
 
-    private void SetActivePauseMenu(bool value)
-    {
-        if (value)
+        [SerializeField] private Button[] buttons;
+
+        private void Start()
         {
-            pause_menu.SetTrigger("Active");
-            AudioManager.instance.PlayUIMenuAppear();
+            GameStateManager.instance.OnPlayerPause += SetActivePauseMenu;
         }
-        else
+
+        private void SetActivePauseMenu(bool value)
         {
-            pause_menu.SetTrigger("Inactive");
-            EnableInteractable();
+            if (value)
+            {
+                pause_menu.SetTrigger("Active");
+                AudioManager.instance.PlayUIMenuAppear();
+            }
+            else
+            {
+                pause_menu.SetTrigger("Inactive");
+                EnableInteractable();
+            }
         }
-    }
 
-    private void OnDestroy()
-    {
-        GameStateManager.instance.OnPlayerPause -= SetActivePauseMenu;
-    }
-
-    public void ToMainMenu()
-    {
-        GameStateManager.instance.EndGameStates();
-        SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
-    }
-
-    public void Retry()
-    {
-        GameStateManager.instance.EndGameStates();
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-    }
-
-    public void QuitGame()
-    {
-        GameStateManager.instance.EndGameStates();
-        Application.Quit();
-    }
-
-    // Makes the pause menu buttons uninteractable
-    public void DisableInteractable()
-    {
-        for (int i = 0; i < buttons.Length; i++)
+        private void OnDestroy()
         {
-            buttons[i].interactable = false;
+            GameStateManager.instance.OnPlayerPause -= SetActivePauseMenu;
         }
-    }
 
-    // Makes the pause menu buttons interactable
-    public void EnableInteractable()
-    {
-        for (int i = 0; i < buttons.Length; i++)
+        public void ToMainMenu()
         {
-            buttons[i].interactable = true;
+            GameStateManager.instance.EndGameStateManager();
+            SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
+        }
+
+        public void Retry()
+        {
+            GameStateManager.instance.EndGameStateManager();
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        }
+
+        public void QuitGame()
+        {
+            GameStateManager.instance.EndGameStateManager();
+            Application.Quit();
+        }
+
+        // Makes the pause menu buttons uninteractable
+        public void DisableInteractable()
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].interactable = false;
+            }
+        }
+
+        // Makes the pause menu buttons interactable
+        public void EnableInteractable()
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].interactable = true;
+            }
         }
     }
 }

@@ -9,9 +9,12 @@ the character name and character sprite image
 */
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New CharacterInfo", menuName = "Character Info")]
-public class CharacterInfo : ScriptableObject
+namespace GPEJ
 {
-    public string character_name;
-    public Texture character_portrait;
+    [CreateAssetMenu(fileName = "New CharacterInfo", menuName = "Character Info")]
+    public class CharacterInfo : ScriptableObject
+    {
+        public string character_name;
+        public Texture character_portrait;
+    }
 }

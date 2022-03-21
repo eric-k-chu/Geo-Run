@@ -7,80 +7,82 @@ FILE DESCRIPTION:
 This file contains the AudioManager class, which controls
 the given audio sources in the game
 */
-
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+namespace GPEJ
 {
-    public static AudioManager instance { get; private set; }
-
-    [Header("Audio Sources")]
-    [SerializeField] private AudioSource music_source;
-    [SerializeField] private AudioSource sfx_source;
-    [SerializeField] private AudioSource ui_source;
-
-    [Header("Audio Clips")]
-    [SerializeField] private AudioClip bgm;
-    [SerializeField] private AudioClip jump;
-    [SerializeField] private AudioClip move_sideways;
-    [SerializeField] private AudioClip ui_button;
-    [SerializeField] private AudioClip ui_menu_appear;
-    [SerializeField] private AudioClip crystal_pickup;
-    [SerializeField] private AudioClip checkpoint_pass;
-    [SerializeField] private AudioClip death;
-
-    private void Awake()
+    public class AudioManager : MonoBehaviour
     {
-        instance = this;
-    }
+        public static AudioManager instance { get; private set; }
 
-    public void PlayJumpSFX()
-    {
-        sfx_source.PlayOneShot(jump);
-    }
+        [Header("Audio Sources")]
+        [SerializeField] private AudioSource music_source;
+        [SerializeField] private AudioSource sfx_source;
+        [SerializeField] private AudioSource ui_source;
 
-    public void PlayMoveSFX()
-    {
-        sfx_source.PlayOneShot(move_sideways);
-    }
+        [Header("Audio Clips")]
+        [SerializeField] private AudioClip bgm;
+        [SerializeField] private AudioClip jump;
+        [SerializeField] private AudioClip move_sideways;
+        [SerializeField] private AudioClip ui_button;
+        [SerializeField] private AudioClip ui_menu_appear;
+        [SerializeField] private AudioClip crystal_pickup;
+        [SerializeField] private AudioClip checkpoint_pass;
+        [SerializeField] private AudioClip death;
 
-    public void PlayUIButton()
-    {
-        ui_source.PlayOneShot(ui_button);
-    }
+        private void Awake()
+        {
+            instance = this;
+        }
 
-    public void PlayUIMenuAppear()
-    {
-        ui_source.PlayOneShot(ui_menu_appear);
-    }
+        public void PlayJumpSFX()
+        {
+            sfx_source.PlayOneShot(jump);
+        }
 
-    public void PlayCrystalPickupSFX()
-    {
-        sfx_source.PlayOneShot(crystal_pickup);
-    }
+        public void PlayMoveSFX()
+        {
+            sfx_source.PlayOneShot(move_sideways);
+        }
 
-    public void PlayCheckpointPassSFX()
-    {
-        sfx_source.PlayOneShot(checkpoint_pass);
-    }
+        public void PlayUIButton()
+        {
+            ui_source.PlayOneShot(ui_button);
+        }
 
-    public void PlayDeathSFX()
-    {
-        sfx_source.PlayOneShot(death);
-    }
+        public void PlayUIMenuAppear()
+        {
+            ui_source.PlayOneShot(ui_menu_appear);
+        }
 
-    public void PlayMusic()
-    {
-        music_source.Play();
-    }
+        public void PlayCrystalPickupSFX()
+        {
+            sfx_source.PlayOneShot(crystal_pickup);
+        }
 
-    public void PauseMusic()
-    {
-        music_source.Pause();
-    }
+        public void PlayCheckpointPassSFX()
+        {
+            sfx_source.PlayOneShot(checkpoint_pass);
+        }
 
-    public void ResumeMusic()
-    {
-        music_source.UnPause();
+        public void PlayDeathSFX()
+        {
+            sfx_source.PlayOneShot(death);
+        }
+
+        public void PlayMusic()
+        {
+            music_source.Play();
+        }
+
+        public void PauseMusic()
+        {
+            music_source.Pause();
+        }
+
+        public void ResumeMusic()
+        {
+            music_source.UnPause();
+        }
     }
 }

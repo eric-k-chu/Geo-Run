@@ -10,42 +10,45 @@ character portrait based on user preference
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterHighlight : MonoBehaviour
+namespace GPEJ.UI
 {
-    [SerializeField] private int character_type;
-
-    [SerializeField] private Color selected_color;
-
-    [SerializeField] private Color disabled_color;
-
-    private Image ui_image;
-
-    private void Awake()
+    public class CharacterHighlight : MonoBehaviour
     {
-        ui_image = GetComponent<Image>();
-    }
+        [SerializeField] private int character_type;
 
-    private void Start()
-    {
-        if (character_type == PlayerPrefs.GetInt(UserPref.instance.CharacterType))
+        [SerializeField] private Color selected_color;
+
+        [SerializeField] private Color disabled_color;
+
+        private Image ui_image;
+
+        private void Awake()
         {
-            ui_image.color = selected_color;
+            ui_image = GetComponent<Image>();
         }
-        else
-        {
-            ui_image.color = disabled_color;
-        }
-    }
 
-    public void HighlightIMG(bool val)
-    {
-        if (val)
+        private void Start()
         {
-            ui_image.color = selected_color;
-        } 
-        else
+            if (character_type == PlayerPrefs.GetInt(UserPref.instance.CharacterType))
+            {
+                ui_image.color = selected_color;
+            }
+            else
+            {
+                ui_image.color = disabled_color;
+            }
+        }
+
+        public void HighlightIMG(bool val)
         {
-            ui_image.color = disabled_color;
+            if (val)
+            {
+                ui_image.color = selected_color;
+            }
+            else
+            {
+                ui_image.color = disabled_color;
+            }
         }
     }
 }

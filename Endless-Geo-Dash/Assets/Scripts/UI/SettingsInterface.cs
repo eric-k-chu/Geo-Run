@@ -10,45 +10,48 @@ that allow the user to interact with the settings GUI
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SettingsInterface : MonoBehaviour
+namespace GPEJ.UI
 {
-    [SerializeField] private Animator settings_menu;
-
-    private void Start()
+    public class SettingsInterface : MonoBehaviour
     {
-        if (SceneManager.GetActiveScene().name == "Game-Scene")
-        {
-            GameStateManager.instance.OnPlayerPause += HideSettingsMenu;
-        }
-    }
+        [SerializeField] private Animator settings_menu;
 
-    public void SetActiveSettingsMenu(bool value)
-    {
-        if (value)
+        private void Start()
         {
-            settings_menu.SetTrigger("ActiveSettings");
-            AudioManager.instance.PlayUIMenuAppear();
+            if (SceneManager.GetActiveScene().name == "Game-Scene")
+            {
+                GameStateManager.instance.OnPlayerPause += HideSettingsMenu;
+            }
         }
-        else
-        {
-            settings_menu.SetTrigger("InactiveSettings");
-        }
-    }
 
-    // Close out of settings menu when player presses ESC
-    public void HideSettingsMenu(bool value)
-    {
-        if (!value)
+        public void SetActiveSettingsMenu(bool value)
         {
-            SetActiveSettingsMenu(value);
+            if (value)
+            {
+                settings_menu.SetTrigger("ActiveSettings");
+                AudioManager.instance.PlayUIMenuAppear();
+            }
+            else
+            {
+                settings_menu.SetTrigger("InactiveSettings");
+            }
         }
-    }
 
-    private void OnDestroy()
-    {
-        if (SceneManager.GetActiveScene().name == "Game-Scene")
+        // Close out of settings menu when player presses ESC
+        public void HideSettingsMenu(bool value)
         {
-            GameStateManager.instance.OnPlayerPause -= HideSettingsMenu;
+            if (!value)
+            {
+                SetActiveSettingsMenu(value);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (SceneManager.GetActiveScene().name == "Game-Scene")
+            {
+                GameStateManager.instance.OnPlayerPause -= HideSettingsMenu;
+            }
         }
     }
 }

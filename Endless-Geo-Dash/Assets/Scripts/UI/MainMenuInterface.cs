@@ -8,60 +8,58 @@ This file contains the MainMenuInterface class, which contains
 functions that allow the user to interact with the Menu GUI
 */
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenuInterface : MonoBehaviour
+namespace GPEJ.UI
 {
-    [SerializeField] private Animator logo_ac;
-
-    [SerializeField] private Animator play_ac;
-
-    [SerializeField] private Animator settings_ac;
-
-    [SerializeField] private Animator quit_ac;
-
-    [SerializeField] private GameObject menu_options_background;
-
-    private void Start()
+    public class MainMenuInterface : MonoBehaviour
     {
-        play_ac.gameObject.SetActive(false);
-        settings_ac.gameObject.SetActive(false);
-        quit_ac.gameObject.SetActive(false);
-        menu_options_background.SetActive(false);
-    }
+        [SerializeField] private Animator logo_ac;
+        [SerializeField] private Animator play_ac;
+        [SerializeField] private Animator settings_ac;
+        [SerializeField] private Animator quit_ac;
+        [SerializeField] private GameObject menu_options_background;
 
-    public void LoadGame()
-    {
-        SceneManager.LoadSceneAsync("Game-Scene", LoadSceneMode.Single);
-    }
+        private void Start()
+        {
+            play_ac.gameObject.SetActive(false);
+            settings_ac.gameObject.SetActive(false);
+            quit_ac.gameObject.SetActive(false);
+            menu_options_background.SetActive(false);
+        }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+        public void LoadGame()
+        {
+            SceneManager.LoadSceneAsync("Game-Scene", LoadSceneMode.Single);
+        }
 
-    public void DisplayMenuOptions()
-    {
-        play_ac.gameObject.SetActive(true);
-        play_ac.SetTrigger("Enter");
-        settings_ac.gameObject.SetActive(true);
-        settings_ac.SetTrigger("Enter");
-        quit_ac.gameObject.SetActive(true);
-        quit_ac.SetTrigger("Enter");
-        menu_options_background.SetActive(true);
-    }
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
 
-    public void HideMenuOptions()
-    {
-        logo_ac.SetTrigger("Normal");
+        public void DisplayMenuOptions()
+        {
+            play_ac.gameObject.SetActive(true);
+            play_ac.SetTrigger("Enter");
+            settings_ac.gameObject.SetActive(true);
+            settings_ac.SetTrigger("Enter");
+            quit_ac.gameObject.SetActive(true);
+            quit_ac.SetTrigger("Enter");
+            menu_options_background.SetActive(true);
+        }
 
-        play_ac.gameObject.SetActive(false);
-        play_ac.SetTrigger("Exit");
-        settings_ac.gameObject.SetActive(false);
-        settings_ac.SetTrigger("Exit");
-        quit_ac.gameObject.SetActive(false);
-        quit_ac.SetTrigger("Exit");
-        menu_options_background.SetActive(false);
+        public void HideMenuOptions()
+        {
+            logo_ac.SetTrigger("Normal");
+
+            play_ac.gameObject.SetActive(false);
+            play_ac.SetTrigger("Exit");
+            settings_ac.gameObject.SetActive(false);
+            settings_ac.SetTrigger("Exit");
+            quit_ac.gameObject.SetActive(false);
+            quit_ac.SetTrigger("Exit");
+            menu_options_background.SetActive(false);
+        }
     }
 }

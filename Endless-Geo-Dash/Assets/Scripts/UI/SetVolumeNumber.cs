@@ -10,47 +10,50 @@ that updates the Volume number based on the user's preferences
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SetVolumeNumber : MonoBehaviour
+namespace GPEJ.UI
 {
-    [SerializeField] private VolumeType type;
-
-    private Text ui_text;
-
-    private void Awake()
+    public class SetVolumeNumber : MonoBehaviour
     {
-        ui_text = GetComponent<Text>();
-    }
+        [SerializeField] private VolumeType type;
 
-    private void Start()
-    {
-        UpdateVolumeText();
-    }
+        private Text ui_text;
 
-    private void Update()
-    {
-        UpdateVolumeText();
-    }
+        private void Awake()
+        {
+            ui_text = GetComponent<Text>();
+        }
 
-    private void UpdateVolumeText()
-    {
-        float volume_value = 0;
-        if (type == VolumeType.Master)
+        private void Start()
         {
-            volume_value = PlayerPrefs.GetFloat(UserPref.instance.MasterVolume);
+            UpdateVolumeText();
         }
-        else if (type == VolumeType.Music)
+
+        private void Update()
         {
-            volume_value = PlayerPrefs.GetFloat(UserPref.instance.MusicVolume);
+            UpdateVolumeText();
         }
-        else if (type == VolumeType.SFX)
+
+        private void UpdateVolumeText()
         {
-            volume_value = PlayerPrefs.GetFloat(UserPref.instance.SFXVolume);
+            float volume_value = 0;
+            if (type == VolumeType.Master)
+            {
+                volume_value = PlayerPrefs.GetFloat(UserPref.instance.MasterVolume);
+            }
+            else if (type == VolumeType.Music)
+            {
+                volume_value = PlayerPrefs.GetFloat(UserPref.instance.MusicVolume);
+            }
+            else if (type == VolumeType.SFX)
+            {
+                volume_value = PlayerPrefs.GetFloat(UserPref.instance.SFXVolume);
+            }
+            else if (type == VolumeType.UI)
+            {
+                volume_value = PlayerPrefs.GetFloat(UserPref.instance.UIVolume);
+            }
+            int volume_to_change = (int)(volume_value * 100f);
+            ui_text.text = volume_to_change.ToString();
         }
-        else if (type == VolumeType.UI)
-        {
-            volume_value = PlayerPrefs.GetFloat(UserPref.instance.UIVolume);
-        }
-        int volume_to_change = (int)(volume_value * 100f);
-        ui_text.text = volume_to_change.ToString();
     }
 }

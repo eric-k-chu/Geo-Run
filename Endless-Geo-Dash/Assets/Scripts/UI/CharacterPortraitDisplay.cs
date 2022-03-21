@@ -10,19 +10,22 @@ portrait of the character the user chooses
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterPortraitDisplay : MonoBehaviour
+namespace GPEJ.UI
 {
-    [SerializeField] private PlayerVariables player_var;
-
-    private RawImage ui_image;
-
-    private void Awake()
+    public class CharacterPortraitDisplay : MonoBehaviour
     {
-        ui_image = GetComponent<RawImage>();
-    }
+        [SerializeField] private PlayerVariables player_var;
 
-    private void Start()
-    {
-        ui_image.texture = player_var.GetPortrait();
+        private RawImage ui_image;
+
+        private void Awake()
+        {
+            ui_image = GetComponent<RawImage>();
+        }
+
+        private void Start()
+        {
+            ui_image.texture = player_var.GetPortrait();
+        }
     }
 }

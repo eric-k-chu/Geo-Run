@@ -10,58 +10,61 @@ of the player
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EndScoreDisplay : MonoBehaviour
+namespace GPEJ.UI
 {
-    [SerializeField] private GameObject distance_traveled;
-
-    [SerializeField] private GameObject final_score;
-
-    [SerializeField] private GameObject high_score;
-
-    private int distance;
-
-    private Text distance_traveled_text;
-
-    private Text final_score_text;
-
-    private void Awake()
+    public class EndScoreDisplay : MonoBehaviour
     {
-        distance_traveled_text = distance_traveled.GetComponent<Text>();
-        final_score_text = final_score.GetComponent<Text>();
-    }
+        [SerializeField] private GameObject distance_traveled;
 
-    private void Start()
-    {
-        GameStateManager.instance.OnPlayerDeath += SetDistanceTraveled;
-        GameStateManager.instance.OnGameStateLost += DisplayScore;
-        // highs_score.SetActive(true);
-    }
+        [SerializeField] private GameObject final_score;
 
-    private void SetDistanceTraveled(int value)
-    {
-        distance = value;
-    }
+        [SerializeField] private GameObject high_score;
 
-    private void DisplayScore(bool value)
-    {
-        distance_traveled_text.text = distance.ToString() + " m";
+        private int distance;
 
-        int total_score = distance;
+        private Text distance_traveled_text;
 
-        if (PlayerPrefs.GetInt(UserPref.instance.HighScore) < total_score)
+        private Text final_score_text;
+
+        private void Awake()
         {
-            PlayerPrefs.SetInt(UserPref.instance.HighScore, total_score);
-            // TODO: Display new high score msg
-            // high_score.SetActive(true);
+            distance_traveled_text = distance_traveled.GetComponent<Text>();
+            final_score_text = final_score.GetComponent<Text>();
         }
 
-        final_score_text.text = total_score.ToString();
-    }
+        private void Start()
+        {
+            GameStateManager.instance.OnPlayerDeath += SetDistanceTraveled;
+            GameStateManager.instance.OnGameStateLost += DisplayScore;
+            // highs_score.SetActive(true);
+        }
+
+        private void SetDistanceTraveled(int value)
+        {
+            distance = value;
+        }
+
+        private void DisplayScore(bool value)
+        {
+            distance_traveled_text.text = distance.ToString() + " m";
+
+            int total_score = distance;
+
+            if (PlayerPrefs.GetInt(UserPref.instance.HighScore) < total_score)
+            {
+                PlayerPrefs.SetInt(UserPref.instance.HighScore, total_score);
+                // TODO: Display new high score msg
+                // high_score.SetActive(true);
+            }
+
+            final_score_text.text = total_score.ToString();
+        }
 
 
-    private void OnDestroy()
-    {
-        GameStateManager.instance.OnPlayerDeath -= SetDistanceTraveled;
-        GameStateManager.instance.OnGameStateLost -= DisplayScore;     
+        private void OnDestroy()
+        {
+            GameStateManager.instance.OnPlayerDeath -= SetDistanceTraveled;
+            GameStateManager.instance.OnGameStateLost -= DisplayScore;
+        }
     }
 }

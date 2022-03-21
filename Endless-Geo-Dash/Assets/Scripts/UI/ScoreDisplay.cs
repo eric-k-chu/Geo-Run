@@ -10,32 +10,35 @@ the player's current score on the screen.
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreDisplay : MonoBehaviour
+namespace GPEJ.UI
 {
-    private int player_score;
-
-    private Text ui_text;
-
-    private void Awake()
+    public class ScoreDisplay : MonoBehaviour
     {
-        ui_text = GetComponent<Text>();
-    }
+        private int player_score;
 
-    private void Start()
-    {
-        GameStateManager.instance.OnPlayerMoveForward += UpdateDistance;
-        player_score = 0;
-        ui_text.text = player_score.ToString();
-    }
+        private Text ui_text;
 
-    private void UpdateDistance(int value)
-    {
-        player_score = value;
-        ui_text.text = player_score.ToString();
-    }
+        private void Awake()
+        {
+            ui_text = GetComponent<Text>();
+        }
 
-    private void OnDestroy()
-    {
-        GameStateManager.instance.OnPlayerMoveForward -= UpdateDistance;
+        private void Start()
+        {
+            GameStateManager.instance.OnPlayerMoveForward += UpdateDistance;
+            player_score = 0;
+            ui_text.text = player_score.ToString();
+        }
+
+        private void UpdateDistance(int value)
+        {
+            player_score = value;
+            ui_text.text = player_score.ToString();
+        }
+
+        private void OnDestroy()
+        {
+            GameStateManager.instance.OnPlayerMoveForward -= UpdateDistance;
+        }
     }
 }

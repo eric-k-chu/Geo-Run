@@ -9,12 +9,15 @@ functions that rotate the background objects in the menu scene
 */
 using UnityEngine;
 
-public class MenuObjectAnimations : MonoBehaviour
+namespace GPEJ.Terrain
 {
-    [SerializeField] private float rotation_speed;
-
-    private void Update()
+    public class MenuObjectAnimations : MonoBehaviour
     {
-        transform.Rotate(new Vector3(0f, 0f, rotation_speed) * Time.deltaTime);
+        [SerializeField] private float rotation_speed;
+
+        private void Update()
+        {
+            transform.Rotate(new Vector3(0f, 0f, rotation_speed) * Time.deltaTime);
+        }
     }
 }

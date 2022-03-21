@@ -9,10 +9,13 @@ has a function that will open the url of a hyperlink
 */
 using UnityEngine;
 
-public class Hyperlinks : MonoBehaviour
+namespace GPEJ.UI
 {
-    public void OpenURL(string link)
+    public class Hyperlinks : MonoBehaviour
     {
-        Application.OpenURL(link);
+        public void OpenURL(string link)
+        {
+            Application.OpenURL(link);
+        }
     }
 }

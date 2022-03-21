@@ -9,22 +9,25 @@ functions animate the different UI menus
 */
 using UnityEngine;
 
-public class DisplayUIMenu : MonoBehaviour
+namespace GPEJ.UI
 {
-    private Animator ui_animator;
-
-    private void Awake()
+    public class DisplayUIMenu : MonoBehaviour
     {
-        ui_animator = GetComponent<Animator>();
-    }
+        private Animator ui_animator;
 
-    public void ShowUI()
-    {
-        ui_animator.SetTrigger("Active");
-    }
+        private void Awake()
+        {
+            ui_animator = GetComponent<Animator>();
+        }
 
-    public void HideUI()
-    {
-        ui_animator.SetTrigger("Inactive");
+        public void ShowUI()
+        {
+            ui_animator.SetTrigger("Active");
+        }
+
+        public void HideUI()
+        {
+            ui_animator.SetTrigger("Inactive");
+        }
     }
 }

@@ -9,17 +9,20 @@ the player to die if they collide with the trigger death layer
 */
 using UnityEngine;
 
-public class TriggerDeath : MonoBehaviour
+namespace GPEJ.Player.Interactables
 {
-    private void OnTriggerEnter(Collider other)
+    public class TriggerDeath : MonoBehaviour
     {
-        if (other.gameObject.CompareTag("Player Collision Area"))
+        private void OnTriggerEnter(Collider other)
         {
-            AudioManager.instance.PlayDeathSFX();
-            GameStateManager.instance.SetFinalDistanceTraveled((int)other.gameObject.transform.parent.transform.position.z);
-            if (!GameStateManager.instance.IsLost())
+            if (other.gameObject.CompareTag("Player Collision Area"))
             {
-                GameStateManager.instance.LoseGame();
+                AudioManager.instance.PlayDeathSFX();
+                GameStateManager.instance.SetFinalDistanceTraveled((int)other.gameObject.transform.parent.transform.position.z);
+                if (!GameStateManager.instance.IsLost())
+                {
+                    GameStateManager.instance.LoseGame();
+                }
             }
         }
     }

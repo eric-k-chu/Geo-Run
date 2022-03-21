@@ -9,13 +9,16 @@ UI button sfx on state enter
 */
 using UnityEngine;
 
-public class ButtonSFX : StateMachineBehaviour
+namespace GPEJ.Sounds
 {
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public class ButtonSFX : StateMachineBehaviour
     {
-        if (stateInfo.IsName("Pressed"))
+        override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            AudioManager.instance.PlayUIButton();
+            if (stateInfo.IsName("Pressed"))
+            {
+                AudioManager.instance.PlayUIButton();
+            }
         }
     }
 }

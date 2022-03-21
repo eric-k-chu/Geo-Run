@@ -9,25 +9,28 @@ control player movement and health
 */
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Player Variables", menuName = "Player Variables")]
-public class PlayerVariables : ScriptableObject
+namespace GPEJ
 {
-    public float maximum_player_health;
-    public float distance_between_lanes;
-    public float forward_speed;
-    public float horizontal_speed;
-    public float jump_force;
-    public float fall_multiplier;
-
-    public CharacterInfo[] character_list;
-
-    public string GetName()
+    [CreateAssetMenu(fileName = "New Player Variables", menuName = "Player Variables")]
+    public class PlayerVariables : ScriptableObject
     {
-        return character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].character_name;
-    }
+        public float maximum_player_health;
+        public float distance_between_lanes;
+        public float forward_speed;
+        public float horizontal_speed;
+        public float jump_force;
+        public float fall_multiplier;
 
-    public Texture GetPortrait()
-    {
-        return character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].character_portrait;
+        public CharacterInfo[] character_list;
+
+        public string GetName()
+        {
+            return character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].character_name;
+        }
+
+        public Texture GetPortrait()
+        {
+            return character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].character_portrait;
+        }
     }
 }
