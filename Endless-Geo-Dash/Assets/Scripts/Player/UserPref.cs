@@ -9,10 +9,6 @@ preferences for volume and character type
 */
 using UnityEngine;
 
-public enum Elements { Fire, Water, Earth }
-
-public enum Ailments { Burning, Chilled, Grasped, None }
-
 public enum VolumeType { Master, Music, SFX, UI }
 
 public class UserPref : MonoBehaviour

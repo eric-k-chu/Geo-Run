@@ -15,7 +15,6 @@ public enum TerrainType
 {
     Background,
     Platform,
-    Checkpoint
 }
 
 [Serializable]

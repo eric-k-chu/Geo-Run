@@ -34,17 +34,12 @@ public class TerrainSpawner : MonoBehaviour
             int index = 0;
             if (type == TerrainType.Background)
             {
-                obj = PooledObjectManager.instance.GetPooledObject(index);
+                index = 0;
             }
             else if (type == TerrainType.Platform)
             {
                 max = PooledObjectManager.instance.pooled_object_list.Count;
-                index = Random.Range(4, max);
-            }
-            else if (type == TerrainType.Checkpoint)
-            {
-                index = Random.Range(1, 4);
-                GameStateManager.instance.SetCheckpointDisplay(index);
+                index = Random.Range(1, max);
             }
             obj = PooledObjectManager.instance.GetPooledObject(index);
             obj.transform.position = spawn_position_1;

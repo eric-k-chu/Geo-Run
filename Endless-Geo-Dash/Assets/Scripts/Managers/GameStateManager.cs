@@ -25,6 +25,8 @@ public class GameStateManager : MonoBehaviour
 
     private int character_type;
 
+    private bool is_beginning_of_game = true;
+
     private enum GameState { Initial, Waiting, Running, Pause, Lost }
     private GameState current_state;
 
@@ -32,21 +34,12 @@ public class GameStateManager : MonoBehaviour
 
     public event Action<bool> OnGameStateLost;
 
-    public event Action<int> OnPlayerCheckpoint;
-
     public event Action<int> OnPlayerMoveForward;
 
     public event Action<int> OnPlayerDeath;
 
     public event Action<float> OnPlayerHealthChange;
 
-    public event Action<Ailments> OnPlayerInflictedAilment;
-
-    public event Action<float> OnPlayerBurned;
-
-    public event Action<float> OnPlayerChilled;
-
-    public event Action<float> OnPlayerGrasped;
 
     private void Awake()
     {
@@ -86,7 +79,7 @@ public class GameStateManager : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
-                        TransitionState(GameState.Running);
+                        TransitionState(GameState.Waiting);
                     }
                     break;
                 }
@@ -113,7 +106,15 @@ public class GameStateManager : MonoBehaviour
                 {
                     Time.timeScale = 1f;
                     waiting_ui_canvas.SetActive(false);
-                    AudioManager.instance.PlayMusic();
+                    if (is_beginning_of_game)
+                    {
+                        AudioManager.instance.PlayMusic();
+                        is_beginning_of_game = false;
+                    }
+                    else
+                    {
+                        AudioManager.instance.ResumeMusic();
+                    }
                     break;
                 }
             case GameState.Running:
@@ -121,7 +122,6 @@ public class GameStateManager : MonoBehaviour
             case GameState.Pause:
                 {
                     ShowPauseMenu(false);
-                    Time.timeScale = 1f;
                     break;
                 }
             case GameState.Lost:
@@ -158,6 +158,7 @@ public class GameStateManager : MonoBehaviour
             case GameState.Pause:
                 {
                     Time.timeScale = 0f;
+                    AudioManager.instance.PauseMusic();
                     ShowPauseMenu(true);
                     break;
                 }
@@ -210,11 +211,6 @@ public class GameStateManager : MonoBehaviour
         OnGameStateLost?.Invoke(value);
     }
 
-    public void SetCheckpointDisplay(int value)
-    {
-        OnPlayerCheckpoint?.Invoke(value);
-    }
-
     public void SetDistance(int value)
     {
         OnPlayerMoveForward?.Invoke(value);
@@ -228,26 +224,6 @@ public class GameStateManager : MonoBehaviour
     public void SetPlayerHealth(float value)
     {
         OnPlayerHealthChange?.Invoke(value);
-    }
-
-    public void SetPlayerAilment(Ailments type)
-    {
-        OnPlayerInflictedAilment?.Invoke(type);
-    }
-
-    public void SetBurnMultiplier(float value)
-    {
-        OnPlayerBurned?.Invoke(value);
-    }
-
-    public void SetChillMultiplier(float value)
-    {
-        OnPlayerChilled?.Invoke(value);
-    }
-
-    public void SetGraspMulitplier(float value)
-    {
-        OnPlayerGrasped?.Invoke(value);
     }
 
     // Terminate GameState.Lost

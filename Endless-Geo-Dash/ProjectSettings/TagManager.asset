@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Crystal
-  - Checkpoint
   - Player Collision Area
   layers:
   - Default

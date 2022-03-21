@@ -30,11 +30,6 @@ public class PlayerController : MonoBehaviour
     private float vertical_velocity;
     private float artificial_gravity;
 
-    private Ailments current_ailment;
-
-    private float chill_multiplier = 1f;
-    private float grasp_multiplier = 1f;
-
     private void Awake()
     {
         player_controller = GetComponent<CharacterController>();
@@ -43,9 +38,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        GameStateManager.instance.OnPlayerInflictedAilment += GetCurrentAilment;
-        GameStateManager.instance.OnPlayerChilled += GetChillMultiplier;
-        GameStateManager.instance.OnPlayerGrasped += GetGraspMultiplier;
         current_lane_pos = LanePosition.Middle;
         forward_speed = player_var.forward_speed;
     }
@@ -112,54 +104,13 @@ public class PlayerController : MonoBehaviour
 
             // Movement vector for move()
             Vector3 motion_vector = new Vector3(distance_to_lane - transform.position.x,
-                vertical_velocity * grasp_multiplier * Time.deltaTime, forward_speed * Time.deltaTime);
+                vertical_velocity * Time.deltaTime, forward_speed * Time.deltaTime);
 
             // The distance between the lane will update as we approach the target lane
             distance_to_lane = Mathf.Lerp(distance_to_lane, target_lane_xpos,
-                player_var.horizontal_speed * chill_multiplier * Time.deltaTime);
+                player_var.horizontal_speed * Time.deltaTime);
 
             player_controller.Move(motion_vector);
         }
-    }
-
-    // Gets the current inflicted Ailment on the player
-    private void GetCurrentAilment(Ailments type)
-    {
-        current_ailment = type;
-
-        if (current_ailment == Ailments.Burning)
-        {
-            chill_multiplier = grasp_multiplier = 1f;
-        }
-        else if (current_ailment == Ailments.Chilled)
-        {
-            grasp_multiplier = 1f;
-        } 
-        else if (current_ailment == Ailments.Grasped)
-        {
-            chill_multiplier = 1f;
-        } 
-        // return ailment multipliers back to normal if no ailment is inflicted on the player
-        else
-        {
-            chill_multiplier = grasp_multiplier = 1f;
-        }
-    }
-
-    private void GetChillMultiplier(float value)
-    {
-        chill_multiplier = value;
-    }
-
-    private void GetGraspMultiplier(float value)
-    {
-        grasp_multiplier = value;
-    }
-
-    private void OnDestroy()
-    {
-        GameStateManager.instance.OnPlayerInflictedAilment -= GetCurrentAilment;
-        GameStateManager.instance.OnPlayerChilled -= GetChillMultiplier;
-        GameStateManager.instance.OnPlayerGrasped -= GetGraspMultiplier;
     }
 }
