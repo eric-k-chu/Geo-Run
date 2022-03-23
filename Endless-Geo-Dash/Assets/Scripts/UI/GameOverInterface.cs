@@ -19,12 +19,7 @@ namespace GPEJ.UI
 
         [SerializeField] private Button[] buttons;
 
-        private void Start()
-        {
-            GameStateManager.instance.OnGameStateLost += SetActiveGameOverMenu;
-        }
-
-        private void SetActiveGameOverMenu(bool value)
+        public void SetActiveGameOverMenu(bool value)
         {
             if (value)
             {
@@ -37,27 +32,19 @@ namespace GPEJ.UI
             }
         }
 
-        private void OnDestroy()
-        {
-            GameStateManager.instance.OnGameStateLost -= SetActiveGameOverMenu;
-        }
-
         public void ToMainMenu()
         {
-            GameStateManager.instance.EndGameStateManager();
             SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
 
         }
 
         public void Retry()
         {
-            GameStateManager.instance.EndGameStateManager();
             SceneManager.LoadSceneAsync("Game-Scene", LoadSceneMode.Single);
         }
 
         public void QuitGame()
         {
-            GameStateManager.instance.EndGameStateManager();
             Application.Quit();
         }
 

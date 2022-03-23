@@ -15,6 +15,7 @@ namespace GPEJ.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private PlayerVariables player_var;
+        [SerializeField] private RuntimeDataContainer runtimed_data;
 
         private enum LanePosition { Left, Middle, Right }
         private LanePosition current_lane_pos;
@@ -42,11 +43,9 @@ namespace GPEJ.Player
 
         private void Update()
         {
-            if (!GameStateManager.instance.IsLost())
+            if (Time.timeScale != 0f)
             {
-                UpdateScore();
                 forward_speed += (Time.deltaTime / 10f);
-                GameStateManager.instance.UpdateVelocityInUI(forward_speed);
 
                 if (Input.GetKeyDown(KeyCode.D) && Time.timeScale != 0f)
                 {
@@ -71,12 +70,14 @@ namespace GPEJ.Player
                 }
 
                 MovePlayer();
+                UpdateUIDisplay();
             }
         }
 
-        private void UpdateScore()
+        private void UpdateUIDisplay()
         {
-            GameStateManager.instance.UpdateScoreInUI((int)transform.position.z);
+            runtimed_data.velocity = forward_speed;
+            runtimed_data.distance = transform.position.z;
         }
 
         private void MovingRight()

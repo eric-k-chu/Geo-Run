@@ -13,12 +13,14 @@ namespace GPEJ.Player.Interactables
 {
     public class Crystals : MonoBehaviour
     {
+        [SerializeField] private VoidEventChannel crystal_channel;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Player"))
             {
                 AudioManager.instance.PlayCrystalPickupSFX();
-                GameStateManager.instance.UpdateCrystalInUI();
+                crystal_channel.RaiseEvent();
                 gameObject.SetActive(false);
             }
         }

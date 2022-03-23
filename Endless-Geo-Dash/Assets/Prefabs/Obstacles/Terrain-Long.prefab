@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b68ff66a14001740a46eccf77b5190c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_death_channel: {fileID: 11400000, guid: 16bf6d15488f0a148a1d7fa6db59623f, type: 2}
 --- !u!54 &1033883188833987876
 Rigidbody:
   m_ObjectHideFlags: 0

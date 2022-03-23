@@ -22,14 +22,20 @@ namespace GPEJ.UI
 
         private Image ui_image;
 
+        private const string k_character_type = "CharacterInfo-Type";
+
         private void Awake()
         {
             ui_image = GetComponent<Image>();
+            if (!PlayerPrefs.HasKey(k_character_type))
+            {
+                PlayerPrefs.SetInt(k_character_type, 0);
+            }
         }
 
         private void Start()
         {
-            if (character_type == PlayerPrefs.GetInt(UserPref.instance.CharacterType))
+            if (character_type == PlayerPrefs.GetInt(k_character_type))
             {
                 ui_image.color = selected_color;
             }

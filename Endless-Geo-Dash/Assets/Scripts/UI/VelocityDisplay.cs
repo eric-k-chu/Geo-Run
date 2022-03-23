@@ -16,24 +16,19 @@ namespace GPEJ
     {
         private Text velocity;
 
+        [SerializeField] private RuntimeDataContainer runtime_data;
+
         private void Awake()
         {
             velocity = GetComponent<Text>();
         }
 
-        private void Start()
+        private void LateUpdate()
         {
-            GameStateManager.instance.OnPlayerVelocityIncrease += UpdateVelocityText;
-        }
-
-        private void UpdateVelocityText(float velocity_value)
-        {
-            velocity.text = ((int)(velocity_value)).ToString() + " m/s";
-        }
-
-        private void OnDestroy()
-        {
-            GameStateManager.instance.OnPlayerVelocityIncrease -= UpdateVelocityText;
+            if (Time.timeScale != 0f)
+            {
+                velocity.text = ((int)runtime_data.velocity).ToString() + " m/s";
+            }
         }
     }
 }

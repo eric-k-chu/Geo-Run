@@ -13,16 +13,14 @@ namespace GPEJ.Player.Interactables
 {
     public class TriggerDeath : MonoBehaviour
     {
+        [SerializeField] private BoolEventChannel player_death_channel;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Player Collision Area"))
             {
                 AudioManager.instance.PlayDeathSFX();
-                GameStateManager.instance.SetFinalDistanceTraveled((int)other.gameObject.transform.parent.transform.position.z);
-                if (!GameStateManager.instance.IsLost())
-                {
-                    GameStateManager.instance.LoseGame();
-                }
+                player_death_channel.RaiseEvent(true);
             }
         }
     }

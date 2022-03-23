@@ -108,3 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e240a17fb3363641a913729df0c4164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crystal_channel: {fileID: 11400000, guid: 68cb9485b83e4cf4f8802f9965249f20, type: 2}

@@ -3,19 +3,20 @@ NAME: GPEJ
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
 
-FILE DESCRIPTION:
-This file contains the TerrainSpawner class, which will spawn new
-terrain after the player enters the collision area
+Summary:
+This file contains the TerrainSpawner class, which triggers
+the spawn terrain event on player collision
 */
-
 using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace GPEJ.Terrain
 {
     public class TerrainSpawner : MonoBehaviour
     {
+        [SerializeField] private Vector3EventChannel platform_channel;
+        [SerializeField] private Vector3EventChannel background_channel;
+
         [SerializeField] private TerrainType type;
 
         [Header("Length of terrain")]
@@ -38,19 +39,14 @@ namespace GPEJ.Terrain
                 Vector3 spawn_position_1 = new Vector3(transform.position.x,
                     transform.position.y, transform.position.z + length);
 
-                GameObject obj = null;
-                int index = 0;
-
-                if (type == TerrainType.Platform)
+                if (type == TerrainType.Background)
                 {
-                    int max = TerrainManager.instance.GetPooledListSize();
-                    // list of platform objects start at position 1 in pool_list
-                    // there is only one background model, so it is at position 0 in pool_list
-                    index = Random.Range(1, max);
+                    background_channel.RaiseEvent(spawn_position_1);
                 }
-                obj = TerrainManager.instance.GetPooledTerrain(index);
-                obj.transform.SetPositionAndRotation(spawn_position_1, Quaternion.identity);
-                obj.SetActive(true);
+                else if (type == TerrainType.Platform)
+                {
+                    platform_channel.RaiseEvent(spawn_position_1);
+                }              
             }
         }
 

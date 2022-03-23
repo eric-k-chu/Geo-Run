@@ -4,25 +4,26 @@ MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
 
 FILE DESCRIPTION:
-This file contains the GameStateManager class, which keeps track of 
+This file contains the GameStateController class, which keeps track of 
 the player object and the current game state
 */
-using System;
 using System.Collections;
 using UnityEngine;
 
 namespace GPEJ
 {
-    public class GameStateManager : MonoBehaviour
+    public class GameStateController : MonoBehaviour
     {
+        [Header("Event Channels")]
+        [SerializeField] private BoolEventChannel player_pause_channel;
+
+        [Header("Characters")]
         [SerializeField] private GameObject[] character_list;
         [SerializeField] private GameObject[] fractured_character_list;
         [SerializeField] private GameObject waiting_ui_canvas;
 
         [SerializeField] private float seconds_in_death_animation;
         private WaitForSeconds timer;
-
-        public static GameStateManager instance { get; private set; }
 
         private enum GameState { Initial, Waiting, Running, Pause, Lost }
         private GameState current_state;
@@ -32,26 +33,25 @@ namespace GPEJ
         private int character_type;
 
         private bool is_beginning_of_game;
-       
-        public event Action<bool> OnPlayerPause;
-        public event Action<bool> OnGameStateLost;
-        public event Action<int> OnPlayerMoveForward;
-        public event Action<float> OnPlayerVelocityIncrease;
-        public event Action<int> OnPlayerDeath;
-        public event Action OnPlayerCrystalPickup;
+
+        private const string k_character_type = "CharacterInfo-Type";
+
 
         private void Awake()
         {
-            instance = this;
+            if (!PlayerPrefs.HasKey(k_character_type))
+            {
+                PlayerPrefs.SetInt(k_character_type, 0);
+            }
         }
 
         private void Start()
         {
-            character_type = PlayerPrefs.GetInt(UserPref.instance.CharacterType);
+            character_type = PlayerPrefs.GetInt(k_character_type);
             active_player = character_list[character_type];
-            TransitionState(GameState.Initial);
             timer = new WaitForSeconds(seconds_in_death_animation);
             is_beginning_of_game = true;
+            TransitionState(GameState.Initial);
         }
 
         private void Update()
@@ -122,15 +122,11 @@ namespace GPEJ
                     break;
                 case GameState.Pause:
                     {
-                        ShowPauseMenu(false);
+                        player_pause_channel.RaiseEvent(false);
                         break;
                     }
                 case GameState.Lost:
-                    {
-                        ShowGameOverMenu(false);
-                        Time.timeScale = 1f;
-                        break;
-                    }
+                    break;
                 default:
                     break;
             }
@@ -160,7 +156,7 @@ namespace GPEJ
                     {
                         Time.timeScale = 0f;
                         AudioManager.instance.PauseMusic();
-                        ShowPauseMenu(true);
+                        player_pause_channel.RaiseEvent(true);
                         break;
                     }
                 case GameState.Lost:
@@ -169,7 +165,6 @@ namespace GPEJ
                             active_player.transform.position,
                             active_player.transform.rotation);
                         active_player.SetActive(false);
-                        ShowGameOverMenu(true);
                         StopTime();
                         break;
                     }
@@ -186,51 +181,10 @@ namespace GPEJ
         private IEnumerator PauseTimeAfterSeconds()
         {
             yield return timer;
-            ShowGameOverMenu(true);
             Time.timeScale = 0f;
         }
 
-        public bool IsLost()
-        {
-            return (current_state == GameState.Lost) ? true : false;
-        }
-
-        public void ShowPauseMenu(bool condition)
-        {
-            OnPlayerPause?.Invoke(condition);
-        }
-
-        public void ShowGameOverMenu(bool condition)
-        {
-            OnGameStateLost?.Invoke(condition);
-        }
-
-        public void UpdateVelocityInUI(float velocity)
-        {
-            OnPlayerVelocityIncrease?.Invoke(velocity);
-        }
-
-        public void UpdateScoreInUI(int distance)
-        {
-            OnPlayerMoveForward?.Invoke(distance);
-        }
-
-        public void SetFinalDistanceTraveled(int distance)
-        {
-            OnPlayerDeath?.Invoke(distance);
-        }
-
-        public void UpdateCrystalInUI()
-        {
-            OnPlayerCrystalPickup?.Invoke();
-        }
-
-        public void EndGameStateManager()
-        {
-            TerminateState(current_state);
-        }
-
-        public void LoseGame()
+        public void LoseGame(bool condition)
         {
             TransitionState(GameState.Lost);
         }

@@ -9,7 +9,7 @@ UI button sfx on state enter
 */
 using UnityEngine;
 
-namespace GPEJ.Sounds
+namespace GPEJ.UI
 {
     public class ButtonSFX : StateMachineBehaviour
     {

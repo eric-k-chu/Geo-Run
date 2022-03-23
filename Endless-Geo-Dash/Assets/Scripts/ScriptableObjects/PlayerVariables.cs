@@ -22,14 +22,16 @@ namespace GPEJ
 
         public CharacterInfo[] character_list;
 
+        private const string k_character_type = "CharacterInfo-Type";
+
         public string GetName()
         {
-            return character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].character_name;
+            return character_list[PlayerPrefs.GetInt(k_character_type)].character_name;
         }
 
         public Texture GetPortrait()
         {
-            return character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].character_portrait;
+            return character_list[PlayerPrefs.GetInt(k_character_type)].character_portrait;
         }
     }
 }

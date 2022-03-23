@@ -21,19 +21,9 @@ namespace GPEJ.UI
             animator = GetComponent<Animator>();
         }
 
-        private void Start()
-        {
-            GameStateManager.instance.OnPlayerCrystalPickup += StartCrystalPickupAnimation;
-        }
-
-        private void StartCrystalPickupAnimation()
+        public void StartCrystalPickupAnimation()
         {
             animator.SetTrigger("StartGlow");
-        }
-
-        private void OnDestroy()
-        {
-            GameStateManager.instance.OnPlayerCrystalPickup -= StartCrystalPickupAnimation;
         }
     }
 }

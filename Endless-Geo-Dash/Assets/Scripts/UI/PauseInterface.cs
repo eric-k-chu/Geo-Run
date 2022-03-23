@@ -19,12 +19,7 @@ namespace GPEJ.UI
 
         [SerializeField] private Button[] buttons;
 
-        private void Start()
-        {
-            GameStateManager.instance.OnPlayerPause += SetActivePauseMenu;
-        }
-
-        private void SetActivePauseMenu(bool value)
+        public void SetActivePauseMenu(bool value)
         {
             if (value)
             {
@@ -38,26 +33,18 @@ namespace GPEJ.UI
             }
         }
 
-        private void OnDestroy()
-        {
-            GameStateManager.instance.OnPlayerPause -= SetActivePauseMenu;
-        }
-
         public void ToMainMenu()
         {
-            GameStateManager.instance.EndGameStateManager();
             SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
         }
 
         public void Retry()
         {
-            GameStateManager.instance.EndGameStateManager();
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         }
 
         public void QuitGame()
         {
-            GameStateManager.instance.EndGameStateManager();
             Application.Quit();
         }
 

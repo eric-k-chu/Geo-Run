@@ -18,6 +18,8 @@ namespace GPEJ.UI
 
         private Text ui_text;
 
+        [SerializeField] private RuntimeDataContainer runtime_data;
+
         private void Awake()
         {
             ui_text = GetComponent<Text>();
@@ -25,20 +27,16 @@ namespace GPEJ.UI
 
         private void Start()
         {
-            GameStateManager.instance.OnPlayerMoveForward += UpdateDistance;
             player_score = 0;
             ui_text.text = player_score.ToString();
         }
 
-        private void UpdateDistance(int value)
+        private void LateUpdate()
         {
-            player_score = value;
-            ui_text.text = player_score.ToString();
-        }
-
-        private void OnDestroy()
-        {
-            GameStateManager.instance.OnPlayerMoveForward -= UpdateDistance;
+            if (Time.timeScale != 0f)
+            {
+                ui_text.text = runtime_data.distance.ToString();
+            }
         }
     }
 }

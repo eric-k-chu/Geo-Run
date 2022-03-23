@@ -34,9 +34,15 @@ namespace GPEJ.Player
 
         private Transform player_object;
 
+        private const string k_character_type = "CharacterInfo-Type";
+
         private void Awake()
         {
             cinemachine = GetComponent<CinemachineVirtualCamera>();
+            if (!PlayerPrefs.HasKey(k_character_type))
+            {
+                PlayerPrefs.SetInt(k_character_type, 0);
+            }
         }
         private void Start()
         {
@@ -45,7 +51,7 @@ namespace GPEJ.Player
 
         private void GetPlayerTransform()
         {
-            player_object = character_list[PlayerPrefs.GetInt(UserPref.instance.CharacterType)].transform;
+            player_object = character_list[PlayerPrefs.GetInt(k_character_type)].transform;
 
             cinemachine.LookAt = cinemachine.Follow = player_object;
 

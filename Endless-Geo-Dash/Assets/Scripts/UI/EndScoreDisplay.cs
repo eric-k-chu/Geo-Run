@@ -22,6 +22,8 @@ namespace GPEJ.UI
 
         [SerializeField] private GameObject high_score;
 
+        [SerializeField] private RuntimeDataContainer runtime_data;
+
         private int distance;
         private int crystal_count;
 
@@ -31,58 +33,52 @@ namespace GPEJ.UI
         private Text crystal_count_text;
         private Text final_score_text;
 
+        private const string k_high_score = "High-Score";
 
         private void Awake()
         {
             distance_traveled_text = distance_traveled.GetComponent<Text>();
             crystal_count_text = crystal.GetComponent<Text>();
             final_score_text = final_score.GetComponent<Text>();
+
+            if (!PlayerPrefs.HasKey(k_high_score))
+            {
+                PlayerPrefs.SetFloat(k_high_score, 0f);
+            }
         }
 
         private void Start()
         {
-            GameStateManager.instance.OnPlayerDeath += SetDistanceTraveled;
-            GameStateManager.instance.OnGameStateLost += DisplayScore;
-            GameStateManager.instance.OnPlayerCrystalPickup += IncreaseCrystalCount;
             crystal_count = 0;
             score_multiplier = 1f;
+            distance = 0;
             // highs_score.SetActive(true);
         }
 
-        private void SetDistanceTraveled(int dist)
+        private void LateUpdate()
         {
-            distance = dist;
+            crystal_count = runtime_data.crystals;
         }
 
         private void DisplayScore(bool condition)
         {
+            score_multiplier += (crystal_count / 100f);
+            distance = (int)runtime_data.distance;
+
             distance_traveled_text.text = distance.ToString() + " m";
 
             crystal_count_text.text = crystal_count.ToString();
 
             float total_score = distance * score_multiplier;
 
-            if (PlayerPrefs.GetFloat(UserPref.instance.HighScore) < total_score)
+            if (PlayerPrefs.GetFloat(k_high_score) < total_score)
             {
-                PlayerPrefs.SetFloat(UserPref.instance.HighScore, total_score);
+                PlayerPrefs.SetFloat(k_high_score, total_score);
                 // TODO: Display new high score msg
                 // high_score.SetActive(true);
             }
 
             final_score_text.text = total_score.ToString();
-        }
-
-        private void IncreaseCrystalCount()
-        {
-            crystal_count++;
-            score_multiplier += (crystal_count / 100f);
-        }
-
-        private void OnDestroy()
-        {
-            GameStateManager.instance.OnPlayerDeath -= SetDistanceTraveled;
-            GameStateManager.instance.OnGameStateLost -= DisplayScore;
-            GameStateManager.instance.OnPlayerCrystalPickup -= IncreaseCrystalCount;
         }
     }
 }
