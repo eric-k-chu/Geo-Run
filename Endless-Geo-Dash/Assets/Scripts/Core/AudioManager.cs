@@ -21,13 +21,11 @@ namespace GPEJ
         [SerializeField] private AudioSource ui_source;
 
         [Header("Audio Clips")]
-        [SerializeField] private AudioClip bgm;
         [SerializeField] private AudioClip jump;
         [SerializeField] private AudioClip move_sideways;
         [SerializeField] private AudioClip ui_button;
         [SerializeField] private AudioClip ui_menu_appear;
         [SerializeField] private AudioClip crystal_pickup;
-        [SerializeField] private AudioClip checkpoint_pass;
         [SerializeField] private AudioClip death;
 
         private void Awake()
@@ -58,11 +56,6 @@ namespace GPEJ
         public void PlayCrystalPickupSFX()
         {
             sfx_source.PlayOneShot(crystal_pickup);
-        }
-
-        public void PlayCheckpointPassSFX()
-        {
-            sfx_source.PlayOneShot(checkpoint_pass);
         }
 
         public void PlayDeathSFX()
