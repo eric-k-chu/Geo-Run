@@ -188,5 +188,10 @@ namespace GPEJ
         {
             TransitionState(GameState.Lost);
         }
+
+        public void UnpauseGame()
+        {
+            TransitionState(GameState.Waiting);
+        }
     }
 }
