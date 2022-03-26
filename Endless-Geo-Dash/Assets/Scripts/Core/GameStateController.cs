@@ -32,6 +32,11 @@ namespace GPEJ
         private int character_type;
         private bool is_beginning_of_game;
 
+        public void StartGame()
+        {
+            TransitionState(GameState.Waiting);
+        }
+
         public void LoseGame(bool condition)
         {
             TransitionState(GameState.Lost);
@@ -150,8 +155,6 @@ namespace GPEJ
                 case GameState.Initial:
                     {
                         active_player.SetActive(true);
-                        Time.timeScale = 1f;
-                        TransitionState(GameState.Waiting);
                         break;
                     }
                 case GameState.Waiting:

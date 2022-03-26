@@ -21,12 +21,14 @@ namespace GPEJ
 {
     public class GameEventListener : MonoBehaviour
     {
+        [SerializeField] private VoidEventChannel game_start_channel;
         [SerializeField] private VoidEventChannel crystal_channel;
         [SerializeField] private BoolEventChannel player_pause_channel;
         [SerializeField] private BoolEventChannel player_death_channel;
         [SerializeField] private Vector3EventChannel platform_channel;
         [SerializeField] private Vector3EventChannel background_channel;
 
+        public UnityEvent OnGameLoadFinished;
         public UnityEvent OnCrystalPickedUp;
         public BoolEvents OnPlayerPaused;
         public BoolEvents OnPlayerDied;
@@ -35,6 +37,7 @@ namespace GPEJ
 
         private void Start()
         {
+            game_start_channel.OnEventRaised += StartGame;
             crystal_channel.OnEventRaised += TriggerCrystalUIAnimation;
             player_pause_channel.OnEventRaised += EnablePauseMenu;
             player_death_channel.OnEventRaised += EnableGameOverMenu;
@@ -44,11 +47,17 @@ namespace GPEJ
 
         private void OnDestroy()
         {
+            game_start_channel.OnEventRaised -= StartGame;
             crystal_channel.OnEventRaised -= TriggerCrystalUIAnimation;
             player_pause_channel.OnEventRaised -= EnablePauseMenu;
             player_death_channel.OnEventRaised -= EnableGameOverMenu;
             platform_channel.OnEventRaised -= SpawnPlatform;
             background_channel.OnEventRaised -= SpawnBackground;
+        }
+
+        public void StartGame()
+        {
+            OnGameLoadFinished?.Invoke();
         }
 
         public void TriggerCrystalUIAnimation()

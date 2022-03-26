@@ -237,7 +237,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game_over_menu: {fileID: 1058892441}
-  buttons: []
 --- !u!1 &18903188
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +378,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 541574591937561417, guid: 18acef3912aeda446a95da6cc691be77, type: 3}
   m_PrefabInstance: {fileID: 30079219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &30079221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 459898393, guid: 18acef3912aeda446a95da6cc691be77, type: 3}
+  m_PrefabInstance: {fileID: 30079219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30079220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80a670668a6c541a0ed76dc10f8aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &45564031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,6 +1313,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6860927869186383723, guid: e65f2f5ecc213cb43a29fa51e3e7cb85, type: 3}
   m_PrefabInstance: {fileID: 180968079}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &180968081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 381113682, guid: e65f2f5ecc213cb43a29fa51e3e7cb85, type: 3}
+  m_PrefabInstance: {fileID: 180968079}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180968080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80a670668a6c541a0ed76dc10f8aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &204760173
 GameObject:
   m_ObjectHideFlags: 0
@@ -3944,9 +3965,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1622278}
-        m_TargetAssemblyTypeName: GPEJ.UI.GameOverInterface, Assembly-CSharp
-        m_MethodName: Retry
+      - m_Target: {fileID: 905442476}
+        m_TargetAssemblyTypeName: GPEJ.UI.UIButtonController, Assembly-CSharp
+        m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3994,6 +4015,118 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895388440}
   m_CullTransparentMesh: 1
+--- !u!1001 &905442474
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 905442476, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: game_start_channel
+      value: 
+      objectReference: {fileID: 11400000, guid: 96a02652778513a4dacfb3b1cecc3e10, type: 2}
+    - target: {fileID: 4174024981446162755, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_Name
+      value: Black Screen Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_RootOrder
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174024981446162756, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+--- !u!114 &905442476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 905442476, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+  m_PrefabInstance: {fileID: 905442474}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9998c678585aab7419256cb0521add69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &944320894
 GameObject:
   m_ObjectHideFlags: 0
@@ -5805,9 +5938,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1622278}
-        m_TargetAssemblyTypeName: GPEJ.UI.GameOverInterface, Assembly-CSharp
-        m_MethodName: ToMainMenu
+      - m_Target: {fileID: 905442476}
+        m_TargetAssemblyTypeName: GPEJ.UI.UIButtonController, Assembly-CSharp
+        m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6377,9 +6510,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1333442189}
-        m_TargetAssemblyTypeName: GPEJ.UI.PauseInterface, Assembly-CSharp
-        m_MethodName: ToMainMenu
+      - m_Target: {fileID: 905442476}
+        m_TargetAssemblyTypeName: GPEJ.UI.UIButtonController, Assembly-CSharp
+        m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6860,7 +6993,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause_menu: {fileID: 722288225}
-  buttons: []
 --- !u!1 &1340303475
 GameObject:
   m_ObjectHideFlags: 0
@@ -7661,9 +7793,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1333442189}
-        m_TargetAssemblyTypeName: GPEJ.UI.PauseInterface, Assembly-CSharp
-        m_MethodName: Retry
+      - m_Target: {fileID: 905442476}
+        m_TargetAssemblyTypeName: GPEJ.UI.UIButtonController, Assembly-CSharp
+        m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8531,11 +8663,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896bc4136453d3e4d90006d300e7b816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game_start_channel: {fileID: 11400000, guid: 96a02652778513a4dacfb3b1cecc3e10, type: 2}
   crystal_channel: {fileID: 11400000, guid: 68cb9485b83e4cf4f8802f9965249f20, type: 2}
   player_pause_channel: {fileID: 11400000, guid: b6a80695f625b2c49b3c70d9eeacefdc, type: 2}
   player_death_channel: {fileID: 11400000, guid: 16bf6d15488f0a148a1d7fa6db59623f, type: 2}
   platform_channel: {fileID: 11400000, guid: f80c1ff86ebb92f4b8b860a226c552c6, type: 2}
   background_channel: {fileID: 11400000, guid: 94e0c72519da1ea4dbceebcf32eac1b2, type: 2}
+  OnGameLoadFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 217675128}
+        m_TargetAssemblyTypeName: GPEJ.GameStateController, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2023038777}
+        m_TargetAssemblyTypeName: GPEJ.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnGameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 30079221}
+        m_TargetAssemblyTypeName: GPEJ.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnGameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 180968081}
+        m_TargetAssemblyTypeName: GPEJ.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnGameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCrystalPickedUp:
     m_PersistentCalls:
       m_Calls:
@@ -8976,11 +9160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause_menu: {fileID: 979343907}
-  buttons:
-  - {fileID: 622584767}
-  - {fileID: 402915103}
-  - {fileID: 1830492757}
-  - {fileID: 1485963531}
 --- !u!114 &1807455767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10181,6 +10360,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6196513913645911986, guid: f542885a06ba61e4389fb890a32a7814, type: 3}
   m_PrefabInstance: {fileID: 2023038775}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2023038777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 287757775, guid: f542885a06ba61e4389fb890a32a7814, type: 3}
+  m_PrefabInstance: {fileID: 2023038775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023038776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c80a670668a6c541a0ed76dc10f8aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2052165488
 GameObject:
   m_ObjectHideFlags: 0
@@ -10489,11 +10679,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game_over_menu: {fileID: 961467642}
-  buttons:
-  - {fileID: 74043717}
-  - {fileID: 1101222378}
-  - {fileID: 1187032322}
-  - {fileID: 163657691}
 --- !u!114 &2105604922
 MonoBehaviour:
   m_ObjectHideFlags: 0

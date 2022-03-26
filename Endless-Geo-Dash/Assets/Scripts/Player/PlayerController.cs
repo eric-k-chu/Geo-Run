@@ -29,6 +29,8 @@ namespace GPEJ.Player
         private float vertical_velocity;
         private float gravity;
 
+        private bool is_start_of_game;
+
         private void Awake()
         {
             player_controller = GetComponent<CharacterController>();
@@ -39,11 +41,12 @@ namespace GPEJ.Player
         {
             current_lane_pos = LanePosition.Middle;
             forward_speed = player_var.forward_speed;
+            is_start_of_game = true;
         }
 
         private void Update()
         {
-            if (Time.timeScale != 0f)
+            if (Time.timeScale != 0f && !is_start_of_game)
             {
                 forward_speed += (Time.deltaTime / 10f);
 
@@ -137,6 +140,11 @@ namespace GPEJ.Player
                 player_var.horizontal_speed * Time.deltaTime);
 
             player_controller.Move(motion_vector);
+        }
+
+        public void OnGameStart()
+        {
+            is_start_of_game = false;
         }
     }
 }
