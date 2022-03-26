@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 660e2e905ae76f5469f4af27297d5d70
+guid: 09ffe185bd24e9548b36f82c40139e73
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,13 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Metal001
+      name: Emissive
+    second: {fileID: 2100000, guid: 5c095fdba2b03e54882fd20833f0b36d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal Plates 001
     second: {fileID: 2100000, guid: 560e28d350a56844dbbfeb2f4edd113a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MetalPlate006
-    second: {fileID: 2100000, guid: 25e5dc9d9f3a482458c0e5e1c5eceed7, type: 2}
+      name: Tiles 045
+    second: {fileID: 2100000, guid: 57332becde030f0468ddf35668cfe819, type: 2}
   materials:
     materialImportMode: 0
     materialName: 0
@@ -83,7 +88,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []

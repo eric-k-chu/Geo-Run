@@ -8,6 +8,7 @@ This file contains the PlayerController class, which contains methods that allow
 a user to control the player model and algorithms that manipulate the player's 
 velocity.
 */
+using System.Collections;
 using UnityEngine;
 
 namespace GPEJ.Player
@@ -31,6 +32,9 @@ namespace GPEJ.Player
 
         private bool is_start_of_game;
 
+        private KeyCode right_key;
+        private KeyCode left_key;
+
         private void Awake()
         {
             player_controller = GetComponent<CharacterController>();
@@ -42,6 +46,8 @@ namespace GPEJ.Player
             current_lane_pos = LanePosition.Middle;
             forward_speed = player_var.forward_speed;
             is_start_of_game = true;
+            right_key = KeyCode.D;
+            left_key = KeyCode.A;
         }
 
         private void Update()
@@ -50,12 +56,12 @@ namespace GPEJ.Player
             {
                 forward_speed += (Time.deltaTime / 10f);
 
-                if (Input.GetKeyDown(KeyCode.D) && Time.timeScale != 0f)
+                if (Input.GetKeyDown(right_key) && Time.timeScale != 0f)
                 {
                     MovingRight();
                 }
 
-                if (Input.GetKeyDown(KeyCode.A) && Time.timeScale != 0f)
+                if (Input.GetKeyDown(left_key) && Time.timeScale != 0f)
                 {
                     MovingLeft();
                 }
@@ -145,6 +151,27 @@ namespace GPEJ.Player
         public void OnGameStart()
         {
             is_start_of_game = false;
+        }
+
+        public void SwapKeys(bool condition)
+        {
+            if (condition)
+            {
+                right_key = KeyCode.A;
+                left_key = KeyCode.D;
+                StartCoroutine(DebuffTimer(player_var.debuff_time));
+            }
+            else
+            {
+                right_key = KeyCode.D;
+                left_key = KeyCode.A;
+            }
+        }
+
+        private IEnumerator DebuffTimer(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            SwapKeys(false);
         }
     }
 }

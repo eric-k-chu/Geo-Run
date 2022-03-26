@@ -17,11 +17,8 @@ namespace GPEJ.Player.Interactables
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Player Collision Area"))
-            {
-                AudioManager.instance.PlayDeathSFX();
-                player_death_channel.RaiseEvent(true);
-            }
+            AudioManager.instance.PlayDeathSFX();
+            player_death_channel.RaiseEvent(true);
         }
     }
 }

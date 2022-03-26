@@ -17,12 +17,9 @@ namespace GPEJ.Player.Interactables
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                AudioManager.instance.PlayCrystalPickupSFX();
-                crystal_channel.RaiseEvent();
-                gameObject.SetActive(false);
-            }
+            AudioManager.instance.PlayCrystalPickupSFX();
+            crystal_channel.RaiseEvent();
+            gameObject.SetActive(false);
         }
     }
 }

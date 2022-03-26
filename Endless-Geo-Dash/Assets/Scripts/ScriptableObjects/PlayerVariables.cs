@@ -18,9 +18,10 @@ namespace GPEJ
         public float forward_speed;
         public float horizontal_speed;
         public float jump_force;
-        public float fall_multiplier;
+        public float fall_multiplier; 
+        public float debuff_time;
         public CharacterInfo[] character_list;
-
+       
         private const string k_character_type = "CharacterInfo-Type";
 
         public string GetName()
