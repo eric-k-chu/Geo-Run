@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2042219785037596543}
   - component: {fileID: 4301952883716273077}
   m_Layer: 9
-  m_Name: Terrain-Tunnel-Reversal
+  m_Name: Terrain-Tunnel-Reversal-End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e5553647c6e8449b18cc4a3ae64947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_reversal_start: 0
 --- !u!1001 &3202638757571982048
 PrefabInstance:
   m_ObjectHideFlags: 0

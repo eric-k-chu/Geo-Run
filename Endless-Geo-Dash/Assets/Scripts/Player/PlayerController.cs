@@ -159,19 +159,12 @@ namespace GPEJ.Player
             {
                 right_key = KeyCode.A;
                 left_key = KeyCode.D;
-                StartCoroutine(DebuffTimer(player_var.debuff_time));
             }
             else
             {
                 right_key = KeyCode.D;
                 left_key = KeyCode.A;
             }
-        }
-
-        private IEnumerator DebuffTimer(float seconds)
-        {
-            yield return new WaitForSeconds(seconds);
-            SwapKeys(false);
         }
     }
 }
