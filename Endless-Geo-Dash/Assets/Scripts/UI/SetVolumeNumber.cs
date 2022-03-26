@@ -16,14 +16,12 @@ namespace GPEJ.UI
     public class SetVolumeNumber : MonoBehaviour
     {
         [SerializeField] private VolumeType type;
-
-        private Text ui_text;
-
+  
         private const string k_master_vol = "Master-Volume";
         private const string k_music_vol = "Music-Volume";
         private const string k_sfx_vol = "SFX-Volume";
         private const string k_ui_vol = "UI-Volume";
-
+        private Text ui_text;
         private bool is_menu = false;
 
         private void Awake()

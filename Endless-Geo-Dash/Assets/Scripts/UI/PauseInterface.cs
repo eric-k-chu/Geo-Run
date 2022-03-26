@@ -35,12 +35,13 @@ namespace GPEJ.UI
 
         public void ToMainMenu()
         {
-            SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
+            SceneLoader.scene_to_load = "Menu-Scene";
+            SceneManager.LoadScene("Load-Scene");
         }
 
         public void Retry()
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync("Game-Scene");
         }
 
         public void QuitGame()

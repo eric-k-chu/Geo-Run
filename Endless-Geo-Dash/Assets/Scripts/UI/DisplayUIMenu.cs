@@ -15,11 +15,6 @@ namespace GPEJ.UI
     {
         private Animator ui_animator;
 
-        private void Awake()
-        {
-            ui_animator = GetComponent<Animator>();
-        }
-
         public void ShowUI()
         {
             ui_animator.SetTrigger("Active");
@@ -28,6 +23,11 @@ namespace GPEJ.UI
         public void HideUI()
         {
             ui_animator.SetTrigger("Inactive");
+        }
+
+        private void Awake()
+        {
+            ui_animator = GetComponent<Animator>();
         }
     }
 }

@@ -14,9 +14,9 @@ namespace GPEJ
 {
     public class VelocityDisplay : MonoBehaviour
     {
-        private Text velocity;
-
         [SerializeField] private RuntimeDataContainer runtime_data;
+
+        private Text velocity;
 
         private void Awake()
         {

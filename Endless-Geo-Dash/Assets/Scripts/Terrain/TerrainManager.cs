@@ -34,12 +34,6 @@ namespace GPEJ.Terrain
 
         [SerializeField] private List<PooledTerrain> pooled_background_list = new List<PooledTerrain>();
 
-        private void Start()
-        {
-            FillPooledTerrainList(pooled_platform_list);
-            FillPooledTerrainList(pooled_background_list);
-        }
-
         public void GetPooledPlatform(Vector3 vect)
         {
             GameObject terrain = null;
@@ -70,6 +64,12 @@ namespace GPEJ.Terrain
             }
             background.transform.SetPositionAndRotation(vect, Quaternion.identity);
             background.SetActive(true);
+        }
+
+        private void Start()
+        {
+            FillPooledTerrainList(pooled_platform_list);
+            FillPooledTerrainList(pooled_background_list);
         }
 
         private void FillPooledTerrainList(List<PooledTerrain> list)

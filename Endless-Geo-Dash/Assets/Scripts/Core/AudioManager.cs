@@ -12,9 +12,7 @@ using UnityEngine;
 namespace GPEJ
 {
     public class AudioManager : MonoBehaviour
-    {
-        public static AudioManager instance { get; private set; }
-
+    {     
         [Header("Audio Sources")]
         [SerializeField] private AudioSource music_source;
         [SerializeField] private AudioSource sfx_source;
@@ -28,10 +26,7 @@ namespace GPEJ
         [SerializeField] private AudioClip crystal_pickup;
         [SerializeField] private AudioClip death;
 
-        private void Awake()
-        {
-            instance = this;
-        }
+        public static AudioManager instance { get; private set; }
 
         public void PlayJumpSFX()
         {
@@ -76,6 +71,11 @@ namespace GPEJ
         public void ResumeMusic()
         {
             music_source.UnPause();
+        }
+
+        private void Awake()
+        {
+            instance = this;
         }
     }
 }

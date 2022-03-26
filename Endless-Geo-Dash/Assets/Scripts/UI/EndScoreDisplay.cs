@@ -15,25 +15,38 @@ namespace GPEJ.UI
     public class EndScoreDisplay : MonoBehaviour
     {
         [SerializeField] private GameObject distance_traveled;
-
         [SerializeField] private GameObject final_score;
-
         [SerializeField] private GameObject crystal;
-
         [SerializeField] private GameObject high_score;
-
         [SerializeField] private RuntimeDataContainer runtime_data;
 
+        private const string k_high_score = "High-Score";
         private int distance;
         private int crystal_count;
-
         private float score_multiplier;
-
         private Text distance_traveled_text;
         private Text crystal_count_text;
         private Text final_score_text;
 
-        private const string k_high_score = "High-Score";
+        public void DisplayScore(bool condition)
+        {
+            score_multiplier += (crystal_count / 100f);
+            distance = (int)runtime_data.distance;
+
+            distance_traveled_text.text = distance.ToString() + " m";
+
+            crystal_count_text.text = crystal_count.ToString();
+
+            int total_score = (int)(distance * score_multiplier);
+
+            if (PlayerPrefs.GetInt(k_high_score) > total_score)
+            {
+                PlayerPrefs.SetInt(k_high_score, total_score);
+                high_score.SetActive(true);
+            }
+
+            final_score_text.text = total_score.ToString();
+        }
 
         private void Awake()
         {
@@ -43,7 +56,7 @@ namespace GPEJ.UI
 
             if (!PlayerPrefs.HasKey(k_high_score))
             {
-                PlayerPrefs.SetFloat(k_high_score, 0f);
+                PlayerPrefs.SetInt(k_high_score, 0);
             }
         }
 
@@ -52,7 +65,6 @@ namespace GPEJ.UI
             crystal_count = 0;
             score_multiplier = 1f;
             distance = 0;
-            // highs_score.SetActive(true);
         }
 
         private void LateUpdate()
@@ -60,25 +72,6 @@ namespace GPEJ.UI
             crystal_count = runtime_data.crystals;
         }
 
-        private void DisplayScore(bool condition)
-        {
-            score_multiplier += (crystal_count / 100f);
-            distance = (int)runtime_data.distance;
 
-            distance_traveled_text.text = distance.ToString() + " m";
-
-            crystal_count_text.text = crystal_count.ToString();
-
-            float total_score = distance * score_multiplier;
-
-            if (PlayerPrefs.GetFloat(k_high_score) < total_score)
-            {
-                PlayerPrefs.SetFloat(k_high_score, total_score);
-                // TODO: Display new high score msg
-                // high_score.SetActive(true);
-            }
-
-            final_score_text.text = total_score.ToString();
-        }
     }
 }

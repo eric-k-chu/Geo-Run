@@ -18,15 +18,38 @@ namespace GPEJ.UI
     public class SetVolumeSlider : MonoBehaviour
     {
         [SerializeField] private AudioMixer master_mixer;
-
         [SerializeField] private VolumeType type;
-
-        private Slider ui_slider;
 
         private const string k_master_vol = "Master-Volume";
         private const string k_music_vol = "Music-Volume";
         private const string k_sfx_vol = "SFX-Volume";
         private const string k_ui_vol = "UI-Volume";
+        private Slider ui_slider;
+
+        // audio mixer value is logarithmic, so conversion is needed float -> log 10
+        public void SetMasterVolume(float value)
+        {
+            PlayerPrefs.SetFloat(k_master_vol, value);
+            master_mixer.SetFloat("MasterVol", Mathf.Log10(value) * 20);
+        }
+
+        public void SetMusicVolume(float value)
+        {
+            PlayerPrefs.SetFloat(k_music_vol, value);
+            master_mixer.SetFloat("MusicVol", Mathf.Log10(value) * 20);
+        }
+
+        public void SetSFXVolume(float value)
+        {
+            PlayerPrefs.SetFloat(k_sfx_vol, value);
+            master_mixer.SetFloat("SFXVol", Mathf.Log10(value) * 20);
+        }
+
+        public void SetUIVolume(float value)
+        {
+            PlayerPrefs.SetFloat(k_ui_vol, value);
+            master_mixer.SetFloat("UIVol", Mathf.Log10(value) * 20);
+        }
 
         private void Awake()
         {
@@ -78,32 +101,6 @@ namespace GPEJ.UI
                 SetUIVolume(volume_value);
             }
             ui_slider.value = volume_value;
-        }
-
-        // audio mixer value is logarithmic, so conversion is needed float -> log 10
-
-        public void SetMasterVolume(float value)
-        {
-            PlayerPrefs.SetFloat(k_master_vol, value);
-            master_mixer.SetFloat("MasterVol", Mathf.Log10(value) * 20);
-        }
-
-        public void SetMusicVolume(float value)
-        {
-            PlayerPrefs.SetFloat(k_music_vol, value);
-            master_mixer.SetFloat("MusicVol", Mathf.Log10(value) * 20);
-        }
-
-        public void SetSFXVolume(float value)
-        {
-            PlayerPrefs.SetFloat(k_sfx_vol, value);
-            master_mixer.SetFloat("SFXVol", Mathf.Log10(value) * 20);
-        }
-
-        public void SetUIVolume(float value)
-        {
-            PlayerPrefs.SetFloat(k_ui_vol, value);
-            master_mixer.SetFloat("UIVol", Mathf.Log10(value) * 20);
         }
     }
 }

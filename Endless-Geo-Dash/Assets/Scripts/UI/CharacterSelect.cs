@@ -17,14 +17,6 @@ namespace GPEJ.UI
 
         private const string k_character_type = "CharacterInfo-Type";
 
-        private void Awake()
-        {
-            if (!PlayerPrefs.HasKey(k_character_type))
-            {
-                PlayerPrefs.SetInt(k_character_type, 0);
-            }
-        }
-
         public void ChangeCharacter(int id)
         {
             // Turn off previous highlighted image and higlight the player selected image
@@ -43,6 +35,14 @@ namespace GPEJ.UI
                     character_button.HighlightIMG(true);
                     PlayerPrefs.SetInt(k_character_type, id);
                 }
+            }
+        }
+
+        private void Awake()
+        {
+            if (!PlayerPrefs.HasKey(k_character_type))
+            {
+                PlayerPrefs.SetInt(k_character_type, 0);
             }
         }
     }

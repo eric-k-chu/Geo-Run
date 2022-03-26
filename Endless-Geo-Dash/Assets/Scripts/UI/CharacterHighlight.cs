@@ -15,14 +15,23 @@ namespace GPEJ.UI
     public class CharacterHighlight : MonoBehaviour
     {
         [SerializeField] private int character_type;
-
         [SerializeField] private Color selected_color;
-
         [SerializeField] private Color disabled_color;
 
-        private Image ui_image;
-
         private const string k_character_type = "CharacterInfo-Type";
+        private Image ui_image;
+      
+        public void HighlightIMG(bool val)
+        {
+            if (val)
+            {
+                ui_image.color = selected_color;
+            }
+            else
+            {
+                ui_image.color = disabled_color;
+            }
+        }
 
         private void Awake()
         {
@@ -36,18 +45,6 @@ namespace GPEJ.UI
         private void Start()
         {
             if (character_type == PlayerPrefs.GetInt(k_character_type))
-            {
-                ui_image.color = selected_color;
-            }
-            else
-            {
-                ui_image.color = disabled_color;
-            }
-        }
-
-        public void HighlightIMG(bool val)
-        {
-            if (val)
             {
                 ui_image.color = selected_color;
             }

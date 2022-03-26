@@ -20,22 +20,27 @@ namespace GPEJ
         [Header("Characters")]
         [SerializeField] private GameObject[] character_list;
         [SerializeField] private GameObject[] fractured_character_list;
+
         [SerializeField] private GameObject waiting_ui_canvas;
-
         [SerializeField] private float seconds_in_death_animation;
-        private WaitForSeconds timer;
-
-        private enum GameState { Initial, Waiting, Running, Pause, Lost }
-        private GameState current_state;
-
-        private GameObject active_player;
-
-        private int character_type;
-
-        private bool is_beginning_of_game;
 
         private const string k_character_type = "CharacterInfo-Type";
+        private enum GameState { Initial, Waiting, Running, Pause, Lost }      
+        private GameState current_state;
+        private WaitForSeconds timer;
+        private GameObject active_player;
+        private int character_type;
+        private bool is_beginning_of_game;
 
+        public void LoseGame(bool condition)
+        {
+            TransitionState(GameState.Lost);
+        }
+
+        public void UnpauseGame()
+        {
+            TransitionState(GameState.Waiting);
+        }        
 
         private void Awake()
         {
@@ -62,9 +67,14 @@ namespace GPEJ
                     break;
                 case GameState.Waiting:
                     {
-                        if (Input.anyKeyDown)
+                        if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape))
                         {
                             TransitionState(GameState.Running);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.Escape))
+                        {
+                            TransitionState(GameState.Pause);
                         }
                         break;
                     }
@@ -182,16 +192,6 @@ namespace GPEJ
         {
             yield return timer;
             Time.timeScale = 0f;
-        }
-
-        public void LoseGame(bool condition)
-        {
-            TransitionState(GameState.Lost);
-        }
-
-        public void UnpauseGame()
-        {
-            TransitionState(GameState.Waiting);
         }
     }
 }

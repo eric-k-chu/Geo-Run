@@ -20,17 +20,10 @@ namespace GPEJ.UI
         [SerializeField] private Animator quit_ac;
         [SerializeField] private GameObject menu_options_background;
 
-        private void Start()
-        {
-            play_ac.gameObject.SetActive(false);
-            settings_ac.gameObject.SetActive(false);
-            quit_ac.gameObject.SetActive(false);
-            menu_options_background.SetActive(false);
-        }
-
         public void LoadGame()
         {
-            SceneManager.LoadSceneAsync("Game-Scene", LoadSceneMode.Single);
+            SceneLoader.scene_to_load = "Game-Scene";
+            SceneManager.LoadScene("Load-Scene");
         }
 
         public void QuitGame()
@@ -52,13 +45,20 @@ namespace GPEJ.UI
         public void HideMenuOptions()
         {
             logo_ac.SetTrigger("Normal");
-
             play_ac.gameObject.SetActive(false);
             play_ac.SetTrigger("Exit");
             settings_ac.gameObject.SetActive(false);
             settings_ac.SetTrigger("Exit");
             quit_ac.gameObject.SetActive(false);
             quit_ac.SetTrigger("Exit");
+            menu_options_background.SetActive(false);
+        }
+        
+        private void Start()
+        {
+            play_ac.gameObject.SetActive(false);
+            settings_ac.gameObject.SetActive(false);
+            quit_ac.gameObject.SetActive(false);
             menu_options_background.SetActive(false);
         }
     }

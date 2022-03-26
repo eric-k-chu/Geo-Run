@@ -16,7 +16,6 @@ namespace GPEJ.UI
     public class GameOverInterface : MonoBehaviour
     {
         [SerializeField] private Animator game_over_menu;
-
         [SerializeField] private Button[] buttons;
 
         public void SetActiveGameOverMenu(bool value)
@@ -34,7 +33,9 @@ namespace GPEJ.UI
 
         public void ToMainMenu()
         {
-            SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
+            //SceneManager.LoadSceneAsync("Menu-Scene", LoadSceneMode.Single);
+            SceneLoader.scene_to_load = "Menu-Scene";
+            SceneManager.LoadScene("Load-Scene");
 
         }
 

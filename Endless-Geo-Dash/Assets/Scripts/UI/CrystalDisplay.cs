@@ -16,14 +16,13 @@ namespace GPEJ.UI
     {
         private Animator animator;
 
-        private void Awake()
-        {
-            animator = GetComponent<Animator>();
-        }
-
         public void StartCrystalPickupAnimation()
         {
             animator.SetTrigger("StartGlow");
         }
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }     
     }
 }

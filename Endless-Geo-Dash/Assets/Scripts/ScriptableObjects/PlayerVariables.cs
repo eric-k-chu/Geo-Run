@@ -19,7 +19,6 @@ namespace GPEJ
         public float horizontal_speed;
         public float jump_force;
         public float fall_multiplier;
-
         public CharacterInfo[] character_list;
 
         private const string k_character_type = "CharacterInfo-Type";
