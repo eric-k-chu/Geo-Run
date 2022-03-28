@@ -16,8 +16,7 @@ namespace GPEJ
     {
         private void Start()
         {
-            SceneManager.LoadSceneAsync(SceneLoader.scene_to_load);
-
+            SceneManager.LoadSceneAsync(SceneLoader.SceneToLoad);
         }
     }
 }

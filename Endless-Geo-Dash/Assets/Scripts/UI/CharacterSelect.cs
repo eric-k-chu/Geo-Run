@@ -15,8 +15,6 @@ namespace GPEJ.UI
     {
         [SerializeField] private GameObject[] ui_character_image_list;
 
-        private const string k_character_type = "CharacterInfo-Type";
-
         public void ChangeCharacter(int id)
         {
             // Turn off previous highlighted image and higlight the player selected image
@@ -33,16 +31,16 @@ namespace GPEJ.UI
                 else
                 {
                     character_button.HighlightIMG(true);
-                    PlayerPrefs.SetInt(k_character_type, id);
+                    PlayerPrefs.SetInt(Preference.CharacterType, id);
                 }
             }
         }
 
         private void Awake()
         {
-            if (!PlayerPrefs.HasKey(k_character_type))
+            if (!PlayerPrefs.HasKey(Preference.CharacterType))
             {
-                PlayerPrefs.SetInt(k_character_type, 0);
+                PlayerPrefs.SetInt(Preference.CharacterType, 0);
             }
         }
     }

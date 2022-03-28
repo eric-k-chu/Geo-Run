@@ -24,14 +24,14 @@ namespace GPEJ.UI
         {
             gameObject.SetActive(true);
             Time.timeScale = 1f;
-            StartCoroutine(FadeIntoLoadingScreen("Menu-Scene"));
+            StartCoroutine(FadeIntoLoadingScreen(SceneLoader.MainMenu));
         }
 
         public void LoadGame()
         {
             gameObject.SetActive(true);
             Time.timeScale = 1f;
-            StartCoroutine(FadeIntoLoadingScreen("Game-Scene"));
+            StartCoroutine(FadeIntoLoadingScreen(SceneLoader.Game));
         }
 
         private IEnumerator FadeIntoLoadingScreen(string scene_name)
@@ -45,8 +45,8 @@ namespace GPEJ.UI
                 yield return null;
             }
             black_screen_canvas.alpha = 1;
-            SceneLoader.scene_to_load = scene_name;
-            SceneManager.LoadScene("Load-Scene");
+            SceneLoader.SceneToLoad = scene_name;
+            SceneManager.LoadScene(SceneLoader.Load);
         }
 
         private IEnumerator FadeIntoCurrentScene()

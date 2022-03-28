@@ -359,11 +359,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c25ce3d48fe793f41ba8f806cbdf18a8, type: 3}
---- !u!225 &100527626 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 4174024981446162752, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
-  m_PrefabInstance: {fileID: 4174024981388826442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &178524909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1725,8 +1720,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1910932928}
-        m_TargetAssemblyTypeName: MainMenuInterface, Assembly-CSharp
+      - m_Target: {fileID: 4174024981388826443}
+        m_TargetAssemblyTypeName: GPEJ.UI.UIButtonController, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
@@ -4146,7 +4141,6 @@ MonoBehaviour:
   settings_ac: {fileID: 493721867}
   quit_ac: {fileID: 515704870}
   menu_options_background: {fileID: 681817770}
-  black_screen: {fileID: 100527626}
 --- !u!1 &1977069405
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,6 +5103,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+--- !u!114 &4174024981388826443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 905442476, guid: ab9a2808b1ef10145bb34438778e83bb, type: 3}
+  m_PrefabInstance: {fileID: 4174024981388826442}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9998c678585aab7419256cb0521add69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4260170424739408397
 RectTransform:
   m_ObjectHideFlags: 0

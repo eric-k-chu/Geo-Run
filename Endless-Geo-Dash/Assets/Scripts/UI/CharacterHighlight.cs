@@ -18,7 +18,6 @@ namespace GPEJ.UI
         [SerializeField] private Color selected_color;
         [SerializeField] private Color disabled_color;
 
-        private const string k_character_type = "CharacterInfo-Type";
         private Image ui_image;
       
         public void HighlightIMG(bool val)
@@ -36,15 +35,15 @@ namespace GPEJ.UI
         private void Awake()
         {
             ui_image = GetComponent<Image>();
-            if (!PlayerPrefs.HasKey(k_character_type))
+            if (!PlayerPrefs.HasKey(Preference.CharacterType))
             {
-                PlayerPrefs.SetInt(k_character_type, 0);
+                PlayerPrefs.SetInt(Preference.CharacterType, 0);
             }
         }
 
         private void Start()
         {
-            if (character_type == PlayerPrefs.GetInt(k_character_type))
+            if (character_type == PlayerPrefs.GetInt(Preference.CharacterType))
             {
                 ui_image.color = selected_color;
             }

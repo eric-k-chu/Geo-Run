@@ -19,18 +19,16 @@ namespace GPEJ
         public float horizontal_speed;
         public float jump_force;
         public float fall_multiplier; 
-        public CharacterInfo[] character_list;
-       
-        private const string k_character_type = "CharacterInfo-Type";
+        public CharacterInfo[] character_list;     
 
         public string GetName()
         {
-            return character_list[PlayerPrefs.GetInt(k_character_type)].character_name;
+            return character_list[PlayerPrefs.GetInt(Preference.CharacterType)].character_name;
         }
 
         public Texture GetPortrait()
         {
-            return character_list[PlayerPrefs.GetInt(k_character_type)].character_portrait;
+            return character_list[PlayerPrefs.GetInt(Preference.CharacterType)].character_portrait;
         }
     }
 }

@@ -20,7 +20,6 @@ namespace GPEJ.UI
         [SerializeField] private GameObject high_score;
         [SerializeField] private RuntimeDataContainer runtime_data;
 
-        private const string k_high_score = "High-Score";
         private int distance;
         private int crystal_count;
         private float score_multiplier;
@@ -30,6 +29,7 @@ namespace GPEJ.UI
 
         public void DisplayScore(bool condition)
         {
+            crystal_count = runtime_data.crystals;
             score_multiplier += (crystal_count / 100f);
             distance = (int)runtime_data.distance;
 
@@ -39,9 +39,9 @@ namespace GPEJ.UI
 
             int total_score = (int)(distance * score_multiplier);
 
-            if (PlayerPrefs.GetInt(k_high_score) > total_score)
+            if (PlayerPrefs.GetInt(Preference.HighScore) > total_score)
             {
-                PlayerPrefs.SetInt(k_high_score, total_score);
+                PlayerPrefs.SetInt(Preference.HighScore, total_score);
                 high_score.SetActive(true);
             }
 
@@ -54,9 +54,9 @@ namespace GPEJ.UI
             crystal_count_text = crystal.GetComponent<Text>();
             final_score_text = final_score.GetComponent<Text>();
 
-            if (!PlayerPrefs.HasKey(k_high_score))
+            if (!PlayerPrefs.HasKey(Preference.HighScore))
             {
-                PlayerPrefs.SetInt(k_high_score, 0);
+                PlayerPrefs.SetInt(Preference.HighScore, 0);
             }
         }
 
@@ -66,12 +66,5 @@ namespace GPEJ.UI
             score_multiplier = 1f;
             distance = 0;
         }
-
-        private void LateUpdate()
-        {
-            crystal_count = runtime_data.crystals;
-        }
-
-
     }
 }

@@ -17,8 +17,11 @@ namespace GPEJ.Player.Interactables
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other == null) return;
+
             AudioManager.instance.PlayDeathSFX();
             player_death_channel.RaiseEvent(true);
+            gameObject.SetActive(false);
         }
     }
 }

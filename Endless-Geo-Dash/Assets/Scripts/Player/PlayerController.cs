@@ -29,8 +29,10 @@ namespace GPEJ.Player
         private float forward_speed;
         private float vertical_velocity;
         private float gravity;
+        private float debuff_timer;
 
         private bool is_start_of_game;
+        private bool is_debuffed;
 
         private KeyCode right_key;
         private KeyCode left_key;
@@ -48,13 +50,17 @@ namespace GPEJ.Player
             is_start_of_game = true;
             right_key = KeyCode.D;
             left_key = KeyCode.A;
+            debuff_timer = 0f;
+            is_debuffed = false;
         }
 
         private void Update()
         {
             if (Time.timeScale != 0f && !is_start_of_game)
             {
-                forward_speed += (Time.deltaTime / 10f);
+                forward_speed += Time.deltaTime;
+
+                HandleDebuffs();
 
                 if (Input.GetKeyDown(right_key) && Time.timeScale != 0f)
                 {
@@ -80,6 +86,14 @@ namespace GPEJ.Player
 
                 MovePlayer();
                 UpdateUIDisplay();
+            }
+        }
+
+        private void HandleDebuffs()
+        {
+            if (is_debuffed && Time.time > debuff_timer)
+            {
+                SwapKeys(false);
             }
         }
 
@@ -157,11 +171,16 @@ namespace GPEJ.Player
         {
             if (condition)
             {
+                Debug.Log("Swapped");
+                is_debuffed = true;
+                debuff_timer = Time.time + 8f;
                 right_key = KeyCode.A;
                 left_key = KeyCode.D;
             }
             else
             {
+                Debug.Log("Unswapped");
+                is_debuffed = false;
                 right_key = KeyCode.D;
                 left_key = KeyCode.A;
             }

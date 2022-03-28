@@ -11,6 +11,9 @@ namespace GPEJ
 {
     public static class SceneLoader
     {
-        public static string scene_to_load;
+        public static string SceneToLoad;
+        public static readonly string MainMenu = "Menu-Scene";
+        public static readonly string Game = "Game-Scene";
+        public static readonly string Load = "Load-Scene";
     }
 }

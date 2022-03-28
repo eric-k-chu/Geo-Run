@@ -22,14 +22,6 @@ namespace GPEJ.UI
         [SerializeField] private Animator quit_ac;
         [SerializeField] private GameObject menu_options_background;
 
-        [SerializeField] private CanvasGroup black_screen;
-
-        public void LoadGame()
-        {
-            black_screen.gameObject.SetActive(true);
-            StartCoroutine(FadeIntoLoadingScreen());
-        }
-
         public void QuitGame()
         {
             Application.Quit();
@@ -56,21 +48,6 @@ namespace GPEJ.UI
             quit_ac.gameObject.SetActive(false);
             quit_ac.SetTrigger("Exit");
             menu_options_background.SetActive(false);
-        }
-
-        private IEnumerator FadeIntoLoadingScreen()
-        {
-            float start_alpha = black_screen.alpha;
-            float time = 0f;
-            while (time < 1f)
-            {
-                black_screen.alpha = Mathf.Lerp(start_alpha, 1, time / 1f);
-                time += Time.deltaTime;
-                yield return null;
-            }
-            black_screen.alpha = 1;
-            SceneLoader.scene_to_load = "Game-Scene";
-            SceneManager.LoadScene("Load-Scene");
         }
 
         private void Start()

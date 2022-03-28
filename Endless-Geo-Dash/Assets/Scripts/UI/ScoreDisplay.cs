@@ -35,7 +35,7 @@ namespace GPEJ.UI
         {
             if (Time.timeScale != 0f)
             {
-                ui_text.text = runtime_data.distance.ToString();
+                ui_text.text = ((int)(runtime_data.distance)).ToString();
             }
         }
     }

@@ -24,7 +24,6 @@ namespace GPEJ
         [SerializeField] private GameObject waiting_ui_canvas;
         [SerializeField] private float seconds_in_death_animation;
 
-        private const string k_character_type = "CharacterInfo-Type";
         private enum GameState { Initial, Waiting, Running, Pause, Lost }      
         private GameState current_state;
         private WaitForSeconds timer;
@@ -49,15 +48,15 @@ namespace GPEJ
 
         private void Awake()
         {
-            if (!PlayerPrefs.HasKey(k_character_type))
+            if (!PlayerPrefs.HasKey(Preference.CharacterType))
             {
-                PlayerPrefs.SetInt(k_character_type, 0);
+                PlayerPrefs.SetInt(Preference.CharacterType, 0);
             }
         }
 
         private void Start()
         {
-            character_type = PlayerPrefs.GetInt(k_character_type);
+            character_type = PlayerPrefs.GetInt(Preference.CharacterType);
             active_player = character_list[character_type];
             timer = new WaitForSeconds(seconds_in_death_animation);
             is_beginning_of_game = true;

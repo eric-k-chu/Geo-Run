@@ -17,10 +17,6 @@ namespace GPEJ.UI
     {
         [SerializeField] private VolumeType type;
   
-        private const string k_master_vol = "Master-Volume";
-        private const string k_music_vol = "Music-Volume";
-        private const string k_sfx_vol = "SFX-Volume";
-        private const string k_ui_vol = "UI-Volume";
         private Text ui_text;
         private bool is_menu = false;
 
@@ -31,7 +27,7 @@ namespace GPEJ.UI
 
         private void Start()
         {
-            if (SceneManager.GetActiveScene().name == "Menu-Scene")
+            if (SceneManager.GetActiveScene().name == SceneLoader.MainMenu)
             {
                 is_menu = true;
             }
@@ -51,19 +47,19 @@ namespace GPEJ.UI
             float volume_value = 0;
             if (type == VolumeType.Master)
             {
-                volume_value = PlayerPrefs.GetFloat(k_master_vol);
+                volume_value = PlayerPrefs.GetFloat(Preference.MasterVolume);
             }
             else if (type == VolumeType.Music)
             {
-                volume_value = PlayerPrefs.GetFloat(k_music_vol);
+                volume_value = PlayerPrefs.GetFloat(Preference.MusicVolume);
             }
             else if (type == VolumeType.SFX)
             {
-                volume_value = PlayerPrefs.GetFloat(k_sfx_vol);
+                volume_value = PlayerPrefs.GetFloat(Preference.SFXVolume);
             }
             else if (type == VolumeType.UI)
             {
-                volume_value = PlayerPrefs.GetFloat(k_ui_vol);
+                volume_value = PlayerPrefs.GetFloat(Preference.UIVolume);
             }
             int volume_to_change = (int)(volume_value * 100f);
             ui_text.text = volume_to_change.ToString();
