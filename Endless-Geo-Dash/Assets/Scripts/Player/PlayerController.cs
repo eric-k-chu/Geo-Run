@@ -18,6 +18,7 @@ namespace GPEJ.Player
     {
         [SerializeField] private PlayerVariables player_var;
         [SerializeField] private RuntimeDataContainer runtimed_data;
+        [SerializeField] private GameObject debuff_popup;
 
         private enum LanePosition { Left, Middle, Right }
         private LanePosition current_lane_pos;
@@ -50,7 +51,7 @@ namespace GPEJ.Player
         private void Start()
         {
             current_lane_pos = LanePosition.Middle;
-
+            debuff_popup.SetActive(false);
             if (player_var == null) return;
             forward_speed = player_var.forward_speed;
         }
@@ -177,6 +178,7 @@ namespace GPEJ.Player
                 debuff_timer = Time.time + 8f;
                 right_key = KeyCode.A;
                 left_key = KeyCode.D;
+                debuff_popup.SetActive(true);
             }
             else
             {
@@ -184,6 +186,7 @@ namespace GPEJ.Player
                 is_debuffed = false;
                 right_key = KeyCode.D;
                 left_key = KeyCode.A;
+                debuff_popup.SetActive(false);
             }
         }
     }
