@@ -71,12 +71,12 @@ namespace GPEJ
                     break;
                 case GameState.Waiting:
                     {
-                        if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape))
+                        if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.P))
                         {
                             TransitionState(GameState.Running);
                         }
 
-                        if (Input.GetKeyDown(KeyCode.Escape))
+                        if (Input.GetKeyDown(KeyCode.P))
                         {
                             TransitionState(GameState.Pause);
                         }
@@ -84,7 +84,7 @@ namespace GPEJ
                     }
                 case GameState.Running:
                     {
-                        if (Input.GetKeyDown(KeyCode.Escape))
+                        if (Input.GetKeyDown(KeyCode.P))
                         {
                             TransitionState(GameState.Pause);
                         }
@@ -92,7 +92,7 @@ namespace GPEJ
                     }
                 case GameState.Pause:
                     {
-                        if (Input.GetKeyDown(KeyCode.Escape))
+                        if (Input.GetKeyDown(KeyCode.P))
                         {
                             TransitionState(GameState.Waiting);
                         }

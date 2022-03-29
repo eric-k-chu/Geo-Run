@@ -28,7 +28,7 @@ namespace GPEJ.UI
             }
         }
 
-        // Close out of settings menu when player presses ESC
+        // Close out of settings menu when player presses Pause
         public void HideSettingsMenu(bool value)
         {
             if (!value)
