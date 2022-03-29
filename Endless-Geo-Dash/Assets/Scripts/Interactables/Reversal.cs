@@ -14,11 +14,13 @@ namespace GPEJ.Player.Interactables
 {
     public class Reversal : MonoBehaviour
     {
+        [SerializeField] private BoolEventChannel swap_key_channel;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other == null) return;
 
-            other.GetComponent<PlayerController>().SwapKeys(true);
+            swap_key_channel.RaiseEvent(true);
             gameObject.SetActive(false);
         }
     }

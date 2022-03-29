@@ -6007,6 +6007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game_start_channel: {fileID: 11400000, guid: 96a02652778513a4dacfb3b1cecc3e10, type: 2}
   crystal_channel: {fileID: 11400000, guid: 68cb9485b83e4cf4f8802f9965249f20, type: 2}
+  swap_key_channel: {fileID: 11400000, guid: 7dd90b893706b2b478b5538d8f725947, type: 2}
   player_pause_channel: {fileID: 11400000, guid: b6a80695f625b2c49b3c70d9eeacefdc, type: 2}
   player_death_channel: {fileID: 11400000, guid: 16bf6d15488f0a148a1d7fa6db59623f, type: 2}
   platform_channel: {fileID: 11400000, guid: f80c1ff86ebb92f4b8b860a226c552c6, type: 2}
@@ -6069,6 +6070,45 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: GPEJ.UI.CrystalDisplay, Assembly-CSharp
         m_MethodName: StartCrystalPickupAnimation
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnKeySwapped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2023038777}
+        m_TargetAssemblyTypeName: GPEJ.Player.PlayerController, Assembly-CSharp
+        m_MethodName: SwapKeys
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 30079221}
+        m_TargetAssemblyTypeName: GPEJ.Player.PlayerController, Assembly-CSharp
+        m_MethodName: SwapKeys
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 180968081}
+        m_TargetAssemblyTypeName: GPEJ.Player.PlayerController, Assembly-CSharp
+        m_MethodName: SwapKeys
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
