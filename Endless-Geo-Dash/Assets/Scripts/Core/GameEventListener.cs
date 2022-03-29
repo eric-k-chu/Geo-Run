@@ -29,7 +29,6 @@ namespace GPEJ
         [SerializeField] private Vector3EventChannel platform_channel;
         [SerializeField] private Vector3EventChannel background_channel;
         
-
         public UnityEvent OnGameLoadFinished;
         public UnityEvent OnCrystalPickedUp;
         public BoolEvents OnKeySwapped;

@@ -46,8 +46,8 @@ namespace GPEJ.Terrain
                     terrain = pooled_platform_list[index].object_list[i];
                 }
             }
-            terrain.transform.SetPositionAndRotation(vect, Quaternion.identity);
-            terrain.SetActive(true);
+            terrain?.transform.SetPositionAndRotation(vect, Quaternion.identity);
+            terrain?.SetActive(true);
         }
 
         public void GetPooledBackground(Vector3 vect)
@@ -62,8 +62,8 @@ namespace GPEJ.Terrain
                     background = pooled_background_list[index].object_list[i];
                 }
             }
-            background.transform.SetPositionAndRotation(vect, Quaternion.identity);
-            background.SetActive(true);
+            background?.transform.SetPositionAndRotation(vect, Quaternion.identity);
+            background?.SetActive(true);
         }
 
         private void Start()

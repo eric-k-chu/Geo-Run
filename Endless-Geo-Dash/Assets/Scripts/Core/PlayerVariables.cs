@@ -23,11 +23,19 @@ namespace GPEJ
 
         public string GetName()
         {
+            if (!PlayerPrefs.HasKey(Preference.CharacterType))
+            {
+                return character_list[0].character_name;
+            }
             return character_list[PlayerPrefs.GetInt(Preference.CharacterType)].character_name;
         }
 
         public Texture GetPortrait()
         {
+            if (!PlayerPrefs.HasKey(Preference.CharacterType))
+            {
+                return character_list[0].character_portrait;
+            }
             return character_list[PlayerPrefs.GetInt(Preference.CharacterType)].character_portrait;
         }
     }

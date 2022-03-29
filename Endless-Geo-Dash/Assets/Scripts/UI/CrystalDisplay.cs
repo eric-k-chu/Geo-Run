@@ -14,10 +14,13 @@ namespace GPEJ.UI
 {
     public class CrystalDisplay : MonoBehaviour
     {
+        [SerializeField] private RuntimeDataContainer runtime_data;
+
         private Animator animator;
 
         public void StartCrystalPickupAnimation()
         {
+            runtime_data.crystals++;
             animator.SetTrigger("StartGlow");
         }
         private void Awake()

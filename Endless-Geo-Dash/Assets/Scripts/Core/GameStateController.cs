@@ -12,6 +12,8 @@ using UnityEngine;
 
 namespace GPEJ
 {
+    public enum GameState { Initial, Waiting, Running, Pause, Lost }
+    
     public class GameStateController : MonoBehaviour
     {
         [Header("Event Channels")]
@@ -23,13 +25,12 @@ namespace GPEJ
 
         [SerializeField] private GameObject waiting_ui_canvas;
         [SerializeField] private float seconds_in_death_animation;
-
-        private enum GameState { Initial, Waiting, Running, Pause, Lost }      
+         
         private GameState current_state;
         private WaitForSeconds timer;
         private GameObject active_player;
         private int character_type;
-        private bool is_beginning_of_game;
+        private bool is_beginning_of_game = true;
 
         public void StartGame()
         {
@@ -59,7 +60,6 @@ namespace GPEJ
             character_type = PlayerPrefs.GetInt(Preference.CharacterType);
             active_player = character_list[character_type];
             timer = new WaitForSeconds(seconds_in_death_animation);
-            is_beginning_of_game = true;
             TransitionState(GameState.Initial);
         }
 

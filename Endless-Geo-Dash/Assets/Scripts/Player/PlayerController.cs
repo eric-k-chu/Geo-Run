@@ -13,6 +13,7 @@ using UnityEngine;
 
 namespace GPEJ.Player
 {
+    [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private PlayerVariables player_var;
@@ -29,13 +30,16 @@ namespace GPEJ.Player
         private float forward_speed;
         private float vertical_velocity;
         private float gravity;
-        private float debuff_timer;
+        private float debuff_timer = 0f;
 
-        private bool is_start_of_game;
-        private bool is_debuffed;
+        private bool is_start_of_game = true;
+        private bool is_debuffed = false;
 
-        private KeyCode right_key;
-        private KeyCode left_key;
+        private KeyCode right_key = KeyCode.D;
+        private KeyCode left_key = KeyCode.A;
+
+        public KeyCode RightKey { get => right_key; }
+        public KeyCode LeftKey { get => left_key; }
 
         private void Awake()
         {
@@ -46,12 +50,9 @@ namespace GPEJ.Player
         private void Start()
         {
             current_lane_pos = LanePosition.Middle;
+
+            if (player_var == null) return;
             forward_speed = player_var.forward_speed;
-            is_start_of_game = true;
-            right_key = KeyCode.D;
-            left_key = KeyCode.A;
-            debuff_timer = 0f;
-            is_debuffed = false;
         }
 
         private void Update()
