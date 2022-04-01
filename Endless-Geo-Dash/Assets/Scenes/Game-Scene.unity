@@ -1103,8 +1103,14 @@ MonoBehaviour:
     obj: {fileID: 6811883459200554869, guid: fccbbd98cbae5ac4eb42f729ba1598a7, type: 3}
     object_list: []
   pooled_background_list:
-  - amount: 3
+  - amount: 2
     obj: {fileID: 3862090923583898606, guid: 3ef49fe3e067994428d4c059e287b5fd, type: 3}
+    object_list: []
+  - amount: 2
+    obj: {fileID: 4255200054979310395, guid: ec7ba3c1157af2a4789d0ba515f79af5, type: 3}
+    object_list: []
+  - amount: 2
+    obj: {fileID: 196119304415387776, guid: a46240de961c05b4986b2ff0b532b0de, type: 3}
     object_list: []
 --- !u!1 &218482873
 GameObject:
