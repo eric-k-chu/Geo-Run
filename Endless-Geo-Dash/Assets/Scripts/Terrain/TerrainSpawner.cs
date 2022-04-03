@@ -20,7 +20,7 @@ namespace GPEJ.Terrain
         [SerializeField] private TerrainType type;
 
         [Header("Length of terrain")]
-        [SerializeField] private int length;
+        [SerializeField] private float length;
 
         [Header("Disable terrain after seconds")]
         [SerializeField] private float seconds;

@@ -24,12 +24,6 @@ namespace GPEJ.Player
         [Range(0f, 20f)]
         [SerializeField] private float body_yawdamping;
 
-        [Header("Composer"), Range(0f, 20f)]
-        [SerializeField] private float aim_horizontal_damping;
-
-        [Range(0f, 20f)]
-        [SerializeField] private float aim_vertical_damping;
-
         private CinemachineVirtualCamera cinemachine;
 
         private Transform player_object;
@@ -51,16 +45,12 @@ namespace GPEJ.Player
         {
             player_object = character_list[PlayerPrefs.GetInt(Preference.CharacterType)].transform;
 
-            cinemachine.LookAt = cinemachine.Follow = player_object;
+            cinemachine.Follow = player_object;
 
             CinemachineTransposer transposer = cinemachine.AddCinemachineComponent<CinemachineTransposer>();
             transposer.m_FollowOffset = follow_offset;
             transposer.m_XDamping = body_xdamping;
             transposer.m_YawDamping = body_yawdamping;
-
-            CinemachineComposer composer = cinemachine.AddCinemachineComponent<CinemachineComposer>();
-            composer.m_HorizontalDamping = aim_horizontal_damping;
-            composer.m_VerticalDamping = aim_vertical_damping;
         }
     }
 }

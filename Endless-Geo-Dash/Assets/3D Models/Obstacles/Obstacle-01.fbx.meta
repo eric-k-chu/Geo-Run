@@ -17,6 +17,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Emissive Left
+    second: {fileID: 2100000, guid: 09845773796ff3249be3408aac2b92d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Metal 001
     second: {fileID: 2100000, guid: 1d7a99f9d457aaf4f9fa7eefe91f62cb, type: 2}
   - first:
@@ -32,6 +37,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Outline
+    second: {fileID: 2100000, guid: 2588c7103209bc74584f1704c40cb5bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Plaster005
     second: {fileID: 2100000, guid: 5e7853725a709b4479edd2136d3e7405, type: 2}
   - first:
@@ -42,10 +52,15 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Platform Base
+    second: {fileID: 2100000, guid: ae60d4a6aea3ab3439dfcfd1c83276aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: SIgn 009
     second: {fileID: 2100000, guid: 829e1131650399b469f42067c023950e, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

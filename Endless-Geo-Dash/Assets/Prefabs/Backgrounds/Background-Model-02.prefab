@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4255200054979310395
+--- !u!1 &4142226800490828001
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3478557145693415809}
-  - component: {fileID: 570139515838850596}
-  - component: {fileID: 2309640274020405998}
-  - component: {fileID: 4020843887190773353}
-  - component: {fileID: 4020843887190773352}
+  - component: {fileID: 3618631273346206299}
+  - component: {fileID: 403123215605728766}
+  - component: {fileID: 2485099843730829620}
+  - component: {fileID: 3872335391207817549}
+  - component: {fileID: 3872335391207817548}
   m_Layer: 8
   m_Name: Background-Model-02
   m_TagString: Untagged
@@ -20,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3478557145693415809
+--- !u!4 &3618631273346206299
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255200054979310395}
+  m_GameObject: {fileID: 4142226800490828001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,21 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &570139515838850596
+--- !u!33 &403123215605728766
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255200054979310395}
-  m_Mesh: {fileID: -6360558719573625917, guid: 28a5c0fbb27adcf42b4a5adc8cfbfcdf, type: 3}
---- !u!23 &2309640274020405998
+  m_GameObject: {fileID: 4142226800490828001}
+  m_Mesh: {fileID: 2444754093878458691, guid: 28a5c0fbb27adcf42b4a5adc8cfbfcdf, type: 3}
+--- !u!23 &2485099843730829620
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255200054979310395}
+  m_GameObject: {fileID: 4142226800490828001}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,9 +61,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3a9e8cda315006478b91e41a8755ab5, type: 2}
-  - {fileID: 2100000, guid: 57332becde030f0468ddf35668cfe819, type: 2}
-  - {fileID: 2100000, guid: d7aec948053f33b4b8f86315e5e4dd57, type: 2}
+  - {fileID: 2100000, guid: 2588c7103209bc74584f1704c40cb5bb, type: 2}
+  - {fileID: 2100000, guid: ae60d4a6aea3ab3439dfcfd1c83276aa, type: 2}
+  - {fileID: 2100000, guid: a8a5469f88212cb418a0988aef79d64f, type: 2}
+  - {fileID: 2100000, guid: 09845773796ff3249be3408aac2b92d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,26 +86,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4020843887190773353
+--- !u!65 &3872335391207817549
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255200054979310395}
+  m_GameObject: {fileID: 4142226800490828001}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 693.423, y: 633.5486, z: 650}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4020843887190773352
+  m_Size: {x: 168.14374, y: 95.99985, z: 588.504}
+  m_Center: {x: -0.03593445, y: 45.999924, z: 0}
+--- !u!114 &3872335391207817548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4255200054979310395}
+  m_GameObject: {fileID: 4142226800490828001}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60f6ab9a35facab4c9c56c6440889cec, type: 3}
@@ -113,5 +114,5 @@ MonoBehaviour:
   platform_channel: {fileID: 11400000, guid: f80c1ff86ebb92f4b8b860a226c552c6, type: 2}
   background_channel: {fileID: 11400000, guid: 94e0c72519da1ea4dbceebcf32eac1b2, type: 2}
   type: 0
-  length: 650
+  length: 588.504
   seconds: 5
