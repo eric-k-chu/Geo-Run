@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 09ffe185bd24e9548b36f82c40139e73
+guid: f5bdf943923cf9546862d0ec3faafd77
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,18 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Emissive
-    second: {fileID: 2100000, guid: 5c095fdba2b03e54882fd20833f0b36d, type: 2}
+      name: Emissive Left
+    second: {fileID: 2100000, guid: 09845773796ff3249be3408aac2b92d1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Metal Plates 001
-    second: {fileID: 2100000, guid: 560e28d350a56844dbbfeb2f4edd113a, type: 2}
+      name: Emissive Right
+    second: {fileID: 2100000, guid: a8a5469f88212cb418a0988aef79d64f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Tiles 045
-    second: {fileID: 2100000, guid: 57332becde030f0468ddf35668cfe819, type: 2}
+      name: Outline
+    second: {fileID: 2100000, guid: 2588c7103209bc74584f1704c40cb5bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Reversal
+    second: {fileID: 2100000, guid: 3427c576bcdcaf84e8c32df787665f05, type: 2}
   materials:
     materialImportMode: 0
     materialName: 0
@@ -88,7 +93,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
