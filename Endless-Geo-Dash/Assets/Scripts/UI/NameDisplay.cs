@@ -8,7 +8,7 @@ This file contains the NameDisplay class, which displays the name of the
 character that the user chooses.
 */
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 namespace GPEJ.UI
 {
@@ -16,16 +16,16 @@ namespace GPEJ.UI
     {
         [SerializeField] private PlayerVariables player_var;
 
-        private Text ui_text;
+        private TextMeshProUGUI text_mesh;
 
         private void Awake()
         {
-            ui_text = GetComponent<Text>();
+            text_mesh = GetComponent<TextMeshProUGUI>();
         }
 
         private void Start()
         {
-            ui_text.text = player_var.GetName();
+            text_mesh.text = player_var.GetName();
         }
     }
 }

@@ -7,8 +7,8 @@ FILE DESCRIPTION:
 This file contains the EndScoreDisplay class, which displays the ending score
 of the player
 */
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace GPEJ.UI
 {
@@ -23,9 +23,10 @@ namespace GPEJ.UI
         private int distance;
         private int crystal_count;
         private float score_multiplier;
-        private Text distance_traveled_text;
-        private Text crystal_count_text;
-        private Text final_score_text;
+
+        private TextMeshProUGUI distance_text_mesh;
+        private TextMeshProUGUI crystal_count_text_mesh;
+        private TextMeshProUGUI final_score_text_mesh;
 
         public void DisplayScore(bool condition)
         {
@@ -33,9 +34,9 @@ namespace GPEJ.UI
             score_multiplier += (crystal_count / 100f);
             distance = (int)runtime_data.distance;
 
-            distance_traveled_text.text = distance.ToString() + " m";
+            distance_text_mesh.text = distance.ToString() + " m";
 
-            crystal_count_text.text = crystal_count.ToString();
+            crystal_count_text_mesh.text = crystal_count.ToString();
 
             int total_score = (int)(distance * score_multiplier);
 
@@ -45,14 +46,14 @@ namespace GPEJ.UI
                 high_score.SetActive(true);
             }
 
-            final_score_text.text = total_score.ToString();
+            final_score_text_mesh.text = total_score.ToString();
         }
 
         private void Awake()
         {
-            distance_traveled_text = distance_traveled.GetComponent<Text>();
-            crystal_count_text = crystal.GetComponent<Text>();
-            final_score_text = final_score.GetComponent<Text>();
+            distance_text_mesh = distance_traveled.GetComponent<TextMeshProUGUI>();
+            crystal_count_text_mesh = crystal.GetComponent<TextMeshProUGUI>();
+            final_score_text_mesh = final_score.GetComponent<TextMeshProUGUI>();
 
             if (!PlayerPrefs.HasKey(Preference.HighScore))
             {

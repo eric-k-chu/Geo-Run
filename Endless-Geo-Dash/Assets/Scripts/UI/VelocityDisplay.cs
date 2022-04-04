@@ -8,7 +8,7 @@ This file contains the VelocityDisplay class, which display
 the player's current velocity
 */
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 namespace GPEJ
 {
@@ -16,18 +16,18 @@ namespace GPEJ
     {
         [SerializeField] private RuntimeDataContainer runtime_data;
 
-        private Text velocity;
+        private TextMeshProUGUI text_mesh;
 
         private void Awake()
         {
-            velocity = GetComponent<Text>();
+            text_mesh = GetComponent<TextMeshProUGUI>();
         }
 
         private void LateUpdate()
         {
             if (Time.timeScale != 0f)
             {
-                velocity.text = ((int)runtime_data.velocity).ToString() + " m/s";
+                text_mesh.text = ((int)runtime_data.velocity).ToString() + " m/s";
             }
         }
     }
