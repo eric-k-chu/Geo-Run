@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 1064226803079780900}
   - component: {fileID: 1064226803079780901}
   - component: {fileID: 1064226803079780899}
+  - component: {fileID: 5320335543446163987}
   m_Layer: 11
   m_Name: Electrical-Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1064226803079780900
 Transform:
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064226803079780902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 670576605332049999}
@@ -59,6 +60,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_death_channel: {fileID: 11400000, guid: 16bf6d15488f0a148a1d7fa6db59623f, type: 2}
+--- !u!54 &5320335543446163987
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064226803079780902}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
 --- !u!1001 &1064226804408809380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,6 +134,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f581cea2f6a8c14db21a18c3f4599b2, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f581cea2f6a8c14db21a18c3f4599b2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f581cea2f6a8c14db21a18c3f4599b2, type: 3}

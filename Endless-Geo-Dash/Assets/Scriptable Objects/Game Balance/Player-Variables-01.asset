@@ -15,9 +15,8 @@ MonoBehaviour:
   distance_between_lanes: 8
   forward_speed: 25
   horizontal_speed: 10
-  jump_force: 70
-  fall_multiplier: 2.5
-  debuff_time: 7
+  jump_force: 60
+  fall_multiplier: 3
   character_list:
   - {fileID: 11400000, guid: 9a297a2a871201d4385f27784dc28552, type: 2}
   - {fileID: 11400000, guid: 3952401430cbb394e976cffe1c22f979, type: 2}
