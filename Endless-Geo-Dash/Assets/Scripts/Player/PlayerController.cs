@@ -73,12 +73,6 @@ namespace GPEJ.Player
                     MovingLeft();
                 }
 
-                if (Input.GetKeyDown(KeyCode.S) && !player_controller.isGrounded)
-                {
-                    NegativeJump();
-                }
-
-
                 if (player_controller.isGrounded)
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
@@ -88,6 +82,10 @@ namespace GPEJ.Player
                 }
                 else
                 {
+                    if (Input.GetKeyDown(KeyCode.S))
+                    {
+                        NegativeJump();
+                    }
                     EnableGravity();
                 }
 
