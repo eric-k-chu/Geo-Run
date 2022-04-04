@@ -10,6 +10,8 @@ namespace GPEJ.UI
 
         private CanvasGroup black_screen_canvas;
 
+        private float fade_duration = 0.5f;
+
         private void Awake()
         {
             black_screen_canvas = GetComponent<CanvasGroup>();
@@ -38,9 +40,9 @@ namespace GPEJ.UI
         {
             float start_alpha = 0f;
             float time = 0f;
-            while (time < 1f)
+            while (time < fade_duration)
             {
-                black_screen_canvas.alpha = Mathf.Lerp(start_alpha, 1, time / 1f);
+                black_screen_canvas.alpha = Mathf.Lerp(start_alpha, 1, time / fade_duration);
                 time += Time.deltaTime;
                 yield return null;
             }
@@ -53,9 +55,9 @@ namespace GPEJ.UI
         {
             float start_alpha = 1f;
             float time = 0f;
-            while (time < 1f)
+            while (time < fade_duration)
             {
-                black_screen_canvas.alpha = Mathf.Lerp(start_alpha, 0, time / 1f);
+                black_screen_canvas.alpha = Mathf.Lerp(start_alpha, 0, time / fade_duration);
                 time += Time.deltaTime;
                 yield return null;
             }
