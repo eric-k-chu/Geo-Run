@@ -97,7 +97,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 168.14374, y: 95.99985, z: 588.504}
+  m_Size: {x: 168.14374, y: 95.99985, z: 0}
   m_Center: {x: -0.03593445, y: 45.999924, z: 0}
 --- !u!114 &3872335391207817548
 MonoBehaviour:
@@ -114,5 +114,5 @@ MonoBehaviour:
   platform_channel: {fileID: 11400000, guid: f80c1ff86ebb92f4b8b860a226c552c6, type: 2}
   background_channel: {fileID: 11400000, guid: 94e0c72519da1ea4dbceebcf32eac1b2, type: 2}
   type: 0
-  length: 588.504
+  length: 588.154
   seconds: 5

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c25ce3d48fe793f41ba8f806cbdf18a8
+guid: 8148d7b04fadf404a84eb9356fa6d092
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,18 +7,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Emissive
-    second: {fileID: 2100000, guid: 7b3bcfe5aa847b54cacbe41695d34af5, type: 2}
+      name: Emissive Left
+    second: {fileID: 2100000, guid: 09845773796ff3249be3408aac2b92d1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MetalPlates001
-    second: {fileID: 2100000, guid: 560e28d350a56844dbbfeb2f4edd113a, type: 2}
+      name: Emissive Right.001
+    second: {fileID: 2100000, guid: a8a5469f88212cb418a0988aef79d64f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Tiles045
-    second: {fileID: 2100000, guid: 57332becde030f0468ddf35668cfe819, type: 2}
+      name: Outline.001
+    second: {fileID: 2100000, guid: 2588c7103209bc74584f1704c40cb5bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plaster005
+    second: {fileID: 2100000, guid: 5e7853725a709b4479edd2136d3e7405, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Platform Base.001
+    second: {fileID: 2100000, guid: ae60d4a6aea3ab3439dfcfd1c83276aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SIgn 009
+    second: {fileID: 2100000, guid: 829e1131650399b469f42067c023950e, type: 2}
   materials:
     materialImportMode: 0
     materialName: 0
