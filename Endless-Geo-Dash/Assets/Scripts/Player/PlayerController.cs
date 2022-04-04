@@ -172,7 +172,6 @@ namespace GPEJ.Player
         {
             if (condition)
             {
-                Debug.Log("Swapped");
                 is_debuffed = true;
                 debuff_timer = Time.time + 8f;
                 right_key = KeyCode.A;
@@ -181,7 +180,6 @@ namespace GPEJ.Player
             }
             else
             {
-                Debug.Log("Unswapped");
                 is_debuffed = false;
                 right_key = KeyCode.D;
                 left_key = KeyCode.A;
