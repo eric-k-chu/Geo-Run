@@ -63,19 +63,25 @@ namespace GPEJ.Player
 
                 HandleDebuffs();
 
-                if (Input.GetKeyDown(right_key) && Time.timeScale != 0f)
+                if (Input.GetKeyDown(right_key))
                 {
                     MovingRight();
                 }
 
-                if (Input.GetKeyDown(left_key) && Time.timeScale != 0f)
+                if (Input.GetKeyDown(left_key))
                 {
                     MovingLeft();
                 }
 
+                if (Input.GetKeyDown(KeyCode.S) && !player_controller.isGrounded)
+                {
+                    NegativeJump();
+                }
+
+
                 if (player_controller.isGrounded)
                 {
-                    if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale != 0f)
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
                         Jump();
                     }
@@ -138,6 +144,11 @@ namespace GPEJ.Player
                 target_lane_xpos = -player_var.distance_between_lanes;
                 AudioManager.instance.PlayMoveSFX();
             }
+        }
+
+        private void NegativeJump()
+        {
+            vertical_velocity = -player_var.jump_force;
         }
 
         private void Jump()
