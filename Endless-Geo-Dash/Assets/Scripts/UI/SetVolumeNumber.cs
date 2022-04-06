@@ -7,8 +7,8 @@ FILE DESCRIPTION:
 This file contains the SetVolumeNumber class, which contains functions
 that updates the Volume number based on the user's preferences
 */
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 namespace GPEJ.UI
@@ -16,13 +16,13 @@ namespace GPEJ.UI
     public class SetVolumeNumber : MonoBehaviour
     {
         [SerializeField] private VolumeType type;
-  
-        private Text ui_text;
+
+        private TextMeshProUGUI text_mesh;
         private bool is_menu = false;
 
         private void Awake()
         {
-            ui_text = GetComponent<Text>();
+            text_mesh = GetComponent<TextMeshProUGUI>();
         }
 
         private void Start()
@@ -62,7 +62,7 @@ namespace GPEJ.UI
                 volume_value = PlayerPrefs.GetFloat(Preference.UIVolume);
             }
             int volume_to_change = (int)(volume_value * 100f);
-            ui_text.text = volume_to_change.ToString();
+            text_mesh.text = volume_to_change.ToString();
         }
     }
 }
