@@ -10,7 +10,7 @@ all the terrain pools in the game
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Random = System.Random;
 
 namespace GPEJ.Terrain
 {
@@ -33,39 +33,7 @@ namespace GPEJ.Terrain
         [SerializeField] private List<PooledTerrain> pooled_platform_list = new List<PooledTerrain>();
 
         [SerializeField] private List<PooledTerrain> pooled_background_list = new List<PooledTerrain>();
-
-        public void GetPooledPlatform(Vector3 vect)
-        {
-            GameObject terrain = null;
-            int index = Random.Range(0, pooled_platform_list.Count);
-
-            for (int i = 0; i < pooled_platform_list[index].object_list.Count; i++)
-            {
-                if (!pooled_platform_list[index].object_list[i].activeInHierarchy)
-                {
-                    terrain = pooled_platform_list[index].object_list[i];
-                }
-            }
-            terrain?.transform.SetPositionAndRotation(vect, Quaternion.identity);
-            terrain?.SetActive(true);
-        }
-
-        public void GetPooledBackground(Vector3 vect)
-        {
-            GameObject background = null;
-            int index = Random.Range(0, pooled_background_list.Count);
-
-            for (int i = 0; i < pooled_background_list[index].object_list.Count; i++)
-            {
-                if (!pooled_background_list[index].object_list[i].activeInHierarchy)
-                {
-                    background = pooled_background_list[index].object_list[i];
-                }
-            }
-            background?.transform.SetPositionAndRotation(vect, Quaternion.identity);
-            background?.SetActive(true);
-        }
-
+ 
         private void Start()
         {
             FillPooledTerrainList(pooled_platform_list);
@@ -83,6 +51,40 @@ namespace GPEJ.Terrain
                     list[i].object_list.Add(pooled_obj);
                 }
             }
+        }
+
+        public void GetPooledPlatform(Vector3 vect)
+        {
+            GameObject terrain = null;
+            var random = new Random();
+            int index = random.Next(0, pooled_platform_list.Count);          
+
+            for (int i = 0; i < pooled_platform_list[index].object_list.Count; i++)
+            {
+                if (!pooled_platform_list[index].object_list[i].activeInHierarchy)
+                {
+                    terrain = pooled_platform_list[index].object_list[i];
+                }
+            }
+            terrain?.transform.SetPositionAndRotation(vect, Quaternion.identity);
+            terrain?.SetActive(true);
+        }
+
+        public void GetPooledBackground(Vector3 vect)
+        {
+            GameObject background = null;
+            var random = new Random();
+            int index = random.Next(0, pooled_background_list.Count);
+
+            for (int i = 0; i < pooled_background_list[index].object_list.Count; i++)
+            {
+                if (!pooled_background_list[index].object_list[i].activeInHierarchy)
+                {
+                    background = pooled_background_list[index].object_list[i];
+                }
+            }
+            background?.transform.SetPositionAndRotation(vect, Quaternion.identity);
+            background?.SetActive(true);
         }
     }
 }
