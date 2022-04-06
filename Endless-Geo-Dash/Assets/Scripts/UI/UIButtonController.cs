@@ -43,7 +43,7 @@ namespace GPEJ.UI
             while (time < fade_duration)
             {
                 black_screen_canvas.alpha = Mathf.Lerp(start_alpha, 1, time / fade_duration);
-                time += Time.deltaTime;
+                time += Time.unscaledDeltaTime;
                 yield return null;
             }
             black_screen_canvas.alpha = 1;
@@ -58,7 +58,7 @@ namespace GPEJ.UI
             while (time < fade_duration)
             {
                 black_screen_canvas.alpha = Mathf.Lerp(start_alpha, 0, time / fade_duration);
-                time += Time.deltaTime;
+                time += Time.unscaledDeltaTime;
                 yield return null;
             }
             black_screen_canvas.alpha = 1;
