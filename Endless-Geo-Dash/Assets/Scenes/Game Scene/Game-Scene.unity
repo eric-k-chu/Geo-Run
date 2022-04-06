@@ -579,7 +579,7 @@ MonoBehaviour:
   m_text: Press Any Key...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6a60e9b7117db94e85c52356abcd383, type: 2}
-  m_sharedMaterial: {fileID: 7114661088355620702, guid: f6a60e9b7117db94e85c52356abcd383, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: fe44721669645e547a9c86faa4697d0a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1360,6 +1360,12 @@ MonoBehaviour:
   - amount: 2
     obj: {fileID: 4142226800490828001, guid: ec7ba3c1157af2a4789d0ba515f79af5, type: 3}
     object_list: []
+  - amount: 2
+    obj: {fileID: 4450676752451948326, guid: 9823d9bb98d7c9d4d8c4bcc9131269dc, type: 3}
+    object_list: []
+  - amount: 2
+    obj: {fileID: 5387760830360766000, guid: 0f8bf7685734041408dcc12a575264a2, type: 3}
+    object_list: []
 --- !u!1 &218482873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28a5c0fbb27adcf42b4a5adc8cfbfcdf, type: 3}
       propertyPath: m_Name
-      value: Starting  Background 1
+      value: Starting Background 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28a5c0fbb27adcf42b4a5adc8cfbfcdf, type: 3}
       propertyPath: m_Layer
@@ -1538,7 +1544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28a5c0fbb27adcf42b4a5adc8cfbfcdf, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a5c0fbb27adcf42b4a5adc8cfbfcdf, type: 3}
@@ -2548,7 +2554,7 @@ MonoBehaviour:
   m_text: N/A
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6a60e9b7117db94e85c52356abcd383, type: 2}
-  m_sharedMaterial: {fileID: 7114661088355620702, guid: f6a60e9b7117db94e85c52356abcd383, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: fe44721669645e547a9c86faa4697d0a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2804,7 +2810,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -3789,9 +3795,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 0
-  m_RequiresDepthTextureOption: 0
-  m_RequiresOpaqueTextureOption: 0
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras:
   - {fileID: 1185902939}
@@ -3802,7 +3808,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 2
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -4604,7 +4610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7708849295811657532, guid: 5b21b5af634151644b1f14e698f9ab78, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b21b5af634151644b1f14e698f9ab78, type: 3}
@@ -4802,7 +4808,7 @@ MonoBehaviour:
   m_text: PAUSED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6a60e9b7117db94e85c52356abcd383, type: 2}
-  m_sharedMaterial: {fileID: 7114661088355620702, guid: f6a60e9b7117db94e85c52356abcd383, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: fe44721669645e547a9c86faa4697d0a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6589,7 +6595,7 @@ MonoBehaviour:
   m_text: GAME OVER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6a60e9b7117db94e85c52356abcd383, type: 2}
-  m_sharedMaterial: {fileID: 7114661088355620702, guid: f6a60e9b7117db94e85c52356abcd383, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: fe44721669645e547a9c86faa4697d0a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8452,7 +8458,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1969351084}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9331,7 +9337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7385513385667302905, guid: 339da5e28edd56a499d337b4666fe6c2, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8418089998201727111, guid: 339da5e28edd56a499d337b4666fe6c2, type: 3}
       propertyPath: m_Value
