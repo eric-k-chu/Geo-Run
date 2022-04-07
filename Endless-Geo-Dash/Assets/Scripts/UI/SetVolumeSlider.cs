@@ -10,6 +10,7 @@ that allow the user to interact with the volume slider GUI
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace GPEJ.UI
 {
@@ -97,6 +98,15 @@ namespace GPEJ.UI
                 SetUIVolume(volume_value);
             }
             ui_slider.value = volume_value;
+
+            if (SceneManager.GetActiveScene().name == SceneLoader.Game)
+            {
+                master_mixer.SetFloat("LowPassFreq", 1000f);
+            }
+            else if (SceneManager.GetActiveScene().name == SceneLoader.MainMenu)
+            {
+                master_mixer.SetFloat("LowPassFreq", 5000f);
+            }
         }
     }
 }
