@@ -184,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -214,6 +214,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3475604396430657857, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: b198a066ceddbff4fa68db61bf69fc19, type: 2}
     - target: {fileID: 8140667698216066233, guid: ccba2c305d7becb42ae62bafee07cea7, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -301,6 +305,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: b2c7277020ee83442b825d44b7ac9a90, type: 2}
+    - target: {fileID: 671603490355201218, guid: ad02a8e80358401499fb3b230aa90b69, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: b198a066ceddbff4fa68db61bf69fc19, type: 2}
     - target: {fileID: 919132149155446097, guid: ad02a8e80358401499fb3b230aa90b69, type: 3}
       propertyPath: m_Name
       value: Character-Pyramid
@@ -4342,6 +4350,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: b2c7277020ee83442b825d44b7ac9a90, type: 2}
+    - target: {fileID: 8417361359673230750, guid: 4b41c4f335e3fba49a24af6e4a849315, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: b198a066ceddbff4fa68db61bf69fc19, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b41c4f335e3fba49a24af6e4a849315, type: 3}
 --- !u!4 &2094448581 stripped
@@ -4831,7 +4843,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4408712191055521394, guid: 26f0732907c91f148a6bb88b86975ed0, type: 2}
-  m_audioClip: {fileID: 8300000, guid: dc30d40c2e841aa4e85ff124f8d2b702, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7260829b8135b472e817c648b7ea4aa8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
