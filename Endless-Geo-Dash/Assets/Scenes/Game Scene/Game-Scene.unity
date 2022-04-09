@@ -7579,6 +7579,7 @@ MonoBehaviour:
   distance_traveled: {fileID: 1155363692}
   final_score: {fileID: 1136724611}
   crystal: {fileID: 45564031}
+  multiplier: {fileID: 2134999968}
   high_score: {fileID: 1226684238}
   runtime_data: {fileID: 11400000, guid: 2165fa69c2156a6498acb0022c9ee22d, type: 2}
 --- !u!1 &1853070771

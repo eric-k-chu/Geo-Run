@@ -17,6 +17,7 @@ namespace GPEJ.UI
         [SerializeField] private GameObject distance_traveled;
         [SerializeField] private GameObject final_score;
         [SerializeField] private GameObject crystal;
+        [SerializeField] private GameObject multiplier;
         [SerializeField] private GameObject high_score;
         [SerializeField] private RuntimeDataContainer runtime_data;
 
@@ -27,7 +28,7 @@ namespace GPEJ.UI
         private TextMeshProUGUI distance_text_mesh;
         private TextMeshProUGUI crystal_count_text_mesh;
         private TextMeshProUGUI final_score_text_mesh;
-        private TextMeshProUGUI high_score_text_mesh;
+        private TextMeshProUGUI multiplier_text_mesh;
 
         public void DisplayScore(bool condition)
         {
@@ -39,7 +40,7 @@ namespace GPEJ.UI
 
             crystal_count_text_mesh.text = crystal_count.ToString();
 
-            high_score_text_mesh.text = score_multiplier.ToString();
+            multiplier_text_mesh.text = score_multiplier.ToString();
 
             int total_score = (int)(distance * score_multiplier);
 
@@ -57,6 +58,8 @@ namespace GPEJ.UI
             distance_text_mesh = distance_traveled.GetComponent<TextMeshProUGUI>();
             crystal_count_text_mesh = crystal.GetComponent<TextMeshProUGUI>();
             final_score_text_mesh = final_score.GetComponent<TextMeshProUGUI>();
+            multiplier_text_mesh = multiplier.GetComponent<TextMeshProUGUI>();
+            
 
             if (!PlayerPrefs.HasKey(Preference.HighScore))
             {
