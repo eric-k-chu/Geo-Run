@@ -27,6 +27,7 @@ namespace GPEJ.UI
         private TextMeshProUGUI distance_text_mesh;
         private TextMeshProUGUI crystal_count_text_mesh;
         private TextMeshProUGUI final_score_text_mesh;
+        private TextMeshProUGUI high_score_text_mesh;
 
         public void DisplayScore(bool condition)
         {
@@ -37,6 +38,8 @@ namespace GPEJ.UI
             distance_text_mesh.text = distance.ToString() + " m";
 
             crystal_count_text_mesh.text = crystal_count.ToString();
+
+            high_score_text_mesh.text = score_multiplier.ToString();
 
             int total_score = (int)(distance * score_multiplier);
 
