@@ -7,14 +7,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Electricity Blue
-  m_Shader: {fileID: -6465566751694194690, guid: 70dd2109793ee0c42b817d1b6e3c6812, type: 3}
+  m_Name: Fence
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -76,9 +77,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1e48d534225f4806ab91370a7165ee20: 50
-    - Vector1_317a1b64d31d404ca9f1799ef1648b95: 254.7
-    - Vector1_e4fd99528d6b44d3a75587eb839e2c45: 15
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -93,12 +91,12 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metallic: 0
+    - _Metallic: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -106,15 +104,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_4751016216dc42da90bf65e8bbc98b25: {r: 2.387323, g: 8.540563, b: 8.574187, a: 1}
-    - Vector2_01f7181a631142fd80d79ded36862d1d: {r: 0, g: 0.5, b: 0, a: 0}
-    - Vector2_776cfa90fa6642db9cd9bcb86104788e: {r: 0, g: -0.5, b: 0, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &4426820055018609814
+--- !u!114 &8751751978154645331
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
