@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using GPEJ.Player;
 
 public class EditTests
 {
@@ -10,7 +11,7 @@ public class EditTests
     [Test]
     public void EditTestsSimplePasses()
     {
-        // Use the Assert class to test conditions
+        
     }
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
