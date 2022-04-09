@@ -17,6 +17,6 @@ namespace GPEJ
         public static readonly string MusicVolume = "Music-Volume";
         public static readonly string SFXVolume = "SFX-Volume";
         public static readonly string UIVolume = "UI-Volume";
-        public static string HighScore = "High-Score";
+        public static readonly string HighScore = "High-Score";
     }
 }

@@ -12,6 +12,8 @@ using UnityEngine;
 
 namespace GPEJ.Player
 {
+    public enum LanePosition { Left, Middle, Right }
+
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
@@ -19,7 +21,6 @@ namespace GPEJ.Player
         [SerializeField] private RuntimeDataContainer runtimed_data;
         [SerializeField] private GameObject debuff;
 
-        private enum LanePosition { Left, Middle, Right }
         private LanePosition current_lane_pos;
 
         private Animator player_animator;
