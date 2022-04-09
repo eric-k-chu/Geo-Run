@@ -17,6 +17,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Fence
+    second: {fileID: 2100000, guid: 57c32c4a5dc80c54385ef48d9f79c3f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Outline
     second: {fileID: 2100000, guid: 2588c7103209bc74584f1704c40cb5bb, type: 2}
   - first:
@@ -25,7 +30,7 @@ ModelImporter:
       name: Platform Base
     second: {fileID: 2100000, guid: ae60d4a6aea3ab3439dfcfd1c83276aa, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
