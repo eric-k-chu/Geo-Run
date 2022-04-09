@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 436260325700517920}
   - component: {fileID: 376340220118269846}
   - component: {fileID: 6877214204105075570}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 966570446801523253}
   - component: {fileID: 6399616561750063614}
   - component: {fileID: 6399616561750063613}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cloth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
