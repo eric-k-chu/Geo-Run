@@ -45,7 +45,6 @@ namespace GPEJ.Player
         private void Awake()
         {
             player_controller = GetComponent<CharacterController>();
-            player_animator = GetComponent<Animator>();
         }
 
         private void Start()
@@ -111,38 +110,34 @@ namespace GPEJ.Player
 
         private void MovingRight()
         {
+            player_animator.SetTrigger("MoveRight");
             if (current_lane_pos == LanePosition.Left)
             {
-                player_animator.SetTrigger("move_right");
                 current_lane_pos = LanePosition.Middle;
                 target_lane_xpos = 0f;
-                AudioManager.instance.PlayMoveSFX();
             }
             else if (current_lane_pos == LanePosition.Middle)
             {
-                player_animator.SetTrigger("move_right");
                 current_lane_pos = LanePosition.Right;
                 target_lane_xpos = player_var.distance_between_lanes;
-                AudioManager.instance.PlayMoveSFX();
             }
+            AudioManager.instance.PlayMoveSFX();
         }
 
         private void MovingLeft()
         {
+            player_animator.SetTrigger("MoveLeft");
             if (current_lane_pos == LanePosition.Right)
             {
-                player_animator.SetTrigger("move_left");
                 current_lane_pos = LanePosition.Middle;
                 target_lane_xpos = 0f;
-                AudioManager.instance.PlayMoveSFX();
             }
             else if (current_lane_pos == LanePosition.Middle)
             {
-                player_animator.SetTrigger("move_left");
                 current_lane_pos = LanePosition.Left;
                 target_lane_xpos = -player_var.distance_between_lanes;
-                AudioManager.instance.PlayMoveSFX();
             }
+            AudioManager.instance.PlayMoveSFX();
         }
 
         private void NegativeJump()
@@ -176,6 +171,7 @@ namespace GPEJ.Player
         public void OnGameStart()
         {
             is_start_of_game = false;
+            player_animator = GetComponentInChildren<Animator>();
         }
 
         public void SwapKeys(bool condition)

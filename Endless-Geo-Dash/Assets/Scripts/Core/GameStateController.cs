@@ -10,6 +10,7 @@ the player object and the current game state
 using System.Collections;
 using UnityEngine;
 
+
 namespace GPEJ
 {
     public enum GameState { Initial, Waiting, Running, Pause, Lost }
@@ -22,13 +23,13 @@ namespace GPEJ
         [Header("Characters")]
         [SerializeField] private GameObject[] character_list;
         [SerializeField] private GameObject[] fractured_character_list;
-
+        [SerializeField] private GameObject active_player;
         [SerializeField] private GameObject waiting_ui_canvas;
         [SerializeField] private float seconds_in_death_animation;
          
         private GameState current_state;
         private WaitForSeconds timer;
-        private GameObject active_player;
+        
         private int character_type;
         private bool is_beginning_of_game = true;
 
@@ -58,7 +59,7 @@ namespace GPEJ
         private void Start()
         {
             character_type = PlayerPrefs.GetInt(Preference.CharacterType);
-            active_player = character_list[character_type];
+            //active_player = character_list[character_type];
             timer = new WaitForSeconds(seconds_in_death_animation);
             TransitionState(GameState.Initial);
         }
@@ -153,7 +154,8 @@ namespace GPEJ
             {
                 case GameState.Initial:
                     {
-                        active_player.SetActive(true);
+                        var player = Instantiate(character_list[character_type], Vector3.zero, Quaternion.identity, active_player.transform);
+                        player.transform.localPosition = Vector3.zero;
                         break;
                     }
                 case GameState.Waiting:
