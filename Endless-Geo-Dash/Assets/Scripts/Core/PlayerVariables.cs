@@ -23,6 +23,8 @@ namespace GPEJ
 
         public string GetName()
         {
+            if (character_list.Length == 0) return null;
+
             if (!PlayerPrefs.HasKey(Preference.CharacterType))
             {
                 return character_list[0].character_name;
@@ -32,6 +34,8 @@ namespace GPEJ
 
         public Texture GetPortrait()
         {
+            if (character_list.Length == 0) return null;
+
             if (!PlayerPrefs.HasKey(Preference.CharacterType))
             {
                 return character_list[0].character_portrait;

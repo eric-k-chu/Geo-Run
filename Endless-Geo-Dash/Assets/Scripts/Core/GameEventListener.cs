@@ -17,6 +17,9 @@ public class BoolEvents : UnityEvent<bool> { }
 [Serializable]
 public class Vector3Events : UnityEvent<Vector3> { }
 
+[Serializable]
+public class TransformEvents : UnityEvent<Transform> { }
+
 namespace GPEJ
 {
     public class GameEventListener : MonoBehaviour
@@ -28,7 +31,7 @@ namespace GPEJ
         [SerializeField] private BoolEventChannel player_death_channel;
         [SerializeField] private Vector3EventChannel platform_channel;
         [SerializeField] private Vector3EventChannel background_channel;
-        
+
         public UnityEvent OnGameLoadFinished;
         public UnityEvent OnCrystalPickedUp;
         public BoolEvents OnKeySwapped;
@@ -36,6 +39,7 @@ namespace GPEJ
         public BoolEvents OnPlayerDied;
         public Vector3Events OnPlatformSpawned;
         public Vector3Events OnBackgroundSpawned;
+        
 
         private void Start()
         {

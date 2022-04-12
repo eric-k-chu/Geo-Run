@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d36a5181175db7478bd83cd170e21f9
+guid: cb57a5a9b35aa9c4896aa30d9ece9aaa
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,25 +7,20 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Black
-    second: {fileID: 2100000, guid: 2588c7103209bc74584f1704c40cb5bb, type: 2}
+      name: Emissive
+    second: {fileID: 2100000, guid: 7b3bcfe5aa847b54cacbe41695d34af5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Blue Emissive
-    second: {fileID: 2100000, guid: 09845773796ff3249be3408aac2b92d1, type: 2}
+      name: Material.001
+    second: {fileID: 2100000, guid: b2c7277020ee83442b825d44b7ac9a90, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Gray
-    second: {fileID: 2100000, guid: ae60d4a6aea3ab3439dfcfd1c83276aa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Orange Emissive
-    second: {fileID: 2100000, guid: a8a5469f88212cb418a0988aef79d64f, type: 2}
+      name: Metal plates 001
+    second: {fileID: 2100000, guid: 560e28d350a56844dbbfeb2f4edd113a, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -93,7 +88,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
