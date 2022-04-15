@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4156104694760311009
 Transform:
   m_ObjectHideFlags: 0
@@ -126,6 +126,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 10331e969c322964f995b7c987764a9e, type: 3}
       propertyPath: m_Name
       value: Debuff-Reversal
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 10331e969c322964f995b7c987764a9e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10331e969c322964f995b7c987764a9e, type: 3}
