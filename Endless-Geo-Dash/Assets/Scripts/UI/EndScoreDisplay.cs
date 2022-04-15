@@ -30,29 +30,6 @@ namespace GPEJ.UI
         private TextMeshProUGUI final_score_text_mesh;
         private TextMeshProUGUI multiplier_text_mesh;
 
-        public void DisplayScore(bool condition)
-        {
-            crystal_count = runtime_data.crystals;
-            score_multiplier += (crystal_count / 100f);
-            distance = (int)runtime_data.distance;
-
-            distance_text_mesh.text = distance.ToString() + " m";
-
-            crystal_count_text_mesh.text = crystal_count.ToString();
-
-            multiplier_text_mesh.text = score_multiplier.ToString();
-
-            int total_score = (int)(distance * score_multiplier);
-
-            if (PlayerPrefs.GetInt(Preference.HighScore) > total_score)
-            {
-                PlayerPrefs.SetInt(Preference.HighScore, total_score);
-                high_score.SetActive(true);
-            }
-
-            final_score_text_mesh.text = total_score.ToString();
-        }
-
         private void Awake()
         {
             distance_text_mesh = distance_traveled.GetComponent<TextMeshProUGUI>();
@@ -60,18 +37,37 @@ namespace GPEJ.UI
             final_score_text_mesh = final_score.GetComponent<TextMeshProUGUI>();
             multiplier_text_mesh = multiplier.GetComponent<TextMeshProUGUI>();
             
-
             if (!PlayerPrefs.HasKey(Preference.HighScore))
             {
                 PlayerPrefs.SetInt(Preference.HighScore, 0);
             }
         }
-
         private void Start()
         {
             crystal_count = 0;
             score_multiplier = 1f;
             distance = 0;
+            high_score.SetActive(false);
+        }
+
+        public void DisplayScore(bool condition)
+        {
+            crystal_count = runtime_data.crystals;
+            score_multiplier += (crystal_count / 100f);
+            distance = (int)runtime_data.distance;
+
+            crystal_count_text_mesh.text = crystal_count.ToString();
+            multiplier_text_mesh.text = score_multiplier.ToString();
+            distance_text_mesh.text = distance.ToString() + " m";
+            
+            int total_score = (int)(distance * score_multiplier);
+            final_score_text_mesh.text = total_score.ToString();
+
+            if (PlayerPrefs.GetInt(Preference.HighScore) < total_score)
+            {
+                PlayerPrefs.SetInt(Preference.HighScore, total_score);
+                high_score.SetActive(true);
+            }          
         }
     }
 }
