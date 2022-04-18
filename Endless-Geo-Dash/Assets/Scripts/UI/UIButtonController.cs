@@ -19,7 +19,7 @@ namespace GPEJ.UI
 
         private void Start()
         {
-            StartCoroutine(FadeIntoCurrentScene());
+            StartCoroutine(FadeOutBlackScreen());
         }
 
         public void LoadMainMenu()
@@ -51,7 +51,7 @@ namespace GPEJ.UI
             SceneManager.LoadScene(SceneLoader.Load);
         }
 
-        private IEnumerator FadeIntoCurrentScene()
+        private IEnumerator FadeOutBlackScreen()
         {
             float start_alpha = 1f;
             float time = 0f;
@@ -61,7 +61,7 @@ namespace GPEJ.UI
                 time += Time.unscaledDeltaTime;
                 yield return null;
             }
-            black_screen_canvas.alpha = 1;
+            black_screen_canvas.alpha = 0;
             gameObject.SetActive(false);
             game_start_channel.RaiseEvent();
         }
