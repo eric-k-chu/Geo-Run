@@ -50,7 +50,7 @@ namespace GPEJ.Player
         private void Start()
         {
             current_lane_pos = LanePosition.Middle;
-            debuff.SetActive(false);
+            debuff?.SetActive(false);
             if (player_var == null) return;
             forward_speed = player_var.forward_speed;
         }
