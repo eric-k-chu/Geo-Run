@@ -51,26 +51,6 @@ namespace GPEJ.UI
         private void Awake()
         {
             ui_slider = GetComponent<Slider>();
-
-            if (!PlayerPrefs.HasKey(Preference.MasterVolume))
-            {
-                PlayerPrefs.SetFloat(Preference.MasterVolume, 0.25f);
-            }
-
-            if (!PlayerPrefs.HasKey(Preference.MusicVolume))
-            {
-                PlayerPrefs.SetFloat(Preference.MusicVolume, 0.25f);
-            }
-
-            if (!PlayerPrefs.HasKey(Preference.SFXVolume))
-            {
-                PlayerPrefs.SetFloat(Preference.SFXVolume, 0.25f);
-            }
-
-            if (!PlayerPrefs.HasKey(Preference.UIVolume))
-            {
-                PlayerPrefs.SetFloat(Preference.UIVolume, 0.25f);
-            }
         }
 
         private void Start()
@@ -78,23 +58,23 @@ namespace GPEJ.UI
             float volume_value = 0f;
             if (type == VolumeType.Master)
             {
-                volume_value = PlayerPrefs.GetFloat(Preference.MasterVolume);
+                volume_value = PlayerPrefs.GetFloat(Preference.MasterVolume, 0.5f);
                 SetMasterVolume(volume_value);
 
             }
             else if (type == VolumeType.Music)
             {
-                volume_value = PlayerPrefs.GetFloat(Preference.MusicVolume);
+                volume_value = PlayerPrefs.GetFloat(Preference.MusicVolume, 0.5f);
                 SetMusicVolume(volume_value);
             }
             else if (type == VolumeType.SFX)
             {
-                volume_value = PlayerPrefs.GetFloat(Preference.SFXVolume);
+                volume_value = PlayerPrefs.GetFloat(Preference.SFXVolume, 0.5f);
                 SetSFXVolume(volume_value);
             }
             else if (type == VolumeType.UI)
             {
-                volume_value = PlayerPrefs.GetFloat(Preference.UIVolume);
+                volume_value = PlayerPrefs.GetFloat(Preference.UIVolume, 0.5f);
                 SetUIVolume(volume_value);
             }
             ui_slider.value = volume_value;

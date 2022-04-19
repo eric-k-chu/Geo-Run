@@ -47,19 +47,19 @@ namespace GPEJ.UI
             float volume_value = 0;
             if (type == VolumeType.Master)
             {
-                volume_value = PlayerPrefs.GetFloat(Preference.MasterVolume);
+                volume_value = PlayerPrefs.GetFloat(Preference.MasterVolume, 0.5f);
             }
             else if (type == VolumeType.Music)
             {
-                volume_value = PlayerPrefs.GetFloat(Preference.MusicVolume);
+                volume_value = PlayerPrefs.GetFloat(Preference.MusicVolume, 0.5f);
             }
             else if (type == VolumeType.SFX)
             {
-                volume_value = PlayerPrefs.GetFloat(Preference.SFXVolume);
+                volume_value = PlayerPrefs.GetFloat(Preference.SFXVolume, 0.5f);
             }
             else if (type == VolumeType.UI)
             {
-                volume_value = PlayerPrefs.GetFloat(Preference.UIVolume);
+                volume_value = PlayerPrefs.GetFloat(Preference.UIVolume, 0.5f);
             }
             int volume_to_change = (int)(volume_value * 100f);
             text_mesh.text = volume_to_change.ToString();
