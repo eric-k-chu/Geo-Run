@@ -1116,6 +1116,12 @@ MonoBehaviour:
   - amount: 4
     obj: {fileID: 6811883459200554869, guid: fccbbd98cbae5ac4eb42f729ba1598a7, type: 3}
     object_list: []
+  - amount: 4
+    obj: {fileID: 6811883459200554869, guid: 0c03f66c5408ed54694488f95be491c1, type: 3}
+    object_list: []
+  - amount: 4
+    obj: {fileID: 6811883459200554869, guid: b12af1ae73cd3f7469de0d4bc47e1250, type: 3}
+    object_list: []
   pooled_background_list:
   - amount: 2
     obj: {fileID: 7708849295811657532, guid: 5b21b5af634151644b1f14e698f9ab78, type: 3}
