@@ -17,35 +17,35 @@ public class PreferenceTests
     {
         Assert.AreEqual("Character-Type", Preference.CharacterType);
     }
-    /*
+    
     [Test]
     public void MasterVolumeTest()
     {
-
+        Assert.AreEqual("Master-Volume", Preference.MasterVolume);
     }
-
+    
     [Test]
     public void MusicVolumeTest()
     {
-
+        Assert.AreEqual("Music-Volume", Preference.MusicVolume);
     }
 
     [Test]
     public void SFXVolumeTest()
     {
-
+        Assert.AreEqual("SFX-Volume", Preference.SFXVolume);
     }
 
     [Test]
     public void UIVolumeTest()
     {
-
+        Assert.AreEqual("UI-Volume", Preference.UIVolume);
     }
 
     [Test]
     public void HighScoreTest()
     {
-
+        Assert.AreEqual("High-Score", Preference.HighScore);
     }
-    */
+    
 }
