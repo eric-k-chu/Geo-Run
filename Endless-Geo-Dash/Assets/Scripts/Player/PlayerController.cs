@@ -142,7 +142,7 @@ namespace GPEJ.Player
 
         private void NegativeJump()
         {
-            vertical_velocity = -player_var.jump_force;
+            vertical_velocity = -player_var.jump_force * 2f;
         }
 
         private void Jump()
