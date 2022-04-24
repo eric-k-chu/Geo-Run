@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Concrete 034
+    second: {fileID: 2100000, guid: b2c7277020ee83442b825d44b7ac9a90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Emissive Left
     second: {fileID: 2100000, guid: 09845773796ff3249be3408aac2b92d1, type: 2}
   - first:
