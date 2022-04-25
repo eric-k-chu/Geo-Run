@@ -1,12 +1,14 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-FILE DESCRIPTION:
-This file contains the PlayerVariables scriptable object, which contains variables that 
-control player movement and health
+This file contains the PlayerVariables class, which contains player movement variables
+and the playable characters
 */
+
 using UnityEngine;
 
 namespace GPEJ
@@ -25,22 +27,14 @@ namespace GPEJ
         {
             if (character_list.Length == 0) return null;
 
-            if (!PlayerPrefs.HasKey(Preference.CharacterType))
-            {
-                return character_list[0].character_name;
-            }
-            return character_list[PlayerPrefs.GetInt(Preference.CharacterType)].character_name;
+            return character_list[PlayerPrefs.GetInt(Preference.CharacterType, 0)].character_name;
         }
 
         public Texture GetPortrait()
         {
             if (character_list.Length == 0) return null;
 
-            if (!PlayerPrefs.HasKey(Preference.CharacterType))
-            {
-                return character_list[0].character_portrait;
-            }
-            return character_list[PlayerPrefs.GetInt(Preference.CharacterType)].character_portrait;
+            return character_list[PlayerPrefs.GetInt(Preference.CharacterType, 0)].character_portrait;
         }
     }
 }

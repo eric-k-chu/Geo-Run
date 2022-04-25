@@ -1,10 +1,11 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-FILE DESCRIPTION:
-This file contains the CharacterInfo ScriptableObject, which has
+This file contains the CharacterInfo class, which contains
 the character name and character sprite image
 */
 using UnityEngine;

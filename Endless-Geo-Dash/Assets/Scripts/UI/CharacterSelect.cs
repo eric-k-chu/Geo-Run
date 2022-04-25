@@ -1,12 +1,14 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-FILE DESCRIPTION:
 This file contains the CharacterSelect class, which tells the CharacterHighlight
-object which character image should be highlighted
+class which character image should be highlighted.
 */
+
 using UnityEngine;
 
 namespace GPEJ.UI
@@ -14,6 +16,14 @@ namespace GPEJ.UI
     public class CharacterSelect : MonoBehaviour
     {
         [SerializeField] private GameObject[] ui_character_image_list;
+
+        private void Awake()
+        {
+            if (!PlayerPrefs.HasKey(Preference.CharacterType))
+            {
+                PlayerPrefs.SetInt(Preference.CharacterType, 0);
+            }
+        }
 
         public void ChangeCharacter(int id)
         {
@@ -32,15 +42,8 @@ namespace GPEJ.UI
                 {
                     character_button.HighlightIMG(true);
                     PlayerPrefs.SetInt(Preference.CharacterType, id);
+                    PlayerPrefs.Save();
                 }
-            }
-        }
-
-        private void Awake()
-        {
-            if (!PlayerPrefs.HasKey(Preference.CharacterType))
-            {
-                PlayerPrefs.SetInt(Preference.CharacterType, 0);
             }
         }
     }

@@ -1,11 +1,12 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-FILE DESCRIPTION:
-This file contains the AudioManager class, which controls
-the given audio sources in the game
+This file contains the AudioManager class, which controls what
+audio sources are played in the game.
 */
 using UnityEngine;
 
@@ -27,6 +28,11 @@ namespace GPEJ
         [SerializeField] private AudioClip death;
 
         public static AudioManager instance { get; private set; }
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         public void PlayJumpSFX()
         {
@@ -73,9 +79,6 @@ namespace GPEJ
             music_source.UnPause();
         }
 
-        private void Awake()
-        {
-            instance = this;
-        }
+
     }
 }

@@ -1,12 +1,13 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-FILE DESCRIPTION:
-This file contains the EndScoreDisplay class, which displays the ending score
-of the player
+This file contains the EndScoreDisplay class, which displays the ending score of the player.
 */
+
 using TMPro;
 using UnityEngine;
 

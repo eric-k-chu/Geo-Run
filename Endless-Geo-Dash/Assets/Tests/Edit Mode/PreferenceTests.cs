@@ -1,12 +1,13 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-SUMMARY:
-PreferenceTests tests that the strings of Preference is the
-correct string.
+This file contains the PreferenceTests class, which tests the keys of Preference
 */
+
 using NUnit.Framework;
 using GPEJ;
 

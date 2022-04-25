@@ -1,12 +1,13 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-FILE DESCRIPTION:
-This file contains the MainMenuInterface class, which contains
-functions that allow the user to interact with the Menu GUI
+This file contains the MainMenuInterface class, handles the button interactability.
 */
+
 using UnityEngine;
 using UnityEngine.UI;
 

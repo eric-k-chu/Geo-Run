@@ -1,5 +1,15 @@
+/*
+PROJECT: Geo Run
+MEMBERS: Eric Chu, Jake Wong
+COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
+
+This file contains the KeySwapTests, which tests that the Reversal debuff is applied 
+correctly to the player.
+*/
+
 using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;

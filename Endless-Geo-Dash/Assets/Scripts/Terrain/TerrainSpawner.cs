@@ -1,12 +1,13 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-Summary:
-This file contains the TerrainSpawner class, which triggers
-the spawn terrain event on player collision
+This file contains the TerrainSpawner class, which spawns new terrain.
 */
+
 using System.Collections;
 using UnityEngine;
 

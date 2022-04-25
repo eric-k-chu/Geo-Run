@@ -1,11 +1,11 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-SUMMARY:
-The Preference class contains readonly strings that
-are used for PlayerPrefs.
+This file contains the Preference class, which contains the keys for PlayerPrefs.
 */
 
 namespace GPEJ

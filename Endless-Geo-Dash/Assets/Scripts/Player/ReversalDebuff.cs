@@ -1,10 +1,12 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-SUMMARY:
-This class is reponsible for switching between the animation state of the Debuff Reversal
+This file contains the ReversalDebuff class, which switches the state of the Reversal Debuff 
+animator.
 */
 using UnityEngine;
 

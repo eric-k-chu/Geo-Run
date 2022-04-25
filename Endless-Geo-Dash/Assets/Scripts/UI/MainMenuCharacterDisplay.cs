@@ -1,11 +1,14 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-SUMMARY:
-MainMenuCharacterDisplay changes the character object in the Menu-Scene
+This file contains the MainMenuCharacterDisplay, which displays the character that the player
+chooses in the main menu.
 */
+
 using UnityEngine;
 
 namespace GPEJ.UI

@@ -1,12 +1,13 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-Summary:
-This file contains the TerrainManager class, which manages
-all the terrain pools in the game
+This file contains the TerrainManager class, which holds the terrain objects in the game.
 */
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;

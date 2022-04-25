@@ -1,12 +1,14 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-FILE DESCRIPTION:
-This file contains the SetVolumeSlider class, which contains functions
-that allow the user to interact with the volume slider GUI
+This file contains the SetVolumeSlider class, which changes the volume slider and upates the 
+volume of the game based on the user's preference.
 */
+
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -79,11 +81,11 @@ namespace GPEJ.UI
             }
             ui_slider.value = volume_value;
 
-            if (SceneManager.GetActiveScene().name == SceneLoader.Game)
+            if (SceneManager.GetActiveScene().name == SceneNames.Game)
             {
                 master_mixer.SetFloat("LowPassFreq", 1000f);
             }
-            else if (SceneManager.GetActiveScene().name == SceneLoader.MainMenu)
+            else if (SceneManager.GetActiveScene().name == SceneNames.MainMenu)
             {
                 master_mixer.SetFloat("LowPassFreq", 5000f);
             }

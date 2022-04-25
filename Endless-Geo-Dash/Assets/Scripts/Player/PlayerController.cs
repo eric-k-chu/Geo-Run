@@ -1,13 +1,14 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-FILE DESCRIPTION:
-This file contains the PlayerController class, which contains methods that allow 
-a user to control the player model and algorithms that manipulate the player's 
-velocity.
+This file contains the PlayerController class, which contains methods that allow a user to 
+control the player model and algorithms that manipulate the player's velocity.
 */
+
 using UnityEngine;
 
 namespace GPEJ.Player

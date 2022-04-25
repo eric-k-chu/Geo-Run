@@ -1,14 +1,15 @@
 /*
-NAME: GPEJ
+PROJECT: Geo Run
 MEMBERS: Eric Chu, Jake Wong
 COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
 
-FILE DESCRIPTION:
-This file contains the VelocityDisplay class, which display
-the player's current velocity
+This file contains the VelocityDisplay class, which displays the player's current velocity.
 */
-using UnityEngine;
+
 using TMPro;
+using UnityEngine;
 
 namespace GPEJ
 {

@@ -1,10 +1,20 @@
+/*
+PROJECT: Geo Run
+MEMBERS: Eric Chu, Jake Wong
+COURSE: CPSC 254-01
+LICENSE: MIT License. For more information, click here https://github.com/ericchu1329/Geo-Run
+DATE: 2022 February 17
+
+This file contains the SceneLoader class, which controls which scene to transition to.
+*/
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace GPEJ.UI
 {
-    public class UIButtonController : MonoBehaviour
+    public class SceneLoader : MonoBehaviour
     {
         [SerializeField] private VoidEventChannel game_start_channel;
 
@@ -26,14 +36,14 @@ namespace GPEJ.UI
         {
             gameObject.SetActive(true);
             Time.timeScale = 1f;
-            StartCoroutine(FadeIntoLoadingScreen(SceneLoader.MainMenu));
+            StartCoroutine(FadeIntoLoadingScreen(SceneNames.MainMenu));
         }
 
         public void LoadGame()
         {
             gameObject.SetActive(true);
             Time.timeScale = 1f;
-            StartCoroutine(FadeIntoLoadingScreen(SceneLoader.Game));
+            StartCoroutine(FadeIntoLoadingScreen(SceneNames.Game));
         }
 
         private IEnumerator FadeIntoLoadingScreen(string scene_name)
@@ -47,8 +57,8 @@ namespace GPEJ.UI
                 yield return null;
             }
             black_screen_canvas.alpha = 1;
-            SceneLoader.SceneToLoad = scene_name;
-            SceneManager.LoadScene(SceneLoader.Load);
+            SceneNames.SceneToLoad = scene_name;
+            SceneManager.LoadScene(SceneNames.Load);
         }
 
         private IEnumerator FadeOutBlackScreen()
