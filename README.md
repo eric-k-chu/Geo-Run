@@ -4,7 +4,7 @@ This is a project for CPSC 254-01 at California State University, Fullerton.
 
 <h1>Summary</h1>
 
-Geo Run Windows version.
+Geo Run Windows version. Click here for the windows release https://github.com/ericchu1329/Geo-Run/releases
 
 <h1>Developers</h1>
 
