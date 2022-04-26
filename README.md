@@ -6,7 +6,7 @@ Play the game here: https://ericchu1329.github.io/Geo-Run-Host/
 
 <h1>Summary</h1>
 
-Geo Run Linux version. Check here for the releases https://github.com/ericchu1329/Geo-Run/releases
+Geo Run Linux version. Check here for the linux release https://github.com/ericchu1329/Geo-Run/releases
 
 <h1>Developers</h1>
 
