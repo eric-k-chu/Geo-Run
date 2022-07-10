@@ -1,6 +1,6 @@
 # Geo-Run
 
-This is a project for CPSC 254-01 at California State University, Fullerton. 
+This is a project for CPSC 254-01 Spring 2022 at California State University, Fullerton. 
 
 <h1>Summary</h1>
 
