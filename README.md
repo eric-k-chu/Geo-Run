@@ -4,7 +4,7 @@ This is a project for CPSC 254-01 Spring 2022 at California State University, Fu
 
 <h1>Summary</h1>
 
-Geo Run Web version. Play the game here: https://ericchu1329.github.io/Geo-Run-Host/
+Geo Run Web version.
 
 Move Left: A
 
